@@ -428,57 +428,39 @@ function saveScoreAndTime(score, time, difficulty) {
   //EASY 30 SECONDS
   var totalScoreEasy30 = localStorage.getItem('scoreEasy30');
 
-  if (
-    totalScoreEasy30 === null ||
-    (+score > +totalScoreEasy30 && +time === 30 && difficulty === 'easy')
-  ) {
+  if (+score > +totalScoreEasy30 && +time === 30 && difficulty === 'easy') {
     localStorage.setItem('scoreEasy30', score);
   }
   //EASY 60 SECONDS
   var totalScoreEasy60 = localStorage.getItem('scoreEasy60');
 
-  if (
-    totalScoreEasy60 === null ||
-    (+score > +totalScoreEasy60 && +time === 60 && difficulty === 'easy')
-  ) {
+  if (+score > +totalScoreEasy60 && +time === 60 && difficulty === 'easy') {
     localStorage.setItem('scoreEasy60', score);
   }
 
   //MEDIUM 30 SECONDS
   var totalScoreMedium30 = localStorage.getItem('scoreMedium30');
 
-  if (
-    totalScoreMedium30 === null ||
-    (+score > +totalScoreMedium30 && +time === 30 && difficulty === 'medium')
-  ) {
+  if (+score > +totalScoreMedium30 && +time === 30 && difficulty === 'medium') {
     localStorage.setItem('scoreMedium30', score);
   }
   //MEDIUM 60 SECONDS
   var totalScoreMedium60 = localStorage.getItem('scoreMedium60');
 
-  if (
-    totalScoreMedium60 === null ||
-    (+score > +totalScoreMedium60 && +time === 60 && difficulty === 'medium')
-  ) {
+  if (+score > +totalScoreMedium60 && +time === 60 && difficulty === 'medium') {
     localStorage.setItem('scoreMedium60', score);
   }
 
   //HARD 30 SECONDS
   var totalScoreHard30 = localStorage.getItem('scoreHard30');
 
-  if (
-    totalScoreHard30 === null ||
-    (+score > +totalScoreHard30 && +time === 30 && difficulty === 'hard')
-  ) {
+  if (+score > +totalScoreHard30 && +time === 30 && difficulty === 'hard') {
     localStorage.setItem('scoreHard30', score);
   }
   //HARD 60 SECONDS
   var totalScoreHard60 = localStorage.getItem('scoreHard60');
 
-  if (
-    totalScoreHard60 === null ||
-    (+score > +totalScoreHard60 && +time === 60 && difficulty === 'hard')
-  ) {
+  if (+score > +totalScoreHard60 && +time === 60 && difficulty === 'hard') {
     localStorage.setItem('scoreHard60', score);
   }
 }
