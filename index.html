@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" href="img/favicon.png" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SpeedyTyper</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav>
+      <select
+        class="difficulty"
+        name="difficulty"
+        id="difficulty"
+        onchange="difficultySelected(this)"
+      >
+        <option value="0">Easy</option>
+        <option value="1">Medium</option>
+        <option value="2">Hard</option>
+      </select>
+
+      <select
+        class="select-time"
+        name="time"
+        id="select-time"
+        onchange="timeSelected(this)"
+      >
+        <option value="0">60 seconds</option>
+        <option value="1">30 seconds</option>
+      </select>
+    </nav>
+
+    <main>
+      <div class="game-container" id="game-container">
+        <!-- BEFORE AND AFTER START -->
+        <div class="before-starting" id="before-starting">
+          <p id="game-over-text"></p>
+          <p id="total-score-text">
+            <span class="new-score" id="new-score">(New Score)</span>
+          </p>
+          <button class="start" id="start" onclick="playGame()">Start</button>
+        </div>
+
+        <!-- GAME STARTED -->
+        <div class="game-started" id="game-started">
+          <div class="info">
+            <p>Remaining time: <span id="time"></span></p>
+            <p>Score: <span id="score"></span></p>
+          </div>
+
+          <div class="game">
+            <p>Type the following:</p>
+            <h2 id="word-to-display"></h2>
+            <input type="text" id="input-text" onkeyup="compareWords()" />
+          </div>
+        </div>
+      </div>
+      <!-- RANKING SCORES -->
+      <div class="ranking-container" id="ranking">
+        <h2>Best Scores</h2>
+
+        <h3>Easy:</h3>
+        <ul>
+          <li>30 seconds: <span id="easy-30"></span></li>
+          <li>60 seconds: <span id="easy-60"></span></li>
+        </ul>
+
+        <h3>Medium:</h3>
+        <ul>
+          <li>30 seconds: <span id="medium-30"></span></li>
+          <li>60 seconds: <span id="medium-60"></span></li>
+        </ul>
+
+        <h3>Hard:</h3>
+        <ul>
+          <li>30 seconds: <span id="hard-30"></span></li>
+          <li>60 seconds: <span id="hard-60"></span></li>
+        </ul>
+        <button id="delete-all-scores" onclick="deleteAll()">Delete All</button>
+      </div>
+    </main>
+    <div class="helper-description" id="helper-description">
+      <h1>Istruction:</h1>
+      <p>
+        Improves the speed in typing on a pc keyboard (also works on mobile).
+        The screen will show you random words and you will have to rewrite them,
+        each word written correctly will give you a point. You can choose the
+        difficulty (the harder it is, the longer the words) and the time (30 or
+        60 seconds).
+      </p>
+      <p>
+        Don't be fucking old using 2 fingers, looking at your pc keyboard! you
+        have 10 fingers, use them! learn to write with 10 fingers while looking
+        at the screen like a real fucking pro!
+      </p>
+    </div>
+    <footer>
+      <button id="show-ranking" onclick="showScore()">Ranking</button>
+      <button class="show-helper" onclick="toggleHelper()">
+        <img src="img/settings.png" alt="settings" />
+      </button>
+    </footer>
+    <script src="main.js" charset="utf-8"></script>
+  </body>
+</html>
