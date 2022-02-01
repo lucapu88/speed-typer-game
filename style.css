@@ -125,6 +125,8 @@ button:hover {
   line-height: 2;
   flex-direction: column;
   align-items: center;
+  overflow: auto;
+  padding: 15px 15px 70px 15px;
 }
 
 .helper-description.slideUp {
@@ -167,6 +169,10 @@ button:hover {
   height: 100%;
   overflow: auto;
   padding-bottom: 30%;
+}
+
+.setting-info {
+  color: rgb(197, 0, 0);
 }
 
 footer {
