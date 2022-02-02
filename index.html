@@ -59,7 +59,7 @@
           <div class="game">
             <p>Type the following:</p>
             <h2 id="word-to-display"></h2>
-            <input type="text" id="input-text" onkeyup="compareWords()" />
+            <input type="text" id="input-text" onkeyup="compareWords(event)" />
           </div>
         </div>
       </div>
@@ -118,10 +118,29 @@
     </div>
     <footer>
       <button id="show-ranking" onclick="showScore()">Ranking</button>
+      <!-- <div class="languages">
+        <input
+          type="checkbox"
+          name="eng"
+          id="english"
+          checked
+          onchange="changeLanguage(this)"
+        />
+        <label>ENG</label>
+
+        <input
+          type="checkbox"
+          name="ita"
+          id="italiano"
+          onchange="changeLanguage(this)"
+        />
+        <label>ITA</label>
+      </div> -->
       <button class="show-helper" onclick="toggleHelper()">
         <img src="img/settings.png" alt="settings" />
       </button>
     </footer>
+    <script src="words-array.js" charset="utf-8"></script>
     <script src="main.js" charset="utf-8"></script>
   </body>
 </html>

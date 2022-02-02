@@ -175,6 +175,10 @@ button:hover {
   color: rgb(197, 0, 0);
 }
 
+.languages {
+  display: inline-block;
+}
+
 footer {
   height: 70px;
   padding: 15px;

@@ -27,296 +27,15 @@ let wordToPrint = ''; //serve sempre per la parola che viene mostrata
 let initialScore = 0;
 let finalScore = 0;
 let showHelper = false;
-
-const easy = [
-  'prova',
-  'pippo',
-  'pluto',
-  'ciao',
-  'gatto',
-  'cane',
-  'lello',
-  'lallo',
-  'abato',
-  'abbai',
-  'abbia',
-  'bacca',
-  'bacco',
-  'bachi',
-  'bacia',
-  'calza',
-  'calze',
-  'calzi',
-  'calzo',
-  'dande',
-  'dando',
-  'dandy',
-  'danna',
-  'edera',
-  'edere',
-  'edile',
-  'edili',
-  'edipo',
-  'fallo',
-  'falsa',
-  'gabba',
-  'gabbi',
-  'gabbo',
-  'gemei',
-  'gemma',
-  'gemme',
-  'lacca',
-  'lacci',
-  'lacco',
-  'mamba',
-  'mambo',
-  'mamma',
-  'mamme',
-  'nesto',
-  'netta',
-  'nette',
-  'netti',
-  'pacca',
-  'pacco',
-  'padre',
-  'padri',
-  'paese',
-  'sabba',
-  'sabea',
-  'sabee',
-  'sabei',
-  'zoppa',
-  'zoppe',
-  'zoppi',
-  'zoppo',
-  'zorro',
-];
-const medium = [
-  'aborro',
-  'bacare',
-  'cubato',
-  'debora',
-  'fibbia',
-  'labbra',
-  'scriba',
-  'sbobba',
-  'sbirro',
-  'tabico',
-  'abanese',
-  'abarica',
-  'ansando',
-  'anselma',
-  'bandone',
-  'bangkok',
-  'calamio',
-  'calanca',
-  'canguro',
-  'canizie',
-  'dairago',
-  'dalmata',
-  'eforato',
-  'egemone',
-  'guaisca',
-  'guamano',
-  'imbimbo',
-  'imborga',
-  'ipossia',
-  'ipoteca',
-  'jogging',
-  'kampala',
-  'lagnoso',
-  'lagundo',
-  'maizena',
-  'malacca',
-  'malanno',
-  'malaria',
-  'nefrone',
-  'nefrosi',
-  'negando',
-  'negarit',
-  'oliario',
-  'olibano',
-  'olimpia',
-  'olimpio',
-  'palilie',
-  'palizzi',
-  'pallade',
-  'pallaio',
-  'radazza',
-  'radendo',
-  'radenza',
-  'rameico',
-  'ramengo',
-  'rameoso',
-  'rametto',
-  'samurai',
-  'sanando',
-  'sancire',
-  'sanctus',
-  'sandalo',
-  'tallone',
-  'talpone',
-  'tamburo',
-  'tampoco',
-  'tampone',
-  'tanagra',
-  'tananai',
-  'uremica',
-  'uremico',
-  'uretere',
-  'urgente',
-  'urgenza',
-  'vacando',
-  'vacanza',
-  'vacatio',
-  'vaccaio',
-  'vaccaro',
-  'vaccata',
-  'vaccine',
-  'vacinai',
-  'zaffare',
-  'zaffato',
-  'zaffiro',
-  'xantoma',
-  'xerobio',
-  'xilosio',
-  'zannata',
-  'zannuto',
-  'zanzara',
-  'zappare',
-  'zappato',
-];
-const hard = [
-  'abduttore',
-  'abduzione',
-  'abelmosco',
-  'aberrando',
-  'belzarini',
-  'bendaggio',
-  'bendatura',
-  'capibarca',
-  'capicarro',
-  'capicollo',
-  'dedicando',
-  'dedizione',
-  'deducendo',
-  'edochiana',
-  'edochiano',
-  'educabile',
-  'educativa',
-  'faustismo',
-  'favagello',
-  'favaretto',
-  'favellare',
-  'gelazione',
-  'gelicidio',
-  'gelignite',
-  'igienista',
-  'ignifughe',
-  'ignizione',
-  'lanzafama',
-  'laocoonte',
-  'laodiceno',
-  'lapidando',
-  'lapidario',
-  'kayakista',
-  'kellerina',
-  'Kurdistan',
-  'manlevato',
-  'manomesso',
-  'manometro',
-  'manomorta',
-  'neogotico',
-  'neoguelfo',
-  'neolatino',
-  'oceaniana',
-  'oceaniano',
-  'oceanside',
-  'parafuoco',
-  'paragocce',
-  'paralalia',
-  'quantomai',
-  'quaresima',
-  'quarteria',
-  'quartetto',
-  'referendi',
-  'referendo',
-  'referente',
-  'saponiero',
-  'saprofago',
-  'saprofilo',
-  'tahitiano',
-  'taiwanese',
-  'talabacco',
-  'ubriacone',
-  'uccellaia',
-  'uccellaio',
-  'uccellare',
-  'venagione',
-  'venatorio',
-  'venceslao',
-  'vendemmia',
-  'wattmetro',
-  'wehrmacht',
-  'wisconsin',
-  'wrestling',
-  'xantopsia',
-  'xenofilia',
-  'xenofobia',
-  'xenogamia',
-  'yachtsman',
-  'zafferano',
-  'zampaccia',
-  'zampirone',
-  'abbandonare',
-  'abbandonata',
-  'balbettasti',
-  'balbetterai',
-  'balbetterei',
-  'calamaretto',
-  'calambucchi',
-  'calamitammo',
-  'debordavate',
-  'deborderemo',
-  'eccitazioni',
-  'ecciteranno',
-  'fagocitanti',
-  'fagocitaria',
-  'galoppatore',
-  'icnografica',
-  'icnografici',
-  'jazzistiche',
-  'judoistiche',
-  'ladroncello',
-  'ladronesche',
-  'macerassimo',
-  'maceratrice',
-  'nasolabiali',
-  'nastratrice',
-  'obbediranno',
-  'obbedirebbe',
-  'pacatamente',
-  'pacchianata',
-  'quadernacci',
-  'quadernaria',
-  'raccattaste',
-  'raccattasti',
-  'saccentello',
-  'saccenteria',
-  'tagliassero',
-  'tagliassimo',
-  'uccidendovi',
-  'uccideranno',
-  'valicassero',
-  'valicassimo',
-  'workstation',
-  'xantogenata',
-  'zampillando',
-  'zappettante',
-];
+//servono per impostare la lingua degli array
+let italiano = Boolean;
+let english = Boolean;
 
 let difficultySelect = easy; //serve per impostare l'array con le parole
 let difficultyName = 'easy'; //serve per impostare la difficoltà nella classifica
+
+inputText.addEventListener('keyup', compareWords);
+inputText.addEventListener('touchend', compareWords);
 
 //SELEZIONE DELLA DURATA
 function timeSelected(selected) {
@@ -341,20 +60,20 @@ function timeSelected(selected) {
 function difficultySelected(selectedDiff) {
   switch (selectedDiff.value) {
     case '0':
-      difficultySelect = easy;
+      difficultySelect = window.easy;
       difficultyName = 'easy';
       break;
     case '1':
-      difficultySelect = medium;
+      difficultySelect = window.medium;
       difficultyName = 'medium';
       break;
     case '2':
-      difficultySelect = hard;
+      difficultySelect = window.hard;
       difficultyName = 'hard';
       break;
 
     default:
-      difficultySelect;
+      difficultySelect = window.easy;
       difficultyName;
       break;
   }
@@ -398,10 +117,10 @@ function shootWords(array) {
 }
 
 // CONFRONTA CIO' CHE SCRIVIAMO CON CIO' CHE CI VIENE MOSTRATO
-function compareWords() {
-  const writtenWord = inputText.value;
+function compareWords(e) {
+  const writtenWord = e.target.value;
 
-  if (wordToPrint === writtenWord) {
+  if (wordToPrint.toLowerCase() === writtenWord.toLowerCase()) {
     shootWords(difficultySelect);
     inputText.value = '';
     initialScore++;
@@ -519,5 +238,18 @@ function toggleHelper() {
 
     helper.scrollTo(0, 0);
     document.documentElement.style.overflow = 'auto';
+  }
+}
+
+function changeLanguage(value) {
+  const englishValue = document.getElementById('english');
+  const italianoValue = document.getElementById('italiano');
+
+  if (value.checked && value.name === 'ita') {
+    englishValue.checked = false;
+    italianoValue.checked = true;
+  } else {
+    italianoValue.checked = false;
+    englishValue.checked = true;
   }
 }
