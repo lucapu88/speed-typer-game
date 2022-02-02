@@ -104,6 +104,7 @@ button:hover {
 .show-helper {
   position: absolute;
   right: 15px;
+  bottom: 10px;
   z-index: 250;
   padding: 0;
 }
@@ -171,12 +172,30 @@ button:hover {
   padding-bottom: 30%;
 }
 
+.close {
+  display: flex;
+  align-self: end;
+}
+.close:hover {
+  cursor: pointer;
+}
+
 .setting-info {
   color: rgb(197, 0, 0);
 }
 
 .languages {
   display: inline-block;
+}
+
+.quit-game {
+  display: none;
+  margin-left: 35%;
+}
+@media (max-width: 650px) {
+  .quit-game {
+    margin-left: 5%;
+  }
 }
 
 footer {

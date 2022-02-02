@@ -11,7 +11,7 @@ const totalScoreText = document.getElementById('total-score-text'); //tag p dove
 const ranking = document.getElementById('ranking'); //div contenitore della classifica
 const gameContainer = document.getElementById('game-container'); //primo div nel main contenente il cuore del gioco
 const newScore = document.getElementById('new-score'); //span che mostra la scritta nel caso c'è un nuovo record
-//sotto ci sono gli span all'interno degli <li> della classifica che mostra i punteggi
+//qui sotto ci sono gli span all'interno degli <li> della classifica che mostra i punteggi
 const easy30 = document.getElementById('easy-30');
 const easy60 = document.getElementById('easy-60');
 const medium30 = document.getElementById('medium-30');
@@ -19,6 +19,8 @@ const medium60 = document.getElementById('medium-60');
 const hard30 = document.getElementById('hard-30');
 const hard60 = document.getElementById('hard-60');
 const deleteAllScores = document.getElementById('delete-all-scores'); //pulsante che resetta il localStorage
+const showRanking = document.getElementById('show-ranking');
+const quit = document.getElementById('quit-game'); //per mostrare/nascondere il pulsante che ferma il gioco
 
 let wordToDisplay = document.getElementById('word-to-display'); //parola che viene mostrata
 let timer = '60';
@@ -27,7 +29,7 @@ let wordToPrint = ''; //serve sempre per la parola che viene mostrata
 let initialScore = 0;
 let finalScore = 0;
 let showHelper = false;
-//servono per impostare la lingua degli array
+//queste 2 sotto servono per impostare la lingua degli array
 let italiano = Boolean;
 let english = Boolean;
 
@@ -81,6 +83,7 @@ function difficultySelected(selectedDiff) {
 
 //AL CLICK SUL PULSANTE START PARTE IL GIOCO
 function playGame() {
+  inputText.value = '';
   newScore.style.display = 'none';
   beforeStarting.style.display = 'none';
   gameStarted.style.display = 'block';
@@ -90,6 +93,7 @@ function playGame() {
   score.textContent = 0;
   difficulty.disabled = true;
   selectTime.disabled = true;
+  quit.style.display = 'inline-block';
 }
 
 //TIMER
@@ -112,7 +116,6 @@ function shootWords(array) {
     const randomWord = array[Math.floor(Math.random() * array.length)];
     wordToPrint = randomWord;
   }
-
   wordToDisplay.textContent = wordToPrint;
 }
 
@@ -131,6 +134,7 @@ function compareWords(e) {
 //FINE GIOCO
 function gameOver() {
   time.innerHTML = '';
+  inputText.value = '';
   selectedTime = timer;
   initialScore = 0;
   score.textContent = 0;
@@ -149,12 +153,14 @@ function saveScoreAndTime(score, time, difficulty) {
 
   if (+score > +totalScoreEasy30 && +time === 30 && difficulty === 'easy') {
     localStorage.setItem('scoreEasy30', score);
+    //newScore.style.display = 'inline';
   }
   //EASY 60 SECONDS
   var totalScoreEasy60 = localStorage.getItem('scoreEasy60');
 
   if (+score > +totalScoreEasy60 && +time === 60 && difficulty === 'easy') {
     localStorage.setItem('scoreEasy60', score);
+    //newScore.style.display = 'inline';
   }
 
   //MEDIUM 30 SECONDS
@@ -162,12 +168,14 @@ function saveScoreAndTime(score, time, difficulty) {
 
   if (+score > +totalScoreMedium30 && +time === 30 && difficulty === 'medium') {
     localStorage.setItem('scoreMedium30', score);
+    //newScore.style.display = 'inline';
   }
   //MEDIUM 60 SECONDS
   var totalScoreMedium60 = localStorage.getItem('scoreMedium60');
 
   if (+score > +totalScoreMedium60 && +time === 60 && difficulty === 'medium') {
     localStorage.setItem('scoreMedium60', score);
+    //newScore.style.display = 'inline';
   }
 
   //HARD 30 SECONDS
@@ -175,12 +183,14 @@ function saveScoreAndTime(score, time, difficulty) {
 
   if (+score > +totalScoreHard30 && +time === 30 && difficulty === 'hard') {
     localStorage.setItem('scoreHard30', score);
+    //newScore.style.display = 'inline';
   }
   //HARD 60 SECONDS
   var totalScoreHard60 = localStorage.getItem('scoreHard60');
 
   if (+score > +totalScoreHard60 && +time === 60 && difficulty === 'hard') {
     localStorage.setItem('scoreHard60', score);
+    //newScore.style.display = 'inline';
   }
 }
 
@@ -206,12 +216,12 @@ function showScore() {
 
   if (!ranking.style.display || ranking.style.display === 'none') {
     gameContainer.style.display = 'none';
-    let newScore = localStorage.getItem('score30');
-    easy30.textContent = newScore;
     ranking.style.display = 'flex';
+    showRanking.innerText = 'Hide Ranking';
   } else {
     gameContainer.style.display = 'block';
     ranking.style.display = 'none';
+    showRanking.innerText = 'Show Ranking';
   }
 }
 
@@ -219,6 +229,10 @@ function deleteAll() {
   let text =
     'ARE YOU SURE YOU WANT TO DELETE ALL YOUR SCORES? \n you will not be able to recover them.';
   confirm(text) == true && (localStorage.clear(), location.reload());
+}
+
+function quitGame() {
+  location.reload();
 }
 
 function toggleHelper() {
@@ -241,15 +255,15 @@ function toggleHelper() {
   }
 }
 
-function changeLanguage(value) {
-  const englishValue = document.getElementById('english');
-  const italianoValue = document.getElementById('italiano');
+// function changeLanguage(value) {
+//   const englishValue = document.getElementById('english');
+//   const italianoValue = document.getElementById('italiano');
 
-  if (value.checked && value.name === 'ita') {
-    englishValue.checked = false;
-    italianoValue.checked = true;
-  } else {
-    italianoValue.checked = false;
-    englishValue.checked = true;
-  }
-}
+//   if (value.checked && value.name === 'ita') {
+//     englishValue.checked = false;
+//     italianoValue.checked = true;
+//   } else {
+//     italianoValue.checked = false;
+//     englishValue.checked = true;
+//   }
+// }

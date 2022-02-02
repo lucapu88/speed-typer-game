@@ -88,6 +88,7 @@
       </div>
     </main>
     <div class="helper-description" id="helper-description">
+      <h2 class="close" onclick="toggleHelper()">x</h2>
       <h1>Istruction:</h1>
       <p>
         Improves the speed in typing on a pc keyboard (also works on mobile).
@@ -117,7 +118,10 @@
       </p>
     </div>
     <footer>
-      <button id="show-ranking" onclick="showScore()">Ranking</button>
+      <button id="show-ranking" onclick="showScore()">Show Ranking</button>
+      <button class="quit-game" id="quit-game" onclick="quitGame()">
+        Quit
+      </button>
       <!-- <div class="languages">
         <input
           type="checkbox"
