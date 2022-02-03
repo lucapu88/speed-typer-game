@@ -24,7 +24,7 @@ const quit = document.getElementById('quit-game'); //per mostrare/nascondere il 
 
 let wordToDisplay = document.getElementById('word-to-display'); //parola che viene mostrata
 let timer = '60';
-let selectedTime = '60';
+let countdown = '60';
 let wordToPrint = ''; //serve sempre per la parola che viene mostrata
 let initialScore = 0;
 let finalScore = 0;
@@ -36,31 +36,35 @@ let english = Boolean;
 let difficultySelect = easy; //serve per impostare l'array con le parole
 let difficultyName = 'easy'; //serve per impostare la difficoltà nella classifica
 
-inputText.addEventListener('keyup', compareWords);
-inputText.addEventListener('touchend', compareWords);
-
 //SELEZIONE DELLA DURATA
-function timeSelected(selected) {
-  switch (selected.value) {
+const selectTimeInput = document.querySelector('.select-time');
+selectTimeInput.addEventListener('change', setTimer);
+
+function setTimer(selected) {
+  //uso uno switch nel caso in futuro aggiungo altre durate
+  switch (selected.target.value) {
     case '0':
-      selectedTime = '60';
+      countdown = '60';
       timer = '60';
       break;
     case '1':
-      selectedTime = '30';
+      countdown = '30';
       timer = '30';
       break;
 
     default:
-      selectedTime;
+      countdown;
       timer;
       break;
   }
 }
 
 //SELEZIONE DIFFICOLTA'
+const selectDifficultyInput = document.querySelector('.difficulty');
+selectDifficultyInput.addEventListener('change', difficultySelected);
+
 function difficultySelected(selectedDiff) {
-  switch (selectedDiff.value) {
+  switch (selectedDiff.target.value) {
     case '0':
       difficultySelect = window.easy;
       difficultyName = 'easy';
@@ -98,11 +102,11 @@ function playGame() {
 
 //TIMER
 function updateTime() {
-  +selectedTime--;
+  +countdown--;
 
-  time.innerHTML = selectedTime + 's';
+  time.innerHTML = countdown + 's';
 
-  if (selectedTime === 0) {
+  if (countdown === 0) {
     clearInterval(timeInterval);
     finalScore = initialScore;
     saveScoreAndTime(finalScore, timer, difficultyName);
@@ -110,16 +114,20 @@ function updateTime() {
   }
 }
 
-//IMMETTE LE PAROLE CASUALI DA RICOPIARE
+//RECUPERA PAROLE CASUALI DA UN ARRAY CHE GLI PASSIAMO
+function randomWords(words) {
+  return words[Math.floor(Math.random() * words.length)];
+}
+//IMMETTE LE PAROLE CASUALI CHE L'UTENTE DOVRA' RICOPIARE
 function shootWords(array) {
-  for (let index = 0; index < array.length; index++) {
-    const randomWord = array[Math.floor(Math.random() * array.length)];
-    wordToPrint = randomWord;
-  }
+  wordToPrint = randomWords(array);
   wordToDisplay.textContent = wordToPrint;
 }
 
 // CONFRONTA CIO' CHE SCRIVIAMO CON CIO' CHE CI VIENE MOSTRATO
+inputText.addEventListener('keyup', compareWords);
+inputText.addEventListener('touchend', compareWords);
+
 function compareWords(e) {
   const writtenWord = e.target.value;
 
@@ -135,7 +143,7 @@ function compareWords(e) {
 function gameOver() {
   time.innerHTML = '';
   inputText.value = '';
-  selectedTime = timer;
+  countdown = timer;
   initialScore = 0;
   score.textContent = 0;
   startGame.textContent = 'Retry';
@@ -194,6 +202,7 @@ function saveScoreAndTime(score, time, difficulty) {
   }
 }
 
+//MOSTRA/NASCONDE LA TABELLA DEI PUNTEGGI
 function toggleScore() {
   const init = async () => {
     const newEasy30Score = await localStorage.getItem('scoreEasy30');
@@ -223,6 +232,7 @@ function toggleScore() {
   }
 }
 
+//CANCELLA TUTTI I PUNTEGGI
 function deleteAll() {
   let text =
     'ARE YOU SURE YOU WANT TO DELETE ALL YOUR SCORES? \n you will not be able to recover them.';
@@ -233,6 +243,7 @@ function quitGame() {
   location.reload();
 }
 
+//MOSTRA/NASCONDE IL RIQUADRO CON LE ISTRUZIONI
 function toggleHelper() {
   showHelper = !showHelper;
 

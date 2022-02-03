@@ -20,23 +20,13 @@
   </head>
   <body>
     <nav>
-      <select
-        class="difficulty"
-        name="difficulty"
-        id="difficulty"
-        onchange="difficultySelected(this)"
-      >
+      <select class="difficulty" name="difficulty" id="difficulty">
         <option value="0">Easy</option>
         <option value="1">Medium</option>
         <option value="2">Hard</option>
       </select>
 
-      <select
-        class="select-time"
-        name="time"
-        id="select-time"
-        onchange="timeSelected(this)"
-      >
+      <select class="select-time" name="time" id="select-time">
         <option value="0">60 seconds</option>
         <option value="1">30 seconds</option>
       </select>
@@ -62,7 +52,7 @@
           <div class="game">
             <p>Type the following:</p>
             <h2 id="word-to-display"></h2>
-            <input type="text" id="input-text" onkeyup="compareWords(event)" />
+            <input type="text" id="input-text" />
           </div>
         </div>
       </div>

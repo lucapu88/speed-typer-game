@@ -107,6 +107,10 @@ button {
   color: rgb(197, 0, 0);
 }
 
+.ranking-container > ul {
+  line-height: 1.5;
+}
+
 .scores-title {
   width: 100%;
   display: flex;
