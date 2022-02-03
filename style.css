@@ -27,7 +27,7 @@ nav {
   color: rgb(153, 0, 0);
 }
 main {
-  height: calc(100vh - 120px);
+  height: calc(100vh - 140px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -54,8 +54,6 @@ button {
   color: rgb(0, 0, 0);
   padding: 15px;
   border-radius: 5px;
-}
-button:hover {
   cursor: pointer;
 }
 
@@ -86,6 +84,14 @@ button:hover {
   text-transform: uppercase;
 }
 
+.show-hide-score {
+  padding: 5px;
+}
+.show-hide-score > img {
+  width: 50px;
+  background-color: transparent;
+}
+
 .ranking-container {
   border: solid rgb(61, 214, 0);
   border-width: 1px;
@@ -99,6 +105,16 @@ button:hover {
 
 .ranking-container > h3 {
   color: rgb(197, 0, 0);
+}
+
+.scores-title {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.close-scores {
+  cursor: pointer;
 }
 
 .show-helper {
@@ -175,8 +191,6 @@ button:hover {
 .close {
   display: flex;
   align-self: end;
-}
-.close:hover {
   cursor: pointer;
 }
 
@@ -190,7 +204,7 @@ button:hover {
 
 .quit-game {
   display: none;
-  margin-left: 35%;
+  margin-left: 45%;
 }
 @media (max-width: 650px) {
   .quit-game {
@@ -199,6 +213,7 @@ button:hover {
 }
 
 footer {
-  height: 70px;
-  padding: 15px;
+  display: flex;
+  height: 90px;
+  padding: 10px;
 }

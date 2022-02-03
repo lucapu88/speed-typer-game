@@ -68,7 +68,10 @@
       </div>
       <!-- RANKING SCORES -->
       <div class="ranking-container" id="ranking">
-        <h2>Best Scores</h2>
+        <div class="scores-title">
+          <h2>Best Scores</h2>
+          <h2 class="close-scores" onclick="toggleScore()">x</h2>
+        </div>
 
         <h3>Easy:</h3>
         <ul>
@@ -121,7 +124,9 @@
       </p>
     </div>
     <footer>
-      <button id="show-ranking" onclick="showScore()">Show Ranking</button>
+      <button class="show-hide-score" id="show-ranking" onclick="toggleScore()">
+        <img src="img/score.png" alt="show/hide_score" />
+      </button>
       <button class="quit-game" id="quit-game" onclick="quitGame()">
         Quit
       </button>

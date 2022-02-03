@@ -194,7 +194,7 @@ function saveScoreAndTime(score, time, difficulty) {
   }
 }
 
-function showScore() {
+function toggleScore() {
   const init = async () => {
     const newEasy30Score = await localStorage.getItem('scoreEasy30');
     easy30.innerHTML = newEasy30Score ? newEasy30Score : '0';
@@ -217,11 +217,9 @@ function showScore() {
   if (!ranking.style.display || ranking.style.display === 'none') {
     gameContainer.style.display = 'none';
     ranking.style.display = 'flex';
-    showRanking.innerText = 'Hide Ranking';
   } else {
     gameContainer.style.display = 'block';
     ranking.style.display = 'none';
-    showRanking.innerText = 'Show Ranking';
   }
 }
 
