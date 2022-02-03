@@ -22,7 +22,10 @@ nav {
 .select-time {
   margin-left: 5px;
 }
-
+.select-time:disabled,
+.difficulty:disabled {
+  color: rgb(153, 0, 0);
+}
 main {
   height: calc(100vh - 120px);
   display: flex;
@@ -81,9 +84,6 @@ button:hover {
 .game > h2,
 .game > input {
   text-transform: uppercase;
-}
-.new-score {
-  display: none;
 }
 
 .ranking-container {

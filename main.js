@@ -84,7 +84,7 @@ function difficultySelected(selectedDiff) {
 //AL CLICK SUL PULSANTE START PARTE IL GIOCO
 function playGame() {
   inputText.value = '';
-  newScore.style.display = 'none';
+  newScore.innerText = '';
   beforeStarting.style.display = 'none';
   gameStarted.style.display = 'block';
   timeInterval = setInterval(updateTime, 1000);
@@ -153,14 +153,14 @@ function saveScoreAndTime(score, time, difficulty) {
 
   if (+score > +totalScoreEasy30 && +time === 30 && difficulty === 'easy') {
     localStorage.setItem('scoreEasy30', score);
-    //newScore.style.display = 'inline';
+    newScore.innerText = 'NEW SCORE';
   }
   //EASY 60 SECONDS
   var totalScoreEasy60 = localStorage.getItem('scoreEasy60');
 
   if (+score > +totalScoreEasy60 && +time === 60 && difficulty === 'easy') {
     localStorage.setItem('scoreEasy60', score);
-    //newScore.style.display = 'inline';
+    newScore.innerText = 'NEW SCORE';
   }
 
   //MEDIUM 30 SECONDS
@@ -168,14 +168,14 @@ function saveScoreAndTime(score, time, difficulty) {
 
   if (+score > +totalScoreMedium30 && +time === 30 && difficulty === 'medium') {
     localStorage.setItem('scoreMedium30', score);
-    //newScore.style.display = 'inline';
+    newScore.innerText = 'NEW SCORE';
   }
   //MEDIUM 60 SECONDS
   var totalScoreMedium60 = localStorage.getItem('scoreMedium60');
 
   if (+score > +totalScoreMedium60 && +time === 60 && difficulty === 'medium') {
     localStorage.setItem('scoreMedium60', score);
-    //newScore.style.display = 'inline';
+    newScore.innerText = 'NEW SCORE';
   }
 
   //HARD 30 SECONDS
@@ -183,14 +183,14 @@ function saveScoreAndTime(score, time, difficulty) {
 
   if (+score > +totalScoreHard30 && +time === 30 && difficulty === 'hard') {
     localStorage.setItem('scoreHard30', score);
-    //newScore.style.display = 'inline';
+    newScore.innerText = 'NEW SCORE';
   }
   //HARD 60 SECONDS
   var totalScoreHard60 = localStorage.getItem('scoreHard60');
 
   if (+score > +totalScoreHard60 && +time === 60 && difficulty === 'hard') {
     localStorage.setItem('scoreHard60', score);
-    //newScore.style.display = 'inline';
+    newScore.innerText = 'NEW SCORE';
   }
 }
 
