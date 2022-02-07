@@ -26,6 +26,10 @@ nav {
 .difficulty:disabled {
   color: rgb(153, 0, 0);
 }
+.difficulty-hero {
+  color: rgb(0, 87, 250);
+}
+
 main {
   height: calc(100vh - 140px);
   display: flex;
@@ -77,6 +81,7 @@ button {
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
   padding: 10px;
+  border: none;
   border-radius: 5px;
 }
 .game > h2,
@@ -103,12 +108,19 @@ button {
   gap: 15px;
 }
 
-.ranking-container > h3 {
+.easy,
+.medium,
+.hard {
   color: rgb(197, 0, 0);
 }
 
 .ranking-container > ul {
   line-height: 1.5;
+}
+
+.hero {
+  color: rgb(231, 197, 1);
+  margin-bottom: 20px;
 }
 
 .scores-title {

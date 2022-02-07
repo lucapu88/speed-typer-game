@@ -18,6 +18,7 @@ const medium30 = document.getElementById('medium-30');
 const medium60 = document.getElementById('medium-60');
 const hard30 = document.getElementById('hard-30');
 const hard60 = document.getElementById('hard-60');
+const heroScore = document.getElementById('hero');
 const deleteAllScores = document.getElementById('delete-all-scores'); //pulsante che resetta il localStorage
 const showRanking = document.getElementById('show-ranking');
 const quit = document.getElementById('quit-game'); //per mostrare/nascondere il pulsante che ferma il gioco
@@ -41,22 +42,8 @@ const selectTimeInput = document.querySelector('.select-time');
 selectTimeInput.addEventListener('change', setTimer);
 
 function setTimer(selected) {
-  //uso uno switch nel caso in futuro aggiungo altre durate
-  switch (selected.target.value) {
-    case '0':
-      countdown = '60';
-      timer = '60';
-      break;
-    case '1':
-      countdown = '30';
-      timer = '30';
-      break;
-
-    default:
-      countdown;
-      timer;
-      break;
-  }
+  countdown = selected.target.value;
+  timer = selected.target.value;
 }
 
 //SELEZIONE DIFFICOLTA'
@@ -68,14 +55,22 @@ function difficultySelected(selectedDiff) {
     case '0':
       difficultySelect = window.easy;
       difficultyName = 'easy';
+      selectHeroDifficulty(false);
       break;
     case '1':
       difficultySelect = window.medium;
       difficultyName = 'medium';
+      selectHeroDifficulty(false);
       break;
     case '2':
       difficultySelect = window.hard;
       difficultyName = 'hard';
+      selectHeroDifficulty(false);
+      break;
+    case '3':
+      difficultySelect = window.hero;
+      difficultyName = 'hero';
+      selectHeroDifficulty(true);
       break;
 
     default:
@@ -84,6 +79,21 @@ function difficultySelected(selectedDiff) {
       break;
   }
 }
+
+//NEL CASO SCELGO DIFFICOLTA' HERO NON POSSO IMPOSTARE 30 SECONDI
+function selectHeroDifficulty(bool) {
+  return (
+    !bool ? (selectTime.disabled = false) : (selectTime.disabled = true),
+    (selectTime.value = 60),
+    selectTime.dispatchEvent(new Event('change'))
+  );
+}
+
+// selectTime.addEventListener('click', noChangeTime);
+// function noChangeTime(diff) {
+//   console.log(diff.value);
+//   //dovrei lanciare un alert se l'utente pirla continua a cliccare per cambiare tempo con difficoltà hero. NON SI PUÒ
+// }
 
 //AL CLICK SUL PULSANTE START PARTE IL GIOCO
 function playGame() {
@@ -130,11 +140,28 @@ inputText.addEventListener('touchend', compareWords);
 
 function compareWords(e) {
   const writtenWord = e.target.value;
+  const wordToPrintLowercase = wordToPrint.toLowerCase();
+  const writtenWordLowercase = writtenWord.toLowerCase();
 
-  if (wordToPrint.toLowerCase() === writtenWord.toLowerCase()) {
+  if (wordToPrintLowercase === writtenWordLowercase) {
+    //in qualsiasi caso visualizzo la parola se l'azzecco, resetta l'input., ne spara un'altra e aumenta il punteggio
     shootWords(difficultySelect);
     inputText.value = '';
     initialScore++;
+    score.textContent = initialScore;
+    inputText.style.border = 'none';
+  }
+
+  if (
+    initialScore !== 0 &&
+    difficultyName === 'hero' &&
+    wordToPrintLowercase !== writtenWordLowercase &&
+    writtenWordLowercase.length >= wordToPrintLowercase.length
+  ) {
+    //se con difficoltà hero sbaglio una parola, resetta l'input, segnala con bordo rosso e diminuisce il punteggio
+    inputText.style.border = '4px solid red';
+    inputText.value = '';
+    initialScore--;
     score.textContent = initialScore;
   }
 }
@@ -200,6 +227,14 @@ function saveScoreAndTime(score, time, difficulty) {
     localStorage.setItem('scoreHard60', score);
     newScore.innerText = 'NEW SCORE';
   }
+
+  //HERO
+  var totalScoreHero = localStorage.getItem('scoreHero');
+
+  if (+score > +totalScoreHero && +time === 60 && difficulty === 'hero') {
+    localStorage.setItem('scoreHero', score);
+    newScore.innerText = 'NEW SCORE';
+  }
 }
 
 //MOSTRA/NASCONDE LA TABELLA DEI PUNTEGGI
@@ -219,6 +254,9 @@ function toggleScore() {
     hard30.innerHTML = newHard30Score ? newHard30Score : '0';
     const newHard60Score = await localStorage.getItem('scoreHard60');
     hard60.innerHTML = newHard60Score ? newHard60Score : '0';
+
+    const newHeroScore = await localStorage.getItem('scoreHero');
+    heroScore.innerHTML = newHeroScore ? newHeroScore : '0';
   };
 
   init();

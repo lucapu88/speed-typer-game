@@ -24,11 +24,12 @@
         <option value="0">Easy</option>
         <option value="1">Medium</option>
         <option value="2">Hard</option>
+        <option class="difficulty-hero" value="3">Hero</option>
       </select>
 
       <select class="select-time" name="time" id="select-time">
-        <option value="0">60 seconds</option>
-        <option value="1">30 seconds</option>
+        <option class="time-60" value="60">60 seconds</option>
+        <option class="time-30" value="30">30 seconds</option>
       </select>
     </nav>
 
@@ -63,23 +64,26 @@
           <h2 class="close-scores" onclick="toggleScore()">x</h2>
         </div>
 
-        <h3>Easy:</h3>
+        <h3 class="easy">Easy:</h3>
         <ul>
           <li>30 seconds: <span id="easy-30"></span></li>
           <li>60 seconds: <span id="easy-60"></span></li>
         </ul>
 
-        <h3>Medium:</h3>
+        <h3 class="medium">Medium:</h3>
         <ul>
           <li>30 seconds: <span id="medium-30"></span></li>
           <li>60 seconds: <span id="medium-60"></span></li>
         </ul>
 
-        <h3>Hard:</h3>
+        <h3 class="hard">Hard:</h3>
         <ul>
           <li>30 seconds: <span id="hard-30"></span></li>
           <li>60 seconds: <span id="hard-60"></span></li>
         </ul>
+
+        <h3 class="hero">Hero:<span id="hero"></span></h3>
+
         <button id="delete-all-scores" onclick="deleteAll()">Delete All</button>
       </div>
     </main>
@@ -91,14 +95,13 @@
         The screen will show you random words and you will have to rewrite them,
         each word written correctly will give you a point. You can choose the
         difficulty (the harder it is, the longer the words) and the time (30 or
-        60 seconds).
-      </p>
-      <p>
+        60 seconds).<br />
+        With the new HERO difficulty the words will be even longer and if you
+        make a mistake you lose points, so be careful if you want to show that
+        you have the balls.<br />
         Don't be fucking old using 2 fingers, looking at your pc keyboard! you
         have 10 fingers, use them! learn to write with 10 fingers while looking
-        at the screen like a real fucking pro!
-      </p>
-      <p>
+        at the screen like a real fucking pro!<br />
         If you are a developer you can find the repository
         <a
           class="setting-info"
