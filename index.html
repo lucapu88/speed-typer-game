@@ -40,7 +40,19 @@
           <p id="game-over-text"></p>
           <p id="total-score-text"></p>
           <span class="new-score" id="new-score"></span>
-          <button class="start" id="start" onclick="playGame()">Start</button>
+          <p id="hands-on-keyboard">Place your hands on the keyboard</p>
+          <img
+            id="img-hands-on-keyboard"
+            src="img/keyboard-hands-position.png"
+            alt="keyboard-hands-position"
+          />
+          <button class="start" id="start" onclick="threeTwoOneCountdown()">
+            Start
+          </button>
+        </div>
+
+        <div class="countdownBeforeStarting" id="countdownBeforeStarting">
+          <h1 id="count-number"></h1>
         </div>
 
         <!-- GAME STARTED -->

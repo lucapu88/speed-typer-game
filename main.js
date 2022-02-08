@@ -24,6 +24,11 @@ const showRanking = document.getElementById('show-ranking');
 const quit = document.getElementById('quit-game'); //per mostrare/nascondere il pulsante che ferma il gioco
 const languages = document.getElementById('languages');
 const audio = document.getElementById('audio');
+const countdownBeforeStarting = document.getElementById(
+  'countdownBeforeStarting'
+); //per il conto alla rovescia prima che parte il gioco
+const handsOnKeyboard = document.getElementById('hands-on-keyboard'); //tag p che indica di mostrare le mani sulla tastiera
+const imgHandsOnKeyboard = document.getElementById('img-hands-on-keyboard'); //tag img che indican di mostrare le mani sulla tastiera
 
 let wordToDisplay = document.getElementById('word-to-display'); //parola che viene mostrata
 let timer = '60';
@@ -94,11 +99,26 @@ function selectHeroDifficulty(bool) {
 //   //dovrei lanciare un alert se l'utente pirla continua a cliccare per cambiare tempo con difficoltà hero. NON SI PUÒ
 // }
 
-//AL CLICK SUL PULSANTE START PARTE IL GIOCO
+//AL CLICK SUL PULSANTE START PARTE IL CONTO ALLA ROVESCIA
+let count = 4;
+function threeTwoOneCountdown() {
+  const countNumber = document.getElementById('count-number');
+  if (count > 1) {
+    beforeStarting.style.display = 'none';
+    countdownBeforeStarting.style.display = 'flex';
+    count--;
+    countNumber.textContent = count;
+    setTimeout(threeTwoOneCountdown, 1000);
+  } else {
+    playGame();
+  }
+}
+
+//A FINE CONTO ALLA ROVESCIA PARTE IL GIOCO
 function playGame() {
   inputText.value = '';
   newScore.innerText = '';
-  beforeStarting.style.display = 'none';
+  countdownBeforeStarting.style.display = 'none';
   gameStarted.style.display = 'block';
   timeInterval = setInterval(updateTime, 1000);
   shootWords(difficultySelect);
@@ -168,6 +188,7 @@ function compareWords(e) {
 
 //FINE GIOCO
 function gameOver() {
+  count = 4;
   audioPlay && (audio.src = 'sounds/Super-Mario-Game-Over.mp3');
   time.innerHTML = '';
   inputText.value = '';
@@ -178,7 +199,9 @@ function gameOver() {
   gameOverText.textContent = 'GAME OVER';
   totalScoreText.textContent = `Your score: ${finalScore}`;
   gameStarted.style.display = 'none';
+  handsOnKeyboard.style.display = 'none';
   beforeStarting.style.display = 'flex';
+  imgHandsOnKeyboard.style.display = 'none';
   difficulty.disabled = false;
   difficultyName != 'hero' && (selectTime.disabled = false);
 }
