@@ -22,6 +22,7 @@ const heroScore = document.getElementById('hero');
 const deleteAllScores = document.getElementById('delete-all-scores'); //pulsante che resetta il localStorage
 const showRanking = document.getElementById('show-ranking');
 const quit = document.getElementById('quit-game'); //per mostrare/nascondere il pulsante che ferma il gioco
+const languages = document.getElementById('languages');
 
 let wordToDisplay = document.getElementById('word-to-display'); //parola che viene mostrata
 let timer = '60';
@@ -30,9 +31,6 @@ let wordToPrint = ''; //serve sempre per la parola che viene mostrata
 let initialScore = 0;
 let finalScore = 0;
 let showHelper = false;
-//queste 2 sotto servono per impostare la lingua degli array
-let italiano = Boolean;
-let english = Boolean;
 
 let difficultySelect = easy; //serve per impostare l'array con le parole
 let difficultyName = 'easy'; //serve per impostare la difficoltà nella classifica
@@ -179,7 +177,7 @@ function gameOver() {
   gameStarted.style.display = 'none';
   beforeStarting.style.display = 'flex';
   difficulty.disabled = false;
-  selectTime.disabled = false;
+  difficultyName != 'hero' && (selectTime.disabled = false);
 }
 
 function saveScoreAndTime(score, time, difficulty) {
@@ -302,15 +300,29 @@ function toggleHelper() {
   }
 }
 
-// function changeLanguage(value) {
-//   const englishValue = document.getElementById('english');
-//   const italianoValue = document.getElementById('italiano');
+languages.addEventListener('change', changeLanguage);
+function changeLanguage(event) {
+  const languageText = document.getElementById('language-text');
 
-//   if (value.checked && value.name === 'ita') {
-//     englishValue.checked = false;
-//     italianoValue.checked = true;
-//   } else {
-//     italianoValue.checked = false;
-//     englishValue.checked = true;
-//   }
-// }
+  switch (event.target.value) {
+    case 'eng':
+      languageText.innerHTML = window.english;
+      break;
+
+    case 'ita':
+      languageText.innerHTML = window.italiano;
+      break;
+
+    case 'fra':
+      languageText.innerHTML = window.francais;
+      break;
+
+    case 'spa':
+      languageText.innerHTML = window.espanol;
+      break;
+
+    default:
+      languageText.innerHTML = window.english;
+      break;
+  }
+}

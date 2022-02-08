@@ -90,7 +90,13 @@
     <div class="helper-description" id="helper-description">
       <h2 class="close" onclick="toggleHelper()">x</h2>
       <h1>Istruction:</h1>
-      <p>
+      <select class="languages" name="languages" id="languages">
+        <option value="eng" id="eng">English</option>
+        <option value="ita" id="ita">Italiano</option>
+        <option value="fra" id="fra">Français</option>
+        <option value="spa" id="spa">Español</option>
+      </select>
+      <p id="language-text">
         Improves the speed in typing on a pc keyboard (also works on mobile).
         The screen will show you random words and you will have to rewrite them,
         each word written correctly will give you a point. You can choose the
@@ -98,7 +104,9 @@
         60 seconds).<br />
         With the new HERO difficulty the words will be even longer and if you
         make a mistake you lose points, so be careful if you want to show that
-        you have the balls.<br />
+        you have the balls. IMPORTANT: with the hero mode the time is only 60
+        seconds (to avoid nervous breakdowns and PC launched from the
+        window).<br />
         Don't be fucking old using 2 fingers, looking at your pc keyboard! you
         have 10 fingers, use them! learn to write with 10 fingers while looking
         at the screen like a real fucking pro!<br />
@@ -123,29 +131,12 @@
       <button class="quit-game" id="quit-game" onclick="quitGame()">
         Quit
       </button>
-      <!-- <div class="languages">
-        <input
-          type="checkbox"
-          name="eng"
-          id="english"
-          checked
-          onchange="changeLanguage(this)"
-        />
-        <label>ENG</label>
 
-        <input
-          type="checkbox"
-          name="ita"
-          id="italiano"
-          onchange="changeLanguage(this)"
-        />
-        <label>ITA</label>
-      </div> -->
       <button class="show-helper" onclick="toggleHelper()">
         <img src="img/settings.png" alt="settings" />
       </button>
     </footer>
-    <script src="words-array.js" charset="utf-8"></script>
+    <script src="fake-db.js" charset="utf-8"></script>
     <script src="main.js" charset="utf-8"></script>
   </body>
 </html>
