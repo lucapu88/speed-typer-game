@@ -56,6 +56,7 @@ main {
   flex-direction: column;
   gap: 15px;
 }
+
 button {
   background-color: rgb(61, 214, 0);
   color: rgb(0, 0, 0);
@@ -222,6 +223,8 @@ button {
 
 .languages {
   margin-bottom: 15px;
+  font-size: larger;
+  padding: 5px;
 }
 
 .quit-game {

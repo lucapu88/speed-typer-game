@@ -21,7 +21,7 @@ easy = [
   'Chain',
   'Chair',
   'Chest',
-  'lafebbbra',
+  'lafebbra',
   'Chief',
   'Child',
   'China',
@@ -2611,7 +2611,7 @@ italiano = `Migliora la velocità di digitazione sulla tastiera di un pc (funzio
           Con la nuova difficoltà EROE le parole saranno ancora più lunghe e se
           commetti un errore perdi punti, quindi fai attenzione se vuoi mostrare che
           hai le palle. IMPORTANTE: con la modalità hero il tempo è solo di 60 secondi (per evitare crisi di nervi e pc lanciati dalla finestra). <br />
-          Non essere un vecchio del cazzo usando 2 dita e guardando la tastiera del tuo pc! hai 10 dita, usale! impara a scrivere con 10 dita mentre guardi
+          Non fare il vecchietto usando 2 dita e guardando la tastiera del tuo pc! hai 10 dita, usale! impara a scrivere con 10 dita mentre guardi
           sullo schermo come un vero fottuto professionista! <br />
           Se sei uno sviluppatore puoi trovare il repository
         <a

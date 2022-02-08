@@ -27,10 +27,12 @@
         <option class="difficulty-hero" value="3">Hero</option>
       </select>
 
-      <select class="select-time" name="time" id="select-time">
-        <option class="time-60" value="60">60 seconds</option>
-        <option class="time-30" value="30">30 seconds</option>
-      </select>
+      <span onclick="noChangeTimeWithHero()">
+        <select class="select-time" name="time" id="select-time">
+          <option class="time-60" value="60">60 seconds</option>
+          <option class="time-30" value="30">30 seconds</option>
+        </select>
+      </span>
     </nav>
 
     <main>
@@ -39,6 +41,7 @@
         <div class="before-starting" id="before-starting">
           <p id="game-over-text"></p>
           <p id="total-score-text"></p>
+          <p id="difficulty-choise"></p>
           <span class="new-score" id="new-score"></span>
           <p id="hands-on-keyboard">Place your hands on the keyboard</p>
           <img
@@ -64,7 +67,12 @@
 
           <div class="game">
             <p>Type the following:</p>
-            <h2 id="word-to-display"></h2>
+            <h2
+              class="word-to-display"
+              id="word-to-display"
+              ondragstart="return false;"
+              ondrop="return false;"
+            ></h2>
             <input type="text" id="input-text" />
           </div>
         </div>

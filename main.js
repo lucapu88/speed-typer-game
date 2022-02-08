@@ -29,6 +29,7 @@ const countdownBeforeStarting = document.getElementById(
 ); //per il conto alla rovescia prima che parte il gioco
 const handsOnKeyboard = document.getElementById('hands-on-keyboard'); //tag p che indica di mostrare le mani sulla tastiera
 const imgHandsOnKeyboard = document.getElementById('img-hands-on-keyboard'); //tag img che indican di mostrare le mani sulla tastiera
+const difficultyChoise = document.getElementById('difficulty-choise'); //per stampare la difficoltà sul game over
 
 let wordToDisplay = document.getElementById('word-to-display'); //parola che viene mostrata
 let timer = '60';
@@ -93,11 +94,22 @@ function selectHeroDifficulty(bool) {
   );
 }
 
-// selectTime.addEventListener('click', noChangeTime);
-// function noChangeTime(diff) {
-//   console.log(diff.value);
-//   //dovrei lanciare un alert se l'utente pirla continua a cliccare per cambiare tempo con difficoltà hero. NON SI PUÒ
-// }
+//SE UN UTENTE INSISTE NEL VOLER CAMBIARE IL TEMPO DELLA DIFFICOLTÀ HERO (CHE NON SI PUÒ CAMBIARE)
+let numberClicks = 0; //tengo conto dei click
+function noChangeTimeWithHero() {
+  /*è un pò contorta: per rendere meno invadente l'alert, se è stata scelta la difficoltà hero
+    incremento numberClicks e se l'utente clicca più di una volta sulla select del cambio tempo
+    appare un alert che spiega che il tempo non si può cambiare in difficoltà hero.*/
+  if (difficultyName === 'hero') {
+    numberClicks++;
+    if (numberClicks > 1) {
+      alert(
+        'HERO Difficulty: Time is only 60 seconds to avoid nervous breakdowns and PC launched from the window.\nBe a good boy.'
+      );
+      numberClicks = 0;
+    }
+  }
+}
 
 //AL CLICK SUL PULSANTE START PARTE IL CONTO ALLA ROVESCIA
 let count = 4;
@@ -154,6 +166,18 @@ function shootWords(array) {
   wordToDisplay.textContent = wordToPrint;
 }
 
+//EVITO CHE QUALCHE FURBETTO COGLIONCELLO PROVI A BARARE ;-)
+const source = document.querySelector('.word-to-display');
+
+source.addEventListener('copy', (event) => {
+  const shit = String.fromCodePoint(0x1f4a9);
+  event.clipboardData.setData(
+    'text/plain',
+    `${shit}${shit}DON'T CHEAT${shit}${shit}`
+  );
+  event.preventDefault();
+});
+
 // CONFRONTA CIO' CHE SCRIVIAMO CON CIO' CHE CI VIENE MOSTRATO
 inputText.addEventListener('keyup', compareWords);
 inputText.addEventListener('touchend', compareWords);
@@ -164,7 +188,7 @@ function compareWords(e) {
   const writtenWordLowercase = writtenWord.toLowerCase();
 
   if (wordToPrintLowercase === writtenWordLowercase) {
-    //in qualsiasi caso visualizzo la parola se l'azzecco, resetta l'input., ne spara un'altra e aumenta il punteggio
+    //in qualsiasi caso visualizzo la parola e se l'azzecco resetta l'input, ne spara un'altra e aumenta il punteggio
     shootWords(difficultySelect);
     inputText.value = '';
     initialScore++;
@@ -194,16 +218,21 @@ function gameOver() {
   inputText.value = '';
   countdown = timer;
   initialScore = 0;
+  onGameOverChangeHtml();
+  difficultyName != 'hero' && (selectTime.disabled = false);
+}
+
+function onGameOverChangeHtml() {
   score.textContent = 0;
   startGame.textContent = 'Retry';
   gameOverText.textContent = 'GAME OVER';
   totalScoreText.textContent = `Your score: ${finalScore}`;
+  difficultyChoise.textContent = `Difficulty: ${difficultyName.toUpperCase()}`;
   gameStarted.style.display = 'none';
   handsOnKeyboard.style.display = 'none';
   beforeStarting.style.display = 'flex';
   imgHandsOnKeyboard.style.display = 'none';
   difficulty.disabled = false;
-  difficultyName != 'hero' && (selectTime.disabled = false);
 }
 
 function saveScoreAndTime(score, time, difficulty) {
@@ -326,6 +355,7 @@ function toggleHelper() {
   }
 }
 
+//CAMBIO LINGUA
 languages.addEventListener('change', changeLanguage);
 function changeLanguage(event) {
   const languageText = document.getElementById('language-text');
