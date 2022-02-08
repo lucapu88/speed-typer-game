@@ -226,6 +226,15 @@ button {
   }
 }
 
+.audio {
+  padding: 0;
+  margin-left: 10px;
+}
+.audio > img {
+  background-color: transparent;
+  width: 50px;
+}
+
 footer {
   display: flex;
   height: 90px;

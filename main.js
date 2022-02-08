@@ -23,6 +23,7 @@ const deleteAllScores = document.getElementById('delete-all-scores'); //pulsante
 const showRanking = document.getElementById('show-ranking');
 const quit = document.getElementById('quit-game'); //per mostrare/nascondere il pulsante che ferma il gioco
 const languages = document.getElementById('languages');
+const audio = document.getElementById('audio');
 
 let wordToDisplay = document.getElementById('word-to-display'); //parola che viene mostrata
 let timer = '60';
@@ -30,8 +31,8 @@ let countdown = '60';
 let wordToPrint = ''; //serve sempre per la parola che viene mostrata
 let initialScore = 0;
 let finalScore = 0;
-let showHelper = false;
-
+let showHelper = false; //per le impostazioni
+let audioPlay = false; //per la musica
 let difficultySelect = easy; //serve per impostare l'array con le parole
 let difficultyName = 'easy'; //serve per impostare la difficoltà nella classifica
 
@@ -106,6 +107,7 @@ function playGame() {
   difficulty.disabled = true;
   selectTime.disabled = true;
   quit.style.display = 'inline-block';
+  audioPlay && (audio.src = 'sounds/Pokemon-gldSilverCrystal-Battle.mp3');
 }
 
 //TIMER
@@ -166,6 +168,7 @@ function compareWords(e) {
 
 //FINE GIOCO
 function gameOver() {
+  audioPlay && (audio.src = 'sounds/Super-Mario-Game-Over.mp3');
   time.innerHTML = '';
   inputText.value = '';
   countdown = timer;
@@ -324,5 +327,20 @@ function changeLanguage(event) {
     default:
       languageText.innerHTML = window.english;
       break;
+  }
+}
+
+//PARTE/FERMA L'AUDIO E CAMBIA L'ICONA
+function toggleAudio() {
+  const audioIcon = document.getElementById('audio-icon');
+
+  audioPlay = !audioPlay;
+
+  if (audioPlay) {
+    audio.play();
+    audioIcon.src = 'img/sound.png';
+  } else {
+    audio.pause();
+    audioIcon.src = 'img/no-sound.png';
   }
 }
