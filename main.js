@@ -29,7 +29,8 @@ const countdownBeforeStarting = document.getElementById(
 ); //per il conto alla rovescia prima che parte il gioco
 const handsOnKeyboard = document.getElementById('hands-on-keyboard'); //tag p che indica di mostrare le mani sulla tastiera
 const imgHandsOnKeyboard = document.getElementById('img-hands-on-keyboard'); //tag img che indican di mostrare le mani sulla tastiera
-const difficultyChoise = document.getElementById('difficulty-choise'); //per stampare la difficoltà sul game over
+const difficultyChoise = document.getElementById('difficulty-choise'); //per stampare la difficoltà scelta sul game over
+const timeChoise = document.getElementById('time-choise'); //per stampare il tempo scelto sul game over
 
 let wordToDisplay = document.getElementById('word-to-display'); //parola che viene mostrata
 let timer = '60';
@@ -228,6 +229,8 @@ function onGameOverChangeHtml() {
   gameOverText.textContent = 'GAME OVER';
   totalScoreText.textContent = `Your score: ${finalScore}`;
   difficultyChoise.textContent = `Difficulty: ${difficultyName.toUpperCase()}`;
+  difficultyName != 'hero' &&
+    (timeChoise.textContent = `Time: ${+timer} seconds`);
   gameStarted.style.display = 'none';
   handsOnKeyboard.style.display = 'none';
   beforeStarting.style.display = 'flex';
