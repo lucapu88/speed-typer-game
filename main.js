@@ -279,26 +279,12 @@ async function prepareWordsForPractice(url) {
       return results.json();
     })
     .then((json) => {
-      //const wordsArray = stringifyAndDeleteSpecialCharacters(json);
       const finalWordsArray = deleteShortAndDuplicateWords(json);
       return finalWordsArray;
     })
     .catch((err) => {
       ifThereIsAnError(err);
     });
-}
-
-//TODO: DECIDI SE TENERLA
-function stringifyAndDeleteSpecialCharacters(params) {
-  //ricevo il json con un testo enorme,
-  const jsonToString = JSON.stringify(params);
-  const noPunctuation = jsonToString.replace(
-    /[".,\/#!$%\^&\*;:{}=\-_`~()]|[\[\]']/g,
-    ''
-  ); //elimino tutta la punteggiatura e i caratteri speciali,
-  const wordsArray = noPunctuation.split(/[, ]+/); //lo trasformo in un array contenente ogni parola come elemento,
-
-  return wordsArray;
 }
 
 function deleteShortAndDuplicateWords(array) {
