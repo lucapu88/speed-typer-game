@@ -26,11 +26,19 @@
         <option value="2">Hard</option>
         <option class="difficulty-hero" value="3">Hero</option>
       </select>
+      <div
+        class="no-difficulty-in-exercise-mode"
+        id="no-difficulty-in-exercise-mode"
+        onclick="showExerciseModeExplanation()"
+      >
+        <span>i</span>
+      </div>
 
       <span onclick="noChangeTimeWithHero()">
         <select class="select-time" name="time" id="select-time">
           <option class="time-60" value="60">60 seconds</option>
           <option class="time-30" value="30">30 seconds</option>
+          <option class="practice" value="free">Exercise</option>
         </select>
       </span>
     </nav>
@@ -61,12 +69,16 @@
 
         <!-- GAME STARTED -->
         <div class="game-started" id="game-started">
-          <div class="info">
+          <div class="info" id="info">
             <p>Remaining time: <span id="time"></span></p>
             <p>Score: <span id="score"></span></p>
           </div>
+          <div class="info-exercise exercise" id="info-exercise">
+            <p>No Time</p>
+            <p>No Score</p>
+          </div>
 
-          <div class="game">
+          <div class="game" id="game">
             <p>Type the following:</p>
             <h2
               class="word-to-display"
@@ -76,6 +88,7 @@
             ></h2>
             <input type="text" id="input-text" />
           </div>
+          <div class="error-api exercise" id="error-api"></div>
         </div>
       </div>
       <!-- RANKING SCORES -->
@@ -116,21 +129,30 @@
         <option value="ita" id="ita">Italiano</option>
         <option value="fra" id="fra">Français</option>
         <option value="spa" id="spa">Español</option>
+        <option value="deu" id="deu">Deutsch</option>
       </select>
       <p id="language-text">
         Improves the speed in typing on a pc keyboard (also works on mobile).
         The screen will show you random words and you will have to rewrite them,
         each word written correctly will give you a point. You can choose the
         difficulty (the harder it is, the longer the words) and the time (30 or
-        60 seconds).<br />
-        With the new HERO difficulty the words will be even longer and if you
-        make a mistake you lose points, so be careful if you want to show that
-        you have the balls. IMPORTANT: with the hero mode the time is only 60
-        seconds (to avoid nervous breakdowns and PC launched from the
-        window).<br />
-        Don't be fucking old using 2 fingers, looking at your pc keyboard! you
+        60 seconds). Or you can just practice by practicing by choosing
+        "Exercise". You will have no time, no score and you will be able to
+        write freely as long as you want. <br />
+        With the HERO difficulty the words will be even longer and if you make a
+        mistake you lose points, so be careful if you want to show that you have
+        the balls. IMPORTANT: with the hero mode the time is only 60 seconds (to
+        avoid nervous breakdowns and PC launched from the window).<br />
+        Don't be fucking old using 2 fingers looking at your pc keyboard! you
         have 10 fingers, use them! learn to write with 10 fingers while looking
         at the screen like a real fucking pro!<br />
+        <u
+          >If you change the language, it will be changed only for the
+          instructions and info of the Exercise mode. The words of the game will
+          always be in English, but do not think that it penalizes you, on the
+          contrary it will strengthen you!</u
+        >
+        trust me.<br />
         If you are a developer you can find the repository
         <a
           class="setting-info"

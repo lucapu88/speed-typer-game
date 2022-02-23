@@ -31,6 +31,9 @@ const handsOnKeyboard = document.getElementById('hands-on-keyboard'); //tag p ch
 const imgHandsOnKeyboard = document.getElementById('img-hands-on-keyboard'); //tag img che indican di mostrare le mani sulla tastiera
 const difficultyChoise = document.getElementById('difficulty-choise'); //per stampare la difficoltà scelta sul game over
 const timeChoise = document.getElementById('time-choise'); //per stampare il tempo scelto sul game over
+const loremIpsumAPI = 'https://random-word-api.herokuapp.com/word?number=900';
+const alternLoremIpsumAPI = 'http://www.mieliestronk.com/corncob_lowercase.txt';
+const noDifficulty = document.getElementById('no-difficulty-in-exercise-mode'); //div contenente il pulsante di info della modalità esercitazione
 
 let wordToDisplay = document.getElementById('word-to-display'); //parola che viene mostrata
 let timer = '60';
@@ -42,6 +45,7 @@ let showHelper = false; //per le impostazioni
 let audioPlay = false; //per la musica
 let difficultySelect = easy; //serve per impostare l'array con le parole
 let difficultyName = 'easy'; //serve per impostare la difficoltà nella classifica
+let languageInfoAlert = window.englishAlert;
 
 //SELEZIONE DELLA DURATA
 const selectTimeInput = document.querySelector('.select-time');
@@ -50,6 +54,16 @@ selectTimeInput.addEventListener('change', setTimer);
 function setTimer(selected) {
   countdown = selected.target.value;
   timer = selected.target.value;
+  //se non scelgo un tempo ma voglio solo esercitarmi
+  if (timer === 'free') {
+    //nascondo la select delle difficoltà e mostro un pulsante di info
+    difficulty.style.display = 'none';
+    noDifficulty.style.display = 'flex';
+  } else {
+    //mostro la select delle difficoltà e nascondo un pulsante di info
+    difficulty.style.display = 'inline-block';
+    noDifficulty.style.display = 'none';
+  }
 }
 
 //SELEZIONE DIFFICOLTA'
@@ -112,6 +126,25 @@ function noChangeTimeWithHero() {
   }
 }
 
+//QUANDO IMPOSTO 'EXERCISE' INVECE DEL TEMPO
+function exerciseModeStart() {
+  //nascondo la barra che mostra il tempo e il punteggio, e mostro una barra che indica che non ci sono
+  const infoExercise = document.getElementById('info-exercise');
+  const info = document.getElementById('info');
+  infoExercise.classList.remove('exercise');
+  info.classList.add('exercise');
+
+  let randomWords = prepareWordsForPractice(loremIpsumAPI);
+  randomWords.then((res) => {
+    difficultySelect = res;
+    return shootWords(res);
+  });
+}
+
+function showExerciseModeExplanation() {
+  alert(languageInfoAlert);
+}
+
 //AL CLICK SUL PULSANTE START PARTE IL CONTO ALLA ROVESCIA
 let count = 4;
 function threeTwoOneCountdown() {
@@ -134,7 +167,8 @@ function playGame() {
   countdownBeforeStarting.style.display = 'none';
   gameStarted.style.display = 'block';
   timeInterval = setInterval(updateTime, 1000);
-  shootWords(difficultySelect);
+  //se non ho scelto il tempo ma ho scelto l'esercitazione, partirà la chiamata all'api, altrimenti parte la funzione che da le parole
+  timer === 'free' ? exerciseModeStart() : shootWords(difficultySelect);
   inputText.focus();
   score.textContent = 0;
   difficulty.disabled = true;
@@ -236,6 +270,61 @@ function onGameOverChangeHtml() {
   beforeStarting.style.display = 'flex';
   imgHandsOnKeyboard.style.display = 'none';
   difficulty.disabled = false;
+}
+
+//MODALITÀ ESERCITAZIONE
+async function prepareWordsForPractice(url) {
+  return fetch(url)
+    .then((results) => {
+      return results.json();
+    })
+    .then((json) => {
+      //const wordsArray = stringifyAndDeleteSpecialCharacters(json);
+      const finalWordsArray = deleteShortAndDuplicateWords(json);
+      return finalWordsArray;
+    })
+    .catch((err) => {
+      ifThereIsAnError(err);
+    });
+}
+
+//TODO: DECIDI SE TENERLA
+function stringifyAndDeleteSpecialCharacters(params) {
+  //ricevo il json con un testo enorme,
+  const jsonToString = JSON.stringify(params);
+  const noPunctuation = jsonToString.replace(
+    /[".,\/#!$%\^&\*;:{}=\-_`~()]|[\[\]']/g,
+    ''
+  ); //elimino tutta la punteggiatura e i caratteri speciali,
+  const wordsArray = noPunctuation.split(/[, ]+/); //lo trasformo in un array contenente ogni parola come elemento,
+
+  return wordsArray;
+}
+
+function deleteShortAndDuplicateWords(array) {
+  let totalWordsArray = [];
+
+  //mi prendo solo le parole con 4 o più lettere ed evito di duplicarle.
+  array.forEach((word) => {
+    if (word.length >= 4 && !totalWordsArray.includes(word)) {
+      totalWordsArray.push(word);
+    }
+  });
+
+  return totalWordsArray;
+}
+
+function ifThereIsAnError(error) {
+  const message = `There was an error on the server!
+                        ${error},
+                        Solution: reload the page or click Quit. 
+                        If the problem persists contact the admin at: lucarhcp88@hotmail.it`;
+  const errorApi = document.getElementById('error-api');
+  const game = document.getElementById('game');
+
+  errorApi.innerText = message;
+  errorApi.classList.remove('exercise');
+  game.classList.add('exercise');
 }
 
 function saveScoreAndTime(score, time, difficulty) {
@@ -366,18 +455,27 @@ function changeLanguage(event) {
   switch (event.target.value) {
     case 'eng':
       languageText.innerHTML = window.english;
+      languageInfoAlert = window.englishAlert;
       break;
 
     case 'ita':
       languageText.innerHTML = window.italiano;
+      languageInfoAlert = window.italianoAlert;
       break;
 
     case 'fra':
       languageText.innerHTML = window.francais;
+      languageInfoAlert = window.francaisAlert;
       break;
 
     case 'spa':
       languageText.innerHTML = window.espanol;
+      languageInfoAlert = window.espanolAlert;
+      break;
+
+    case 'deu':
+      languageText.innerHTML = window.deutsch;
+      languageInfoAlert = window.deutschAlert;
       break;
 
     default:
