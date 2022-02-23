@@ -2737,21 +2737,21 @@ english = `Improves the speed in typing on a pc keyboard (also works on mobile).
         The screen will show you random words and you will have to rewrite them,
         each word written correctly will give you a point. You can choose the
         difficulty (the harder it is, the longer the words) and the time (30 or
-        60 seconds).<br />
-        With the new HERO difficulty the words will be even longer and if you
+        60 seconds). Or you can just practice by practicing by choosing "Exercise". You will have no time, no score and you will be able to write freely as long as you want. <br />
+        With the HERO difficulty the words will be even longer and if you
         make a mistake you lose points, so be careful if you want to show that
         you have the balls. IMPORTANT: with the hero mode the time is only 60 seconds (to avoid nervous breakdowns and PC launched from the window).<br />
         Don't be fucking old using 2 fingers looking at your pc keyboard! you
         have 10 fingers, use them! learn to write with 10 fingers while looking
         at the screen like a real fucking pro!<br />
+        If you change the language, it will be changed only for the instructions and info of the Exercise mode. The words of the game will always be in <u>English, but do not think that it penalizes you, on the contrary it will strengthen you!</u> trust me.<br />
         If you are a developer you can find the repository
         <a
           class="setting-info"
           href="https://github.com/lucapu88/speed-typer-game"
           target="_blank"
           rel="noopener noreferrer"
-          >here</a
-        >
+          >here</a>
         with the game code and I gladly accept advice on how to improve the code
         I wrote. If you have reports to me about any bugs, or about improvements
         to my code, I am very happy to hear from you and you can write to me at:
@@ -2761,20 +2761,20 @@ italiano = `Migliora la velocità di digitazione sulla tastiera di un pc (funzio
           Lo schermo ti mostrerà parole casuali e dovrai riscriverle,
           ogni parola scritta correttamente ti darà un punto. Puoi scegliere la
           difficoltà (più è difficile, più lunghe sono le parole) e il tempo (30 o
-          60 secondi). <br />
-          Con la nuova difficoltà EROE le parole saranno ancora più lunghe e se
+          60 secondi). Oppure puoi semplicemente esercitarti facendo pratica scegliendo "Exercise". Non avrai ne tempo, ne punteggio e potrai scrivere liberamente fin quanto vorrai. <br />
+          Con la difficoltà HERO le parole saranno ancora più lunghe e se
           commetti un errore perdi punti, quindi fai attenzione se vuoi mostrare che
           hai le palle. IMPORTANTE: con la modalità hero il tempo è solo di 60 secondi (per evitare crisi di nervi e pc lanciati dalla finestra). <br />
           Non fare il vecchietto usando 2 dita e guardando la tastiera del tuo pc! hai 10 dita, usale! impara a scrivere con 10 dita mentre guardi
           sullo schermo come un vero fottuto professionista! <br />
+          <u>Se cambi lingua, questa verrà cambiata solo per le struzioni e le info della modalità Exercise. Le parole del gioco saranno sempre in inglese, ma non pensare che ti penalizzi, anzi questo ti fortificherà!</u> fidati.<br />
           Se sei uno sviluppatore puoi trovare il repository
         <a
           class="setting-info"
           href="https://github.com/lucapu88/speed-typer-game"
           target="_blank"
           rel="noopener noreferrer"
-          >qui</a
-        >
+          >qui</a>
         con il codice del gioco e accetto volentieri consigli su come migliorare il codice
         che ho scritto. Per segnalazioni su eventuali bug o miglioramenti
         al mio codice, sono molto felice di sentirti e puoi scrivermi a:
@@ -2784,21 +2784,21 @@ francais = `Améliore la vitesse de frappe sur un clavier de PC (fonctionne éga
         L'écran vous montrera des mots aléatoires et vous devrez les réécrire,
         chaque mot écrit correctement vous donnera un point. Vous pouvez choisir le
         difficulté (plus c'est dur, plus les mots sont longs) et le temps (30 ou
-        60 secondes).<br />
-        Avec la nouvelle difficulté HERO, les mots seront encore plus longs et si vous
+        60 secondes). Ou vous pouvez simplement vous entraîner en vous entraînant en choisissant "Exercise". Vous n'aurez ni temps, ni score et vous pourrez écrire librement aussi longtemps que vous le souhaitez. <br />
+        Avec la difficulté HERO, les mots seront encore plus longs et si vous
         faites une erreur vous perdez des points, alors faites attention si vous voulez montrer que
         vous avez les couilles. IMPORTANT : avec le mode héros, le temps n'est que de 60 secondes (pour éviter les dépressions nerveuses et le lancement du PC depuis la fenêtre).<br />
         Ne sois pas vieux en utilisant 2 doigts en regardant le clavier de ton PC ! vous
         avoir 10 doigts, utilisez-les ! apprendre à écrire avec 10 doigts en regardant
         à l'écran comme un vrai putain de pro !<br />
+        <u>Si vous modifiez la langue, elle ne sera modifiée que pour les instructions et les informations du mode Exercice. Les paroles du jeu seront toujours en anglais, mais ne pensez pas que cela vous pénalise, cela vous renforcera!</u> croyez-moi.<br />
         Si vous êtes un développeur, vous pouvez trouver le dépôt
         <a
           class="setting-info"
           href="https://github.com/lucapu88/speed-typer-game"
           target="_blank"
           rel="noopener noreferrer"
-          >ici</a
-        >
+          >ici</a>
         avec le code du jeu et j'accepte volontiers des conseils sur la façon d'améliorer le code
         J'ai écrit. Si vous me signalez des bogues ou des améliorations
         à mon code, je suis très heureux d'avoir de vos nouvelles et vous pouvez m'écrire à:
@@ -2808,22 +2808,60 @@ espanol = `Mejora la velocidad al escribir en un teclado de PC (también funcion
         La pantalla te mostrará palabras al azar y tendrás que reescribirlas,
         cada palabra escrita correctamente te dará un punto. Puedes elegir el
         dificultad (cuanto más difícil, más largas las palabras) y el tiempo (30 o
-        60 segundos).<br />
-        Con la nueva dificultad HÉROE, las palabras serán aún más largas y si
+        60 segundos). O simplemente puede practicar practicando eligiendo "Exercise". No tendrás tiempo, ni partitura y podrás escribir libremente todo el tiempo que quieras. <br />
+        Con la dificultad HERO, las palabras serán aún más largas y si
         comete un error pierdes puntos, así que ten cuidado si quieres demostrar eso
         tienes las pelotas. IMPORTANTE: con el modo héroe el tiempo es de solo 60 segundos (para evitar ataques de nervios y PC lanzado desde la ventana).<br />
         ¡No seas viejo usando 2 dedos mirando el teclado de tu PC! Uds
         ¡Ten 10 dedos, úsalos! aprende a escribir con 10 dedos mientras miras
         en la pantalla como un verdadero puto profesional!<br />
+        <u>Si cambia el idioma, se cambiará solo para las instrucciones y la información del modo Ejercicio. Las palabras del juego siempre estarán en inglés, pero no creas que te penaliza, ¡te fortalecerá!</u> confía en mí.<br />
         Si eres desarrollador puedes encontrar el repositorio
         <a
           class="setting-info"
           href="https://github.com/lucapu88/speed-typer-game"
           target="_blank"
           rel="noopener noreferrer"
-          >aquí</a
-        >
+          >aquí</a>
         con el código del juego y con mucho gusto acepto consejos sobre cómo mejorar el código
         Escribí. Si tiene informes para mí sobre cualquier error o sobre mejoras
         a mi código, estoy muy feliz de saber de ti y puedes escribirme a:
         <span class="setting-info">lucarhcp88@hotmail.it</span>`;
+
+deutsch = `Verbessern Sie die Tippgeschwindigkeit auf einer PC-Tastatur (funktioniert auch auf Mobilgeräten).
+          Der Bildschirm zeigt Ihnen zufällige Wörter und Sie müssen sie neu schreiben,
+          Jedes richtig geschriebene Wort gibt Ihnen einen Punkt. Sie können die auswählen
+          Schwierigkeit (je schwieriger, desto länger die Wörter) und die Zeit (30 o
+          60 Sekunden). Oder Sie können einfach üben, indem Sie "Exercise" wählen. Sie haben keine Zeit, keine Noten und können so lange frei schreiben, wie Sie möchten. <br />
+          Bei der HERO-Schwierigkeit werden die Wörter noch länger und wenn
+          Wenn du einen Fehler machst, verlierst du Punkte, also sei vorsichtig, wenn du das zeigen willst
+          Du hast Eier. WICHTIG: Mit dem Heldenmodus beträgt die Zeit nur 60 Sekunden (um Nervenzusammenbrüche und PC-Starts aus dem Fenster zu vermeiden). <br />
+          Seien Sie kein alter Mann, der 2 Finger benutzt und auf Ihre PC-Tastatur schaut! Du hast 10 Finger, benutze sie! Lernen Sie beim Zusehen mit 10 Fingern zu schreiben
+          auf dem Bildschirm wie ein echter verdammter Profi! <br />
+          <u>Wenn Sie die Sprache ändern, wird sie nur für die Anweisungen und Informationen des Übungsmodus geändert. Die Wörter des Spiels werden immer auf Englisch sein, aber denken Sie nicht, dass es Sie bestraft, es wird Sie stärken!</u> Vertrau mir. <br />
+          Wenn Sie ein Entwickler sind, können Sie das Repository finden
+        <a
+          class="setting-info"
+          href="https://github.com/lucapu88/speed-typer-game"
+          target="_blank"
+          rel="noopener noreferrer"
+          >hier</a>
+        mit dem Spielcode und nehme gerne Ratschläge zur Verbesserung des Codes an
+        das ich geschrieben habe. Für Berichte über Fehler oder Verbesserungen
+        zu meinem Kodex, ich freue mich sehr von dir zu hören und du kannst mir schreiben unter:
+        <span class="setting-info"> lucarhcp88@hotmail.it </span> `;
+
+englishAlert = `There is no time, no score. Practice freely! ;-)
+The goal of this mode is to train yourself. I advise you to write not looking at the keyboard but at the screen and what you read. Try to use all 10 fingers as much as possible, starting by positioning them as in the photo.`;
+
+italianoAlert = `Non c'è tempo, non c'è punteggio. Fai pratica liberamente! ;-)
+L'obiettivo di questa modalità è allenarsi. Ti consiglio di scrivere non guardando la tastiera ma lo schermo e quello che leggi. Cerca di usare tutte e 10 le dita il più possibile, iniziando posizionandole come nella foto.`;
+
+francaisAlert = `Il n'y a pas de temps, il n'y a pas de score. Pratiquez librement ! ;-)
+Le but de ce mode est de s'entraîner. Je vous conseille d'écrire non pas en regardant le clavier mais en regardant l'écran et ce que vous lisez. Essayez d'utiliser les 10 doigts autant que possible, en commençant par les placer comme sur la photo.`;
+
+espanolAlert = `No hay tiempo, no hay puntuación. ¡Practica libremente! ;-)
+El objetivo de este modo es entrenar. Te aconsejo que escribas no mirando el teclado sino la pantalla y lo que lees. Trate de usar los 10 dedos tanto como sea posible, comenzando por colocarlos como en la foto.`;
+
+deutschAlert = `Es gibt keine Zeit, es gibt keine Punktzahl. Frei üben! ;-)
+Das Ziel dieses Modus ist das Training. Ich rate Ihnen, beim Schreiben nicht auf die Tastatur zu schauen, sondern auf den Bildschirm und das, was Sie lesen. Versuchen Sie, so viel wie möglich alle 10 Finger zu verwenden, beginnen Sie damit, sie wie auf dem Foto zu platzieren.`;
