@@ -298,7 +298,9 @@ button {
 }
 
 footer {
+  border: 1px solid rgb(61, 214, 0);
   display: flex;
   height: 90px;
   padding: 10px;
+  position: relative;
 }
