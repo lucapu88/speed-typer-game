@@ -248,6 +248,15 @@ button {
 .setting-info {
   color: rgb(197, 0, 0);
 }
+.setting-info:hover {
+  cursor: pointer;
+  color: rgb(0, 87, 250);
+}
+
+.copied-to-cliboard {
+  display: none;
+  color: rgb(255, 255, 0);
+}
 
 .languages {
   margin-bottom: 15px;

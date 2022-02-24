@@ -512,3 +512,17 @@ function changeLanguage(event) {
       break;
   }
 }
+
+//QUANDO CLICCA SULL'EMAIL COPIA IN AUTOMATICO L'EMAIL
+const infoEmail = document.getElementById('info-email');
+
+function copyToClipboard(event) {
+  const copiedToClipboard = document.getElementById('copied-to-cliboard');
+  const myEmail = event.target.textContent;
+  copiedToClipboard.style.display = 'inline-block';
+  setTimeout(() => {
+    copiedToClipboard.style.display = 'none';
+  }, 3000);
+  navigator.clipboard.writeText(myEmail);
+  //per le altre lingue questa funzione la trovi nel file "fake-db.js" dentro le variabili che contengono le traduzioni.
+}

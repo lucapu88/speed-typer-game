@@ -2755,7 +2755,8 @@ english = `Improves the speed in typing on a pc keyboard (also works on mobile).
         with the game code and I gladly accept advice on how to improve the code
         I wrote. If you have reports to me about any bugs, or about improvements
         to my code, I am very happy to hear from you and you can write to me at:
-        <span class="setting-info">lucarhcp88@hotmail.it</span>`;
+        <span class="setting-info" id="info-email" onclick="copyToClipboard(event)">lucarhcp88@hotmail.it</span>
+        <small class="copied-to-cliboard" id="copied-to-cliboard">COPIED TO CLIPBOARD</small>`;
 
 italiano = `Migliora la velocità di digitazione sulla tastiera di un pc (funziona anche su mobile).
           Lo schermo ti mostrerà parole casuali e dovrai riscriverle,
@@ -2778,7 +2779,8 @@ italiano = `Migliora la velocità di digitazione sulla tastiera di un pc (funzio
         con il codice del gioco e accetto volentieri consigli su come migliorare il codice
         che ho scritto. Per segnalazioni su eventuali bug o miglioramenti
         al mio codice, sono molto felice di sentirti e puoi scrivermi a:
-        <span class="setting-info">lucarhcp88@hotmail.it</span>`;
+        <span class="setting-info" id="info-email" onclick="copyToClipboard(event)">lucarhcp88@hotmail.it</span>
+        <small class="copied-to-cliboard" id="copied-to-cliboard">COPIATO NEGLI APPUNTI</small>`;
 
 francais = `Améliore la vitesse de frappe sur un clavier de PC (fonctionne également sur mobile).
         L'écran vous montrera des mots aléatoires et vous devrez les réécrire,
@@ -2802,7 +2804,8 @@ francais = `Améliore la vitesse de frappe sur un clavier de PC (fonctionne éga
         avec le code du jeu et j'accepte volontiers des conseils sur la façon d'améliorer le code
         J'ai écrit. Si vous me signalez des bogues ou des améliorations
         à mon code, je suis très heureux d'avoir de vos nouvelles et vous pouvez m'écrire à:
-        <span class="setting-info">lucarhcp88@hotmail.it</span>`;
+        <span class="setting-info" id="info-email" onclick="copyToClipboard(event)">lucarhcp88@hotmail.it</span>
+        <small class="copied-to-cliboard" id="copied-to-cliboard">COPIÉ DANS LE PRESSE-PAPIER</small>`;
 
 espanol = `Mejora la velocidad al escribir en un teclado de PC (también funciona en dispositivos móviles).
         La pantalla te mostrará palabras al azar y tendrás que reescribirlas,
@@ -2826,7 +2829,8 @@ espanol = `Mejora la velocidad al escribir en un teclado de PC (también funcion
         con el código del juego y con mucho gusto acepto consejos sobre cómo mejorar el código
         Escribí. Si tiene informes para mí sobre cualquier error o sobre mejoras
         a mi código, estoy muy feliz de saber de ti y puedes escribirme a:
-        <span class="setting-info">lucarhcp88@hotmail.it</span>`;
+        <span class="setting-info" id="info-email" onclick="copyToClipboard(event)">lucarhcp88@hotmail.it</span>
+        <small class="copied-to-cliboard" id="copied-to-cliboard">COPIADO AL PORTAPAPELES</small>`;
 
 deutsch = `Verbessern Sie die Tippgeschwindigkeit auf einer PC-Tastatur (funktioniert auch auf Mobilgeräten).
           Der Bildschirm zeigt Ihnen zufällige Wörter und Sie müssen sie neu schreiben,
@@ -2849,7 +2853,8 @@ deutsch = `Verbessern Sie die Tippgeschwindigkeit auf einer PC-Tastatur (funktio
         mit dem Spielcode und nehme gerne Ratschläge zur Verbesserung des Codes an
         das ich geschrieben habe. Für Berichte über Fehler oder Verbesserungen
         zu meinem Kodex, ich freue mich sehr von dir zu hören und du kannst mir schreiben unter:
-        <span class="setting-info"> lucarhcp88@hotmail.it </span> `;
+        <span class="setting-info" id="info-email" onclick="copyToClipboard(event)">lucarhcp88@hotmail.it</span> 
+        <small class="copied-to-cliboard" id="copied-to-cliboard">IN DIE ZWISCHENABLAGE KOPIERT</small>`;
 
 englishAlert = `There is no time, no score. Practice freely! ;-)
 The goal of this mode is to train yourself. I advise you to write not looking at the keyboard but at the screen and what you read. Try to use all 10 fingers as much as possible, starting by positioning them as in the photo.`;
