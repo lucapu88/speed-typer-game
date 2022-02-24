@@ -46,6 +46,11 @@ let audioPlay = false; //per la musica
 let difficultySelect = easy; //serve per impostare l'array con le parole
 let difficultyName = 'easy'; //serve per impostare la difficoltà nella classifica
 let languageInfoAlert = window.englishAlert;
+//   _   _    ___     ______    _    ____
+//  | \ | |  / \ \   / / __ )  / \  |  _ \
+//  |  \| | / _ \ \ / /|  _ \ / _ \ | |_) |
+//  | |\  |/ ___ \ V / | |_) / ___ \|  _ <
+//  |_| \_/_/   \_\_/  |____/_/   \_\_| \_\
 
 //SELEZIONE DELLA DURATA
 const selectTimeInput = document.querySelector('.select-time');
@@ -141,9 +146,16 @@ function exerciseModeStart() {
   });
 }
 
+//QUANDO CLICCO SUL PULSANTE "I" CON MODALITÀ EXERCISE
 function showExerciseModeExplanation() {
   alert(languageInfoAlert);
 }
+
+//   __  __    _    ___ _   _
+//  |  \/  |  / \  |_ _| \ | |
+//  | |\/| | / _ \  | ||  \| |
+//  | |  | |/ ___ \ | || |\  |
+//  |_|  |_/_/   \_\___|_| \_|
 
 //AL CLICK SUL PULSANTE START PARTE IL CONTO ALLA ROVESCIA
 let count = 4;
@@ -368,6 +380,29 @@ function saveScoreAndTime(score, time, difficulty) {
   }
 }
 
+//CANCELLA TUTTI I PUNTEGGI
+function deleteAll() {
+  let text =
+    'ARE YOU SURE YOU WANT TO DELETE ALL YOUR SCORES? \n you will not be able to recover them.';
+
+  if (confirm(text) == true) {
+    localStorage.removeItem('scoreEasy30');
+    localStorage.removeItem('scoreEasy60');
+    localStorage.removeItem('scoreMedium30');
+    localStorage.removeItem('scoreMedium60');
+    localStorage.removeItem('scoreHard30');
+    localStorage.removeItem('scoreHard60');
+    localStorage.removeItem('scoreHero');
+    location.reload();
+  }
+}
+
+//   _____ ___   ___ _____ _____ ____
+//  |  ___/ _ \ / _ \_   _| ____|  _ \
+//  | |_ | | | | | | || | |  _| | |_) |
+//  |  _|| |_| | |_| || | | |___|  _ <
+//  |_|   \___/ \___/ |_| |_____|_| \_\
+
 //MOSTRA/NASCONDE LA TABELLA DEI PUNTEGGI
 function toggleScore() {
   const init = async () => {
@@ -401,11 +436,19 @@ function toggleScore() {
   }
 }
 
-//CANCELLA TUTTI I PUNTEGGI
-function deleteAll() {
-  let text =
-    'ARE YOU SURE YOU WANT TO DELETE ALL YOUR SCORES? \n you will not be able to recover them.';
-  confirm(text) == true && (localStorage.clear(), location.reload());
+//PARTE/FERMA L'AUDIO E CAMBIA L'ICONA
+function toggleAudio() {
+  const audioIcon = document.getElementById('audio-icon');
+
+  audioPlay = !audioPlay;
+
+  if (audioPlay) {
+    audio.play();
+    audioIcon.src = 'img/sound.png';
+  } else {
+    audio.pause();
+    audioIcon.src = 'img/no-sound.png';
+  }
 }
 
 function quitGame() {
@@ -467,20 +510,5 @@ function changeLanguage(event) {
     default:
       languageText.innerHTML = window.english;
       break;
-  }
-}
-
-//PARTE/FERMA L'AUDIO E CAMBIA L'ICONA
-function toggleAudio() {
-  const audioIcon = document.getElementById('audio-icon');
-
-  audioPlay = !audioPlay;
-
-  if (audioPlay) {
-    audio.play();
-    audioIcon.src = 'img/sound.png';
-  } else {
-    audio.pause();
-    audioIcon.src = 'img/no-sound.png';
   }
 }
