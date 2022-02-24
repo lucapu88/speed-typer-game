@@ -38,7 +38,7 @@ select {
   display: none;
   margin-right: 50px;
   border: 2px solid rgb(61, 214, 0);
-  border-radius: 50%;
+  border-radius: 7px;
   width: 35px;
   justify-content: center;
   align-items: center;
@@ -257,7 +257,7 @@ button {
 
 .quit-game {
   display: none;
-  margin-left: 45%;
+  margin-left: 40%;
 }
 @media (max-width: 650px) {
   .quit-game {
