@@ -181,15 +181,15 @@
         <img src="img/score.png" alt="show/hide_score" />
       </button>
       <!-- AUDIO -->
-      <audio autoplay loop id="audio">
+      <audio loop id="audio">
         <source src="sounds/Pokemon-Center.mp3" type="audio/mpeg" />
         Your browser does not support the audio element.
       </audio>
-      <button class="audio" onclick="toggleAudio()">
+      <button class="audio-btn" onclick="toggleAudio()">
         <img id="audio-icon" src="img/no-sound.png" alt="audio_play/pause" />
       </button>
       <!-- QUIT -->
-      <button class="quit-game" id="quit-game" onclick="quitGame()">
+      <button class="quit-game" id="quit-game" onclick="reloadGame(event)">
         Quit
       </button>
       <!-- HELP -->

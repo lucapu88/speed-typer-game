@@ -288,11 +288,11 @@ button {
   }
 }
 
-.audio {
+.audio-btn {
   padding: 0;
   margin-left: 10px;
 }
-.audio > img {
+.audio-btn > img {
   background-color: transparent;
   width: 50px;
 }

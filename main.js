@@ -411,7 +411,7 @@ function deleteAll() {
     localStorage.removeItem('scoreHard30');
     localStorage.removeItem('scoreHard60');
     localStorage.removeItem('scoreHero');
-    location.reload();
+    reloadGame();
   }
 }
 
@@ -457,7 +457,7 @@ function toggleScore() {
 //PARTE/FERMA L'AUDIO E CAMBIA L'ICONA
 function toggleAudio() {
   const audioIcon = document.getElementById('audio-icon');
-
+  audio.autoplay = true;
   audioPlay = !audioPlay;
 
   if (audioPlay) {
@@ -469,8 +469,9 @@ function toggleAudio() {
   }
 }
 
-function quitGame() {
-  location.reload();
+function reloadGame(event) {
+  event.preventDefault();
+  window.location.reload();
 }
 
 //MOSTRA/NASCONDE IL RIQUADRO CON LE ISTRUZIONI
