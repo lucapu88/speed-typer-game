@@ -186,7 +186,7 @@ function playGame() {
   difficulty.disabled = true;
   selectTime.disabled = true;
   quit.style.display = 'inline-block';
-  audioPlay && (audio.src = 'sounds/Pokemon-gldSilverCrystal-Battle.mp3');
+  changeMusic('play');
 }
 
 //TIMER
@@ -278,7 +278,7 @@ function reportWrongWord(wordToPrint, writtenWord) {
 //FINE GIOCO
 function gameOver() {
   count = 4;
-  audioPlay && (audio.src = 'sounds/Super-Mario-Game-Over.mp3');
+  changeMusic('gameOver');
   time.innerHTML = '';
   inputText.value = '';
   countdown = timer;
@@ -300,6 +300,24 @@ function onGameOverChangeHtml() {
   beforeStarting.style.display = 'flex';
   imgHandsOnKeyboard.style.display = 'none';
   difficulty.disabled = false;
+}
+
+function changeMusic(params) {
+  switch (params) {
+    case 'play':
+      audio.loop = true;
+      if (audioPlay) audio.src = 'sounds/Pokemon-gldSilverCrystal-Battle.mp3';
+      if (audioPlay && timer === 'free')
+        audio.src = 'sounds/Bubble_Bobble-Main Theme.mp3';
+      break;
+
+    case 'gameOver':
+      if (audioPlay) {
+        audio.src = 'sounds/Super-Mario-Game-Over.mp3';
+        audio.loop = false;
+      }
+      break;
+  }
 }
 
 //MODALITÀ ESERCITAZIONE
@@ -469,8 +487,7 @@ function toggleAudio() {
   }
 }
 
-function reloadGame(event) {
-  event.preventDefault();
+function reloadGame() {
   window.location.reload();
 }
 
