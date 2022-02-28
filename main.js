@@ -243,13 +243,31 @@ function compareWords(e) {
     inputText.style.border = 'none';
   }
 
+  reportWrongWord(wordToPrintLowercase, writtenWordLowercase);
+}
+
+function reportWrongWord(wordToPrint, writtenWord) {
+  //se con modalità Exercise sbaglio una parola, segnala con box-shadow rosso sull'input
+  if (
+    timer === 'free' &&
+    wordToPrint !== writtenWord &&
+    writtenWord.length >= wordToPrint.length
+  ) {
+    inputText.style.boxShadow = '0px 0px 17px 10px rgba(197,0,0,1)';
+  } else if (timer === 'free' && wordToPrint === writtenWord) {
+    //se azzecco la parola fa la stessa cosa, ma con input verde
+    inputText.style.boxShadow = '0px 0px 17px 10px rgba(61,214,0,1)';
+  } else {
+    inputText.style.boxShadow = 'none';
+  }
+
+  //se con difficoltà hero sbaglio una parola, resetta l'input, segnala con bordo rosso e diminuisce il punteggio
   if (
     initialScore !== 0 &&
     difficultyName === 'hero' &&
-    wordToPrintLowercase !== writtenWordLowercase &&
-    writtenWordLowercase.length >= wordToPrintLowercase.length
+    wordToPrint !== writtenWord &&
+    writtenWord.length >= wordToPrint.length
   ) {
-    //se con difficoltà hero sbaglio una parola, resetta l'input, segnala con bordo rosso e diminuisce il punteggio
     inputText.style.border = '4px solid red';
     inputText.value = '';
     initialScore--;
