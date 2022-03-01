@@ -307,6 +307,8 @@ function changeMusic(params) {
     case 'play':
       audio.loop = true;
       if (audioPlay) audio.src = 'sounds/Pokemon-gldSilverCrystal-Battle.mp3';
+      if (audioPlay && difficultyName === 'hero')
+        audio.src = 'sounds/Pokemon-DiamondPearlPlatinum-Bat.mp3';
       if (audioPlay && timer === 'free')
         audio.src = 'sounds/Bubble_Bobble-Main Theme.mp3';
       break;
