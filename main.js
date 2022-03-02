@@ -57,10 +57,19 @@ const selectTimeInput = document.querySelector('.select-time');
 selectTimeInput.addEventListener('change', setTimer);
 
 function setTimer(selected) {
-  countdown = selected.target.value;
-  timer = selected.target.value;
-  //se non scelgo un tempo ma voglio solo esercitarmi
+  countdown = timer = selected.target.value;
+
+  if (
+    selected.target.value != 60 &&
+    selected.target.value != 30 &&
+    selected.target.value != 'free'
+  ) {
+    //se un utente prova a barare inserendo manualmente nell'html un tempo diverso, ricarico la pagina e gli auguro una diarrea.
+    reloadGame();
+  }
+
   if (timer === 'free') {
+    //se non scelgo un tempo ma voglio solo esercitarmi
     //nascondo la select delle difficoltà e mostro un pulsante di info
     difficulty.style.display = 'none';
     noDifficulty.style.display = 'flex';
