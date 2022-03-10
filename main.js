@@ -45,7 +45,8 @@ let showHelper = false; //per le impostazioni
 let audioPlay = false; //per la musica
 let difficultySelect = easy; //serve per impostare l'array con le parole
 let difficultyName = 'easy'; //serve per impostare la difficoltà nella classifica
-let languageInfoAlert = window.englishAlert;
+let languageExerciseInfoAlert = window.englishAlert;
+let languageSentenceInfoAlert = window.sentenceEnglishAlert;
 //   _   _    ___     ______    _    ____
 //  | \ | |  / \ \   / / __ )  / \  |  _ \
 //  |  \| | / _ \ \ / /|  _ \ / _ \ | |_) |
@@ -62,13 +63,14 @@ function setTimer(selected) {
   if (
     selected.target.value != 60 &&
     selected.target.value != 30 &&
-    selected.target.value != 'free'
+    selected.target.value != 'free' &&
+    selected.target.value != 'long-free'
   ) {
     //se un utente prova a barare inserendo manualmente nell'html un tempo diverso, ricarico la pagina e gli auguro una diarrea.
     reloadGame();
   }
 
-  if (timer === 'free') {
+  if (timer === 'free' || timer === 'long-free') {
     //se non scelgo un tempo ma voglio solo esercitarmi
     //nascondo la select delle difficoltà e mostro un pulsante di info
     difficulty.style.display = 'none';
@@ -77,6 +79,13 @@ function setTimer(selected) {
     //mostro la select delle difficoltà e nascondo un pulsante di info
     difficulty.style.display = 'inline-block';
     noDifficulty.style.display = 'none';
+  }
+
+  if (timer === 'long-free') {
+    //---------------------------------------------------------------------MOMENTANEO SOLO PER PUSHARLO
+    startGame.style.display = 'none';
+  } else {
+    startGame.style.display = 'block';
   }
 }
 
@@ -142,10 +151,7 @@ function noChangeTimeWithHero() {
 
 //QUANDO IMPOSTO 'EXERCISE' INVECE DEL TEMPO
 function exerciseModeStart() {
-  //nascondo la barra che mostra il tempo e il punteggio, e mostro una barra che indica che non ci sono
-  const infoExercise = document.getElementById('info-exercise');
   const info = document.getElementById('info');
-  infoExercise.classList.remove('exercise');
   info.classList.add('exercise');
 
   let randomWords = prepareWordsForPractice(loremIpsumAPI);
@@ -155,9 +161,24 @@ function exerciseModeStart() {
   });
 }
 
-//QUANDO CLICCO SUL PULSANTE "I" CON MODALITÀ EXERCISE
+//QUANDO IMPOSTO 'SENTENCES'
+function sentencesModeStart() {
+  randomSentence = createSentence();
+  const info = document.getElementById('info');
+  info.classList.add('exercise');
+  difficultySelect = null;
+  const encloseWordsOfSentenceInSpan = randomSentence.map(
+    (el) => `<span class="${el}" id="${el}">${el}</span>`
+  );
+  //a display faccio vedere la frase invece della parola
+  wordToDisplay.classList.add('sentences-to-display');
+  wordToDisplay.innerHTML = encloseWordsOfSentenceInSpan.join(' ');
+}
+
+//QUANDO CLICCO SUL PULSANTE "I" CON MODALITÀ EXERCISE O MODALITÀ SENTENCES
 function showExerciseModeExplanation() {
-  alert(languageInfoAlert);
+  if (timer === 'free') alert(languageExerciseInfoAlert);
+  if (timer === 'long-free') alert(languageSentenceInfoAlert);
 }
 
 //   __  __    _    ___ _   _
@@ -188,14 +209,23 @@ function playGame() {
   countdownBeforeStarting.style.display = 'none';
   gameStarted.style.display = 'block';
   timeInterval = setInterval(updateTime, 1000);
-  //se non ho scelto il tempo ma ho scelto l'esercitazione, partirà la chiamata all'api, altrimenti parte la funzione che da le parole
-  timer === 'free' ? exerciseModeStart() : shootWords(difficultySelect);
+  startWithModeSelected();
   inputText.focus();
   score.textContent = 0;
   difficulty.disabled = true;
   selectTime.disabled = true;
   quit.style.display = 'inline-block';
   changeMusic('play');
+}
+
+function startWithModeSelected() {
+  if (timer === 'free') {
+    exerciseModeStart();
+  } else if (timer === 'long-free') {
+    sentencesModeStart();
+  } else {
+    shootWords(difficultySelect);
+  }
 }
 
 //TIMER
@@ -252,7 +282,41 @@ function compareWords(e) {
     inputText.style.border = 'none';
   }
 
+  if (timer === 'long-free') {
+    //se ho scelto la modalità sentences
+    ifIsSentence(writtenWordLowercase);
+  }
+
   reportWrongWord(wordToPrintLowercase, writtenWordLowercase);
+}
+
+function ifIsSentence(writtenWordLowercase) {
+  const cloneOfrandomSentence = randomSentence;
+  if (inputText.value !== '') inputText.style.backgroundColor = 'white';
+
+  cloneOfrandomSentence.forEach((w, i) => {
+    /*ogni volta che elimino una parola dall'array, la parola successiva avrà indice 0, 
+      quindi la elimino solo se ha indice 0, per far si che si segua la frase e non si elimino parole a cazzo*/
+    if (w === writtenWordLowercase && i === 0) {
+      //PAROLA GIUSTA
+      inputText.value = '';
+      document.getElementById(w).classList.add('correct');
+      cloneOfrandomSentence.splice(i, 1);
+    }
+    if (
+      w !== writtenWordLowercase &&
+      i === 0 &&
+      writtenWordLowercase.length >= w.length
+    ) {
+      //PAROLA SBAGLIATA
+      inputText.value = '';
+      inputText.style.backgroundColor = 'rgb(255, 0, 0)';
+    }
+  });
+
+  if (cloneOfrandomSentence.length === 0) {
+    sentencesModeStart();
+  }
 }
 
 function reportWrongWord(wordToPrint, writtenWord) {
@@ -372,6 +436,41 @@ function ifThereIsAnError(error) {
   game.classList.add('exercise');
 }
 
+//MODALITÀ PARAGRAFI
+function deleteSpecialCharactersAndCreateArray(params) {
+  //ricevo un testo enorme,
+  const noPunctuation = params.replace(
+    /[".,\/#!$?%\^&\*;:{}=\-_`~()]|[\[\]']/g,
+    ''
+  ); //elimino tutta la punteggiatura e i caratteri speciali,
+  const wordsArray = noPunctuation.split(/[, ]+/); //lo trasformo in un array contenente ogni parola come elemento,
+  //ritorno solo le parole che hanno almeno 2 lettere
+  return wordsArray.filter((w) => w.length >= 2);
+}
+
+function getRandomInteger(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+function createSentence() {
+  //testo enorme formattato
+  const wordsArrayCreated = deleteSpecialCharactersAndCreateArray(
+    window.myText
+  );
+
+  const range = getRandomInteger(9, 16);
+  //creo un array con una frase che va da un minimo di N parole ad un max di N parole
+  const sentence = Array.from({ length: range }, () =>
+    wordsArrayCreated[
+      Math.floor(Math.random() * wordsArrayCreated.length)
+    ].toLowerCase()
+  );
+  const removeDuplicateWords = [...new Set(sentence)];
+
+  return removeDuplicateWords;
+}
+
+//PUNTEGGIO
 function saveScoreAndTime(score, time, difficulty) {
   //EASY 30 SECONDS
   var totalScoreEasy30 = localStorage.getItem('scoreEasy30');
@@ -531,27 +630,32 @@ function changeLanguage(event) {
   switch (event.target.value) {
     case 'eng':
       languageText.innerHTML = window.english;
-      languageInfoAlert = window.englishAlert;
+      languageExerciseInfoAlert = window.englishAlert;
+      languageSentenceInfoAlert = window.sentenceEnglishAlert;
       break;
 
     case 'ita':
       languageText.innerHTML = window.italiano;
-      languageInfoAlert = window.italianoAlert;
+      languageExerciseInfoAlert = window.italianoAlert;
+      languageSentenceInfoAlert = window.sentenceItalianoAlert;
       break;
 
     case 'fra':
       languageText.innerHTML = window.francais;
-      languageInfoAlert = window.francaisAlert;
+      languageExerciseInfoAlert = window.francaisAlert;
+      languageSentenceInfoAlert = window.sentenceFrancaisAlert;
       break;
 
     case 'spa':
       languageText.innerHTML = window.espanol;
-      languageInfoAlert = window.espanolAlert;
+      languageExerciseInfoAlert = window.espanolAlert;
+      languageSentenceInfoAlert = window.sentenceEspanolAlert;
       break;
 
     case 'deu':
       languageText.innerHTML = window.deutsch;
-      languageInfoAlert = window.deutschAlert;
+      languageExerciseInfoAlert = window.deutschAlert;
+      languageSentenceInfoAlert = window.sentenceDeutschAlert;
       break;
 
     default:

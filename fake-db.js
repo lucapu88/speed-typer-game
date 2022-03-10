@@ -2870,3 +2870,23 @@ El objetivo de este modo es entrenar. Te aconsejo que escribas no mirando el tec
 
 deutschAlert = `Es gibt keine Zeit, es gibt keine Punktzahl. Frei üben! ;-)
 Das Ziel dieses Modus ist das Training. Ich rate Ihnen, beim Schreiben nicht auf die Tastatur zu schauen, sondern auf den Bildschirm und das, was Sie lesen. Versuchen Sie, so viel wie möglich alle 10 Finger zu verwenden, beginnen Sie damit, sie wie auf dem Foto zu platzieren.`;
+
+sentenceEnglishAlert = `COMING SOON!!!
+This mode is similar to "Exercise" only you will see a sentence instead of a single word. Plus your writing speed is shown.
+It will be released soon, stay tuned! ;-)`;
+
+sentenceItalianoAlert = `PROSSIMAMENTE!!!
+Questa modalità è simile a "Exercise" soltanto che vedrai una frase invece di una sola parola. In più ti viene mostrata la tua velocità di scrittura.
+A breve verrà rilasciata, resta in ascolto! ;-)`;
+
+sentenceEspanolAlert = `¡¡¡PRÓXIMAMENTE!!!
+Este modo es similar a "Exercise", solo que verá una oración en lugar de una sola palabra. Además, se muestra su velocidad de escritura.
+Será lanzado pronto, ¡estén atentos! ;-)`;
+
+sentenceFrancaisAlert = `BIENTÔT DISPONIBLE!!!
+Ce mode est similaire à "Exercise" seulement vous verrez une phrase au lieu d'un seul mot. De plus, votre vitesse d'écriture est affichée.
+Il sortira bientôt, restez connectés ! ;-)`;
+
+sentenceDeutschAlert = `KOMMT BALD!!!
+Dieser Modus ähnelt "Exercise", nur dass Sie einen Satz anstelle eines einzelnen Wortes sehen. Außerdem wird Ihre Schreibgeschwindigkeit angezeigt.
+Es wird bald veröffentlicht, bleiben Sie dran! ;-)`;

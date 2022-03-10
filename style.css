@@ -121,9 +121,24 @@ button {
 .game > input {
   text-transform: uppercase;
 }
+
+.sentences-to-display {
+  text-align: center;
+  font-size: 15px;
+  line-height: 1.5;
+}
+.sentences-to-display > span {
+  color: white;
+}
+
+.correct {
+  color: rgb(61, 214, 0) !important;
+}
+
 .exercise {
   display: none;
 }
+
 .show-hide-score {
   padding: 5px;
 }
@@ -134,7 +149,7 @@ button {
 
 .error-api {
   padding: 15px 0;
-  color: red;
+  color: rgb(255, 0, 0);
   line-height: 1.5;
 }
 
