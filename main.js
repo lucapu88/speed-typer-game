@@ -339,7 +339,10 @@ function mySum(total, num) {
 function ifIsSentence(writtenWordLowercase) {
   const cloneOfrandomSentence = randomSentence;
 
-  if (inputText.value !== '') inputText.style.backgroundColor = 'white';
+  if (inputText.value !== '') {
+    inputText.style.backgroundColor = 'white';
+    inputText.classList.remove('earthquake');
+  }
 
   /*se scrivo qualcosa nell'input, la pusho nell'array e quindi parte il timer 
     che si fermerà successivamente solo se la parola è corretta (e così via per ogni parola)*/
@@ -356,6 +359,7 @@ function ifIsSentence(writtenWordLowercase) {
       inputText.value = '';
       document.getElementById(w).classList.remove('wrong');
       document.getElementById(w).classList.add('correct');
+      inputText.classList.remove('earthquake');
       cloneOfrandomSentence.splice(i, 1);
       stopTimer(w.length);
     }
@@ -367,6 +371,7 @@ function ifIsSentence(writtenWordLowercase) {
       //PAROLA SBAGLIATA
       inputText.value = '';
       document.getElementById(w).classList.add('wrong');
+      inputText.classList.add('earthquake');
     }
   });
 
