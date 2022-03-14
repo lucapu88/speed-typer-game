@@ -307,7 +307,7 @@ function stopTimer(wordLength) {
 
 averageTimesForLetters = [];
 function calcAverageTimesForLetters(wordLength) {
-  const averageTimePerLetter = seconds / wordLength;
+  const averageTimePerLetter = (seconds * 60) / wordLength;
   averageTimesForLetters.push(averageTimePerLetter);
 }
 
@@ -317,7 +317,7 @@ function calcLettersPerSecond() {
 
   const spanSpeedLettersContainer = document.getElementById('speed-letters');
   spanSpeedLettersContainer.innerText = `${letterPerSecond.toFixed(
-    5
+    2
   )} letter per second`;
 }
 
@@ -328,7 +328,7 @@ function calcWordsPerMinute() {
 
   const spanSpeedWordsContainer = document.getElementById('speed-words');
   spanSpeedWordsContainer.innerText = `${wordPerMinute.toFixed(
-    4
+    2
   )} word per second`;
 }
 
