@@ -2737,7 +2737,7 @@ english = `Improves the speed in typing on a pc keyboard (also works on mobile).
         The screen will show you random words and you will have to rewrite them,
         each word written correctly will give you a point. You can choose the
         difficulty (the harder it is, the longer the words) and the time (30 or
-        60 seconds). Or you can just practice by practicing by choosing "Exercise". You will have no time, no score and you will be able to write freely as long as you want. <br />
+        60 seconds). Or you can just practice by practicing by choosing "Exercise/Sentences". You will have no time, no score and you will be able to write freely as long as you want. <br />
         With the HERO difficulty the words will be even longer and if you
         make a mistake you lose points, so be careful if you want to show that
         you have the balls. IMPORTANT: with the hero mode the time is only 60 seconds (to avoid nervous breakdowns and PC launched from the window).<br />
@@ -2762,7 +2762,7 @@ italiano = `Migliora la velocità di digitazione sulla tastiera di un pc (funzio
           Lo schermo ti mostrerà parole casuali e dovrai riscriverle,
           ogni parola scritta correttamente ti darà un punto. Puoi scegliere la
           difficoltà (più è difficile, più lunghe sono le parole) e il tempo (30 o
-          60 secondi). Oppure puoi semplicemente esercitarti facendo pratica scegliendo "Exercise". Non avrai ne tempo, ne punteggio e potrai scrivere liberamente fin quanto vorrai. <br />
+          60 secondi). Oppure puoi semplicemente esercitarti facendo pratica scegliendo "Exercise/Sentences". Non avrai ne tempo, ne punteggio e potrai scrivere liberamente fin quanto vorrai. <br />
           Con la difficoltà HERO le parole saranno ancora più lunghe e se
           commetti un errore perdi punti, quindi fai attenzione se vuoi mostrare che
           hai le palle. IMPORTANTE: con la modalità hero il tempo è solo di 60 secondi (per evitare crisi di nervi e pc lanciati dalla finestra). <br />
@@ -2786,7 +2786,7 @@ francais = `Améliore la vitesse de frappe sur un clavier de PC (fonctionne éga
         L'écran vous montrera des mots aléatoires et vous devrez les réécrire,
         chaque mot écrit correctement vous donnera un point. Vous pouvez choisir le
         difficulté (plus c'est dur, plus les mots sont longs) et le temps (30 ou
-        60 secondes). Ou vous pouvez simplement vous entraîner en vous entraînant en choisissant "Exercise". Vous n'aurez ni temps, ni score et vous pourrez écrire librement aussi longtemps que vous le souhaitez. <br />
+        60 secondes). Ou vous pouvez simplement vous entraîner en vous entraînant en choisissant "Exercise/Sentences". Vous n'aurez ni temps, ni score et vous pourrez écrire librement aussi longtemps que vous le souhaitez. <br />
         Avec la difficulté HERO, les mots seront encore plus longs et si vous
         faites une erreur vous perdez des points, alors faites attention si vous voulez montrer que
         vous avez les couilles. IMPORTANT : avec le mode héros, le temps n'est que de 60 secondes (pour éviter les dépressions nerveuses et le lancement du PC depuis la fenêtre).<br />
@@ -2811,7 +2811,7 @@ espanol = `Mejora la velocidad al escribir en un teclado de PC (también funcion
         La pantalla te mostrará palabras al azar y tendrás que reescribirlas,
         cada palabra escrita correctamente te dará un punto. Puedes elegir el
         dificultad (cuanto más difícil, más largas las palabras) y el tiempo (30 o
-        60 segundos). O simplemente puede practicar practicando eligiendo "Exercise". No tendrás tiempo, ni partitura y podrás escribir libremente todo el tiempo que quieras. <br />
+        60 segundos). O simplemente puede practicar practicando eligiendo "Exercise/Sentences". No tendrás tiempo, ni partitura y podrás escribir libremente todo el tiempo que quieras. <br />
         Con la dificultad HERO, las palabras serán aún más largas y si
         comete un error pierdes puntos, así que ten cuidado si quieres demostrar eso
         tienes las pelotas. IMPORTANTE: con el modo héroe el tiempo es de solo 60 segundos (para evitar ataques de nervios y PC lanzado desde la ventana).<br />
@@ -2836,7 +2836,7 @@ deutsch = `Verbessern Sie die Tippgeschwindigkeit auf einer PC-Tastatur (funktio
           Der Bildschirm zeigt Ihnen zufällige Wörter und Sie müssen sie neu schreiben,
           Jedes richtig geschriebene Wort gibt Ihnen einen Punkt. Sie können die auswählen
           Schwierigkeit (je schwieriger, desto länger die Wörter) und die Zeit (30 o
-          60 Sekunden). Oder Sie können einfach üben, indem Sie "Exercise" wählen. Sie haben keine Zeit, keine Noten und können so lange frei schreiben, wie Sie möchten. <br />
+          60 Sekunden). Oder Sie können einfach üben, indem Sie "Exercise/Sentences" wählen. Sie haben keine Zeit, keine Noten und können so lange frei schreiben, wie Sie möchten. <br />
           Bei der HERO-Schwierigkeit werden die Wörter noch länger und wenn
           Wenn du einen Fehler machst, verlierst du Punkte, also sei vorsichtig, wenn du das zeigen willst
           Du hast Eier. WICHTIG: Mit dem Heldenmodus beträgt die Zeit nur 60 Sekunden (um Nervenzusammenbrüche und PC-Starts aus dem Fenster zu vermeiden). <br />
@@ -2871,22 +2871,18 @@ El objetivo de este modo es entrenar. Te aconsejo que escribas no mirando el tec
 deutschAlert = `Es gibt keine Zeit, es gibt keine Punktzahl. Frei üben! ;-)
 Das Ziel dieses Modus ist das Training. Ich rate Ihnen, beim Schreiben nicht auf die Tastatur zu schauen, sondern auf den Bildschirm und das, was Sie lesen. Versuchen Sie, so viel wie möglich alle 10 Finger zu verwenden, beginnen Sie damit, sie wie auf dem Foto zu platzieren.`;
 
-sentenceEnglishAlert = `COMING SOON!!!
-This mode is similar to "Exercise" only you will see a sentence instead of a single word. Plus your writing speed is shown.
-It will be released soon, stay tuned! ;-)`;
+sentenceEnglishAlert = `BETA VERSION
+This mode is similar to "Exercise" only you will see a sentence instead of a single word. Plus your writing speed is shown.`;
 
-sentenceItalianoAlert = `PROSSIMAMENTE!!!
-Questa modalità è simile a "Exercise" soltanto che vedrai una frase invece di una sola parola. In più ti viene mostrata la tua velocità di scrittura.
-A breve verrà rilasciata, resta in ascolto! ;-)`;
+sentenceItalianoAlert = `VERSIONE BETA
+Questa modalità è simile a "Exercise" soltanto che vedrai una frase invece di una sola parola. In più ti viene mostrata la tua velocità di scrittura.`;
 
-sentenceEspanolAlert = `¡¡¡PRÓXIMAMENTE!!!
-Este modo es similar a "Exercise", solo que verá una oración en lugar de una sola palabra. Además, se muestra su velocidad de escritura.
-Será lanzado pronto, ¡estén atentos! ;-)`;
+sentenceEspanolAlert = `VERSIÓN BETA
+Este modo es similar a "Exercise", solo que verá una oración en lugar de una sola palabra. Además, se muestra su velocidad de escritura.`;
 
-sentenceFrancaisAlert = `BIENTÔT DISPONIBLE!!!
-Ce mode est similaire à "Exercise" seulement vous verrez une phrase au lieu d'un seul mot. De plus, votre vitesse d'écriture est affichée.
-Il sortira bientôt, restez connectés ! ;-)`;
+sentenceFrancaisAlert = `VERSION BÊTA
+Ce mode est similaire à "Exercise" seulement vous verrez une phrase au lieu d'un seul mot. De plus, votre vitesse d'écriture est affichée.`;
 
-sentenceDeutschAlert = `KOMMT BALD!!!
+sentenceDeutschAlert = `BETAVERSION
 Dieser Modus ähnelt "Exercise", nur dass Sie einen Satz anstelle eines einzelnen Wortes sehen. Außerdem wird Ihre Schreibgeschwindigkeit angezeigt.
-Es wird bald veröffentlicht, bleiben Sie dran! ;-)`;
+`;

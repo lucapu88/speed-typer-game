@@ -34,6 +34,7 @@ const timeChoise = document.getElementById('time-choise'); //per stampare il tem
 const loremIpsumAPI = 'https://random-word-api.herokuapp.com/word?number=900';
 const alternLoremIpsumAPI = 'http://www.mieliestronk.com/corncob_lowercase.txt';
 const noDifficulty = document.getElementById('no-difficulty-in-exercise-mode'); //div contenente il pulsante di info della modalità esercitazione
+const infoSentences = document.getElementById('info-sentences');
 
 let wordToDisplay = document.getElementById('word-to-display'); //parola che viene mostrata
 let timer = '60';
@@ -79,13 +80,6 @@ function setTimer(selected) {
     //mostro la select delle difficoltà e nascondo un pulsante di info
     difficulty.style.display = 'inline-block';
     noDifficulty.style.display = 'none';
-  }
-
-  if (timer === 'long-free') {
-    //---------------------------------------------------------------------MOMENTANEO SOLO PER PUSHARLO
-    startGame.style.display = 'none';
-  } else {
-    startGame.style.display = 'block';
   }
 }
 
@@ -163,9 +157,12 @@ function exerciseModeStart() {
 
 //QUANDO IMPOSTO 'SENTENCES'
 function sentencesModeStart() {
+  averageTimesForLetters.splice(0, averageTimesForLetters.length);
+
   randomSentence = createSentence();
   const info = document.getElementById('info');
   info.classList.add('exercise');
+  infoSentences.style.display = 'block';
   difficultySelect = null;
   const encloseWordsOfSentenceInSpan = randomSentence.map(
     (el) => `<span class="${el}" id="${el}">${el}</span>`
@@ -271,9 +268,9 @@ inputText.addEventListener('touchend', compareWords);
 function compareWords(e) {
   const writtenWord = e.target.value;
   const wordToPrintLowercase = wordToPrint.toLowerCase();
-  const writtenWordLowercase = writtenWord.toLowerCase();
+  const writtenWordLowercase = writtenWord.toLowerCase().trim();
 
-  if (wordToPrintLowercase === writtenWordLowercase) {
+  if (wordToPrintLowercase === writtenWordLowercase && timer !== 'long-free') {
     //in qualsiasi caso visualizzo la parola e se l'azzecco resetta l'input, ne spara un'altra e aumenta il punteggio
     shootWords(difficultySelect);
     inputText.value = '';
@@ -290,9 +287,66 @@ function compareWords(e) {
   reportWrongWord(wordToPrintLowercase, writtenWordLowercase);
 }
 
+//SE SONO IN MODALILTÀ FRASE
+let arrayToCalculateWordTime = [];
+
+let seconds = 0;
+function incrementSeconds() {
+  seconds += 1;
+}
+
+totalTimeOfSentence = [];
+function stopTimer(wordLength) {
+  clearInterval(startTimerForSingleWord);
+  calcAverageTimesForLetters(wordLength);
+
+  totalTimeOfSentence.push(seconds);
+  arrayToCalculateWordTime.splice(0, arrayToCalculateWordTime.length); //resetto l'array
+  seconds = 0;
+}
+
+averageTimesForLetters = [];
+function calcAverageTimesForLetters(wordLength) {
+  const averageTimePerLetter = seconds / wordLength;
+  averageTimesForLetters.push(averageTimePerLetter);
+}
+
+function calcLettersPerSecond() {
+  const letterPerSecond =
+    averageTimesForLetters.reduce(mySum) / averageTimesForLetters.length;
+
+  const spanSpeedLettersContainer = document.getElementById('speed-letters');
+  spanSpeedLettersContainer.innerText = `${letterPerSecond.toFixed(
+    5
+  )} letter per second`;
+}
+
+function calcWordsPerMinute() {
+  const sentenceLenght = createSentence().length;
+  const timeSpentOn = totalTimeOfSentence.reduce(mySum);
+  const wordPerMinute = sentenceLenght / timeSpentOn;
+
+  const spanSpeedWordsContainer = document.getElementById('speed-words');
+  spanSpeedWordsContainer.innerText = `${wordPerMinute.toFixed(
+    4
+  )} word per second`;
+}
+
+function mySum(total, num) {
+  return total + num;
+}
+
 function ifIsSentence(writtenWordLowercase) {
   const cloneOfrandomSentence = randomSentence;
+
   if (inputText.value !== '') inputText.style.backgroundColor = 'white';
+
+  /*se scrivo qualcosa nell'input, la pusho nell'array e quindi parte il timer 
+    che si fermerà successivamente solo se la parola è corretta (e così via per ogni parola)*/
+  arrayToCalculateWordTime.push(writtenWordLowercase);
+  if (arrayToCalculateWordTime.length === 1) {
+    startTimerForSingleWord = setInterval(incrementSeconds, 1000);
+  }
 
   cloneOfrandomSentence.forEach((w, i) => {
     /*ogni volta che elimino una parola dall'array, la parola successiva avrà indice 0, 
@@ -300,8 +354,10 @@ function ifIsSentence(writtenWordLowercase) {
     if (w === writtenWordLowercase && i === 0) {
       //PAROLA GIUSTA
       inputText.value = '';
+      document.getElementById(w).classList.remove('wrong');
       document.getElementById(w).classList.add('correct');
       cloneOfrandomSentence.splice(i, 1);
+      stopTimer(w.length);
     }
     if (
       w !== writtenWordLowercase &&
@@ -310,12 +366,16 @@ function ifIsSentence(writtenWordLowercase) {
     ) {
       //PAROLA SBAGLIATA
       inputText.value = '';
-      inputText.style.backgroundColor = 'rgb(255, 0, 0)';
+      document.getElementById(w).classList.add('wrong');
     }
   });
 
   if (cloneOfrandomSentence.length === 0) {
+    //se l'array con la frase è svuotato, vuol dire che è stata completata correttamente e quindi calcolo velocità e cambio frase
+    calcLettersPerSecond();
+    calcWordsPerMinute();
     sentencesModeStart();
+    totalTimeOfSentence.splice(0, totalTimeOfSentence.length);
   }
 }
 
@@ -384,6 +444,8 @@ function changeMusic(params) {
         audio.src = 'sounds/Pokemon-DiamondPearlPlatinum-Bat.mp3';
       if (audioPlay && timer === 'free')
         audio.src = 'sounds/Bubble_Bobble-Main Theme.mp3';
+      if (audioPlay && timer === 'long-free')
+        audio.src = 'sounds/Super-Mario-Bros.mp3';
       break;
 
     case 'gameOver':

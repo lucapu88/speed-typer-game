@@ -96,12 +96,24 @@ button {
 .game-started {
   display: none;
 }
-.info,
-.info-exercise {
+.info {
   display: flex;
   font-size: 13px;
   justify-content: space-between;
 }
+
+.info-sentences {
+  display: none;
+  font-size: 13px;
+  text-align: center;
+  line-height: 2;
+}
+
+.speed-letters,
+.speed-words {
+  color: rgb(243, 243, 0);
+}
+
 .game {
   display: flex;
   flex-direction: column;
@@ -133,6 +145,9 @@ button {
 
 .correct {
   color: rgb(61, 214, 0) !important;
+}
+.wrong {
+  color: rgb(255, 0, 0) !important;
 }
 
 .exercise {

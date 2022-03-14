@@ -38,8 +38,8 @@
         <select class="select-time" name="time" id="select-time">
           <option class="time-60" value="60">60 seconds</option>
           <option class="time-30" value="30">30 seconds</option>
-          <option class="practice" value="free">Exercise</option>
           <option class="sentences" value="long-free">Sentences</option>
+          <option class="practice" value="free">Exercise</option>
         </select>
       </span>
     </nav>
@@ -73,6 +73,11 @@
           <div class="info" id="info">
             <p>Remaining time: <span id="time"></span></p>
             <p>Score: <span id="score"></span></p>
+          </div>
+          <div class="info-sentences" id="info-sentences">
+            <h3>Speed</h3>
+            <p><span class="speed-letters" id="speed-letters"></span></p>
+            <p><span class="speed-words" id="speed-words"></span></p>
           </div>
 
           <div class="game" id="game">
@@ -134,8 +139,8 @@
         each word written correctly will give you a point. You can choose the
         difficulty (the harder it is, the longer the words) and the time (30 or
         60 seconds). Or you can just practice by practicing by choosing
-        "Exercise". You will have no time, no score and you will be able to
-        write freely as long as you want. <br />
+        "Exercise/Sentences". You will have no time, no score and you will be
+        able to write freely as long as you want. <br />
         With the HERO difficulty the words will be even longer and if you make a
         mistake you lose points, so be careful if you want to show that you have
         the balls. IMPORTANT: with the hero mode the time is only 60 seconds (to
