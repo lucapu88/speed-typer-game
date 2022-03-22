@@ -884,3 +884,31 @@ function toggleHeroGlobalScores(difficultyName) {
     gHeroContainer.style.display = 'flex';
   }
 }
+
+//EVITO SQL INJECTION O ALMENO CI PROVO
+const nicknameInput = document.getElementById('nickname');
+
+nicknameInput.addEventListener('mouseenter', (event) => {
+  nicknameInput.value = event.target.value.replace(
+    /[".,\/#!$?%\^&\*;:{}=\-_`~()]|[\[\]']/g,
+    ''
+  );
+});
+nicknameInput.addEventListener('mouseleave', (event) => {
+  nicknameInput.value = event.target.value.replace(
+    /[".,\/#!$?%\^&\*;:{}=\-_`~()]|[\[\]']/g,
+    ''
+  );
+});
+nicknameInput.addEventListener('paste', (event) => {
+  nicknameInput.value = event.target.value.replace(
+    /[".,\/#!$?%\^&\*;:{}=\-_`~()]|[\[\]']/g,
+    ''
+  );
+});
+nicknameInput.addEventListener('keydown', (event) => {
+  nicknameInput.value = event.target.value.replace(
+    /[".,\/#!$?%\^&\*;:{}=\-_`~()]|[\[\]']/g,
+    ''
+  );
+});
