@@ -93,6 +93,31 @@ button {
   font-size: 100px;
 }
 
+.choice-save-score-globally {
+  display: none;
+  line-height: 1.5;
+  flex-direction: column;
+  align-items: center;
+}
+
+#save-global-score > button {
+  padding: 5px;
+}
+
+.insert-nickname {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.nickname {
+  width: 440px;
+  padding: 5px;
+}
+.insert-nickname > button {
+  width: 85px;
+}
+
 .game-started {
   display: none;
 }
@@ -202,6 +227,7 @@ button {
   animation-timing-function: ease-in;
   animation-duration: 0.5s;
   z-index: 100;
+  position: relative;
 }
 @keyframes fadeInOpacity {
   0% {
@@ -210,6 +236,17 @@ button {
   100% {
     opacity: 1;
   }
+}
+
+.local-ranking-container {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+.global-ranking-container {
+  display: flex;
+  flex-direction: column;
 }
 
 .easy,
@@ -230,11 +267,13 @@ button {
 .scores-title {
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  text-align: center;
 }
 
 .close-scores {
   cursor: pointer;
+  position: absolute;
+  right: 15px;
 }
 
 .show-helper {
@@ -321,6 +360,25 @@ button {
   color: rgb(255, 255, 0);
 }
 
+.youtube-icon,
+.linkedin-icon {
+  width: 40px;
+  background-color: rgb(61, 214, 0);
+  border-radius: 10px;
+  padding: 2px;
+  margin: 5px;
+  float: right;
+}
+.youtube-icon:hover {
+  background-color: rgb(197, 0, 0);
+}
+.social {
+  text-decoration: none;
+}
+.linkedin-icon:hover {
+  background-color: rgb(0, 87, 250);
+}
+
 .languages {
   margin-bottom: 15px;
   font-size: larger;
@@ -352,4 +410,159 @@ footer {
   height: 90px;
   padding: 10px;
   position: relative;
+}
+
+.btn-scores-group {
+  display: flex;
+}
+
+.global {
+  padding-left: 10px;
+  border-radius: 5px 0 0 5px;
+}
+
+.local {
+  border-radius: 0 5px 5px 0;
+}
+
+.local,
+.global {
+  border: 2px solid rgb(61, 214, 0);
+  color: rgb(61, 214, 0);
+  background-color: rgb(0, 0, 0);
+  max-width: 100px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.local:hover,
+.global:hover {
+  background-color: rgb(61, 214, 0);
+  color: rgb(0, 0, 0);
+}
+
+.selected {
+  background-color: rgb(61, 214, 0);
+  color: rgb(0, 0, 0);
+}
+
+.btns-difficulty-global-scores {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+.btns-difficulty-global-scores > button {
+  color: rgb(255, 255, 255);
+  border: 2px solid rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.global-easy {
+  border-radius: 5px 0 0 5px;
+}
+.global-medium {
+  border-radius: 0;
+}
+.global-hard {
+  border-radius: 0;
+}
+.global-hero {
+  border-radius: 0 5px 5px 0;
+}
+
+.btns-difficulty-global-scores > button:hover {
+  color: rgb(61, 214, 0);
+  border-color: rgb(61, 214, 0);
+}
+
+.btns-difficulty-global-scores > button.selected-global {
+  color: rgb(0, 87, 250);
+  border-color: rgb(0, 87, 250);
+}
+
+.seconds-30,
+.seconds-60 {
+  line-height: 2;
+}
+
+.seconds-30 > ul > li:first-child,
+.seconds-60 > ul > li:first-child {
+  color: rgb(255, 217, 0);
+}
+.seconds-30 > ul > li:nth-child(2),
+.seconds-60 > ul > li:nth-child(2) {
+  color: rgb(173, 173, 173);
+}
+.seconds-30 > ul > li:nth-child(3),
+.seconds-60 > ul > li:nth-child(3) {
+  color: rgb(255, 102, 0);
+}
+
+.seconds-30 {
+  border-right: 2px solid rgb(61, 214, 0);
+  padding-right: 15px;
+}
+.seconds-60 {
+  border-left: 2px solid rgb(61, 214, 0);
+  padding-left: 15px;
+}
+
+.g-seconds {
+  margin-bottom: 10px;
+  color: rgb(197, 0, 0);
+}
+
+.g-hero-container {
+  display: none;
+  padding: 10px;
+  justify-content: center;
+  line-height: 2;
+}
+.g-hero-container > ul > li,
+.g-hero-container > ul > li > span {
+  color: rgb(231, 197, 1);
+}
+
+.user {
+  display: flex;
+  list-style-type: none;
+  justify-content: space-between;
+}
+
+.user > span {
+  white-space: nowrap;
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.success-save-db {
+  display: none;
+}
+.error-retry {
+  display: none;
+  color: rgb(197, 0, 0);
+}
+
+.easy-global-scores {
+  display: flex;
+}
+.medium-global-scores,
+.hard-global-scores {
+  display: none;
+}
+.easy-global-scores,
+.medium-global-scores,
+.hard-global-scores {
+  justify-content: space-between;
+  text-align: center;
+}
+
+.user > span:nth-child(2) {
+  color: rgb(255, 0, 0);
+}
+.user > span:first-child {
+  text-transform: uppercase;
 }

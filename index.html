@@ -59,6 +59,25 @@
             src="img/keyboard-hands-position.png"
             alt="keyboard-hands-position"
           />
+
+          <div
+            class="choice-save-score-globally"
+            id="choice-save-score-globally"
+          >
+            <p>Save your score in the global ranking.</p>
+            <div class="insert-nickname" id="insert-nickname">
+              <p class="error-retry" id="error-retry">Error: retry!</p>
+              <input
+                type="text"
+                id="nickname"
+                class="nickname"
+                placeholder="Insert a NickName and click save"
+              />
+              <button id="save-global-score">Save</button>
+            </div>
+          </div>
+          <h1 class="success-save-db" id="success-save-db">Saved</h1>
+
           <button class="start" id="start" onclick="threeTwoOneCountdown()">
             Start
           </button>
@@ -95,34 +114,249 @@
       </div>
       <!-- RANKING SCORES -->
       <div class="ranking-container" id="ranking">
-        <div class="scores-title">
-          <h2>Best Scores</h2>
-          <h2 class="close-scores" onclick="toggleScore()">x</h2>
+        <h2 class="close-scores" onclick="toggleScore()">x</h2>
+        <div class="btn-scores-group">
+          <button class="global selected" id="global" onclick="showGlobal()">
+            Global
+          </button>
+          <button class="local" id="local" onclick="showLocal()">Local</button>
+        </div>
+        <!-- GLOBALE -->
+        <div class="global-ranking-container" id="global-ranking-container">
+          <div class="scores-title">
+            <h2>Global Best Scores</h2>
+          </div>
+          <div class="btns-difficulty-global-scores">
+            <button class="global-easy selected-global" id="global-easy">
+              Easy
+            </button>
+            <button class="global-medium" id="global-medium">Med.</button>
+            <button class="global-hard" id="global-hard">Hard</button>
+            <button class="global-hero" id="global-hero">Hero</button>
+          </div>
+
+          <div
+            class="global-difficulty-container"
+            id="global-difficulty-container"
+          >
+            <div class="easy-global-scores" id="easy-global-scores">
+              <div class="seconds-30">
+                <p class="g-seconds">30 seconds</p>
+                <ul>
+                  <li class="user">
+                    1&#176;<span id="easy30-user1">user</span
+                    ><span id="easy30-score1"> 0</span>
+                  </li>
+                  <li class="user">
+                    2&#176;<span id="easy30-user2">user</span
+                    ><span id="easy30-score2"> 0</span>
+                  </li>
+                  <li class="user">
+                    3&#176;<span id="easy30-user3">user</span
+                    ><span id="easy30-score3"> 0</span>
+                  </li>
+                  <li class="user">
+                    4&#176;<span id="easy30-user4">user</span
+                    ><span id="easy30-score4"> 0</span>
+                  </li>
+                  <li class="user">
+                    5&#176;<span id="easy30-user5">user</span
+                    ><span id="easy30-score5"> 0</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="seconds-60">
+                <p class="g-seconds">60 seconds</p>
+                <ul>
+                  <li class="user">
+                    1&#176;<span id="easy60-user1">user</span
+                    ><span id="easy60-score1"> 0</span>
+                  </li>
+                  <li class="user">
+                    2&#176;<span id="easy60-user2">user</span
+                    ><span id="easy60-score2"> 0</span>
+                  </li>
+                  <li class="user">
+                    3&#176;<span id="easy60-user3">user</span
+                    ><span id="easy60-score3"> 0</span>
+                  </li>
+                  <li class="user">
+                    4&#176;<span id="easy60-user4">user</span
+                    ><span id="easy60-score4"> 0</span>
+                  </li>
+                  <li class="user">
+                    5&#176;<span id="easy60-user5">user</span
+                    ><span id="easy60-score5"> 0</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="medium-global-scores" id="medium-global-scores">
+              <div class="seconds-30">
+                <p class="g-seconds">30 seconds</p>
+                <ul>
+                  <li class="user">
+                    1&#176;<span id="medium30-user1">user</span
+                    ><span id="medium30-score1"> 0</span>
+                  </li>
+                  <li class="user">
+                    2&#176;<span id="medium30-user2">user</span
+                    ><span id="medium30-score2"> 0</span>
+                  </li>
+                  <li class="user">
+                    3&#176;<span id="medium30-user3">user</span
+                    ><span id="medium30-score3"> 0</span>
+                  </li>
+                  <li class="user">
+                    4&#176;<span id="medium30-user4">user</span
+                    ><span id="medium30-score4"> 0</span>
+                  </li>
+                  <li class="user">
+                    5&#176;<span id="medium30-user5">user</span
+                    ><span id="medium30-score5"> 0</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="seconds-60">
+                <p class="g-seconds">60 seconds</p>
+                <ul>
+                  <li class="user">
+                    1&#176;<span id="medium60-user1">user</span
+                    ><span id="medium60-score1"> 0</span>
+                  </li>
+                  <li class="user">
+                    2&#176;<span id="medium60-user2">user</span
+                    ><span id="medium60-score2"> 0</span>
+                  </li>
+                  <li class="user">
+                    3&#176;<span id="medium60-user3">user</span
+                    ><span id="medium60-score3"> 0</span>
+                  </li>
+                  <li class="user">
+                    4&#176;<span id="medium60-user4">user</span
+                    ><span id="medium60-score4"> 0</span>
+                  </li>
+                  <li class="user">
+                    5&#176;<span id="medium60-user5">user</span
+                    ><span id="medium60-score5"> 0</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="hard-global-scores" id="hard-global-scores">
+              <div class="seconds-30">
+                <p class="g-seconds">30 seconds</p>
+                <ul>
+                  <li class="user">
+                    1&#176;<span id="hard30-user1">user</span
+                    ><span id="hard30-score1"> 0</span>
+                  </li>
+                  <li class="user">
+                    2&#176;<span id="hard30-user2">user</span
+                    ><span id="hard30-score2"> 0</span>
+                  </li>
+                  <li class="user">
+                    3&#176;<span id="hard30-user3">user</span
+                    ><span id="hard30-score3"> 0</span>
+                  </li>
+                  <li class="user">
+                    4&#176;<span id="hard30-user4">user</span
+                    ><span id="hard30-score4"> 0</span>
+                  </li>
+                  <li class="user">
+                    5&#176;<span id="hard30-user5">user</span
+                    ><span id="hard30-score5"> 0</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="seconds-60">
+                <p class="g-seconds">60 seconds</p>
+                <ul>
+                  <li class="user">
+                    1&#176;<span id="hard60-user1">user</span
+                    ><span id="hard60-score1"> 0</span>
+                  </li>
+                  <li class="user">
+                    2&#176;<span id="hard60-user2">user</span
+                    ><span id="hard60-score2"> 0</span>
+                  </li>
+                  <li class="user">
+                    3&#176;<span id="hard60-user3">user</span
+                    ><span id="hard60-score3"> 0</span>
+                  </li>
+                  <li class="user">
+                    4&#176;<span id="hard60-user4">user</span
+                    ><span id="hard60-score4"> 0</span>
+                  </li>
+                  <li class="user">
+                    5&#176;<span id="hard60-user5">user</span
+                    ><span id="hard60-score5"> 0</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="g-hero-container" id="g-hero-container">
+              <ul>
+                <li class="user">
+                  1&#176;<span id="hero-user1">user</span
+                  ><span id="hero-score1"> 0</span>
+                </li>
+                <li class="user">
+                  2&#176;<span id="hero-user2">user</span
+                  ><span id="hero-score2"> 0</span>
+                </li>
+                <li class="user">
+                  3&#176;<span id="hero-user3">user</span
+                  ><span id="hero-score3"> 0</span>
+                </li>
+                <li class="user">
+                  4&#176;<span id="hero-user4">user</span
+                  ><span id="hero-score4"> 0</span>
+                </li>
+                <li class="user">
+                  5&#176;<span id="hero-user5">user</span
+                  ><span id="hero-score5"> 0</span>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
 
-        <h3 class="easy">Easy:</h3>
-        <ul>
-          <li>30 seconds: <span id="easy-30"></span></li>
-          <li>60 seconds: <span id="easy-60"></span></li>
-        </ul>
+        <!-- LOCALE -->
+        <div class="local-ranking-container" id="local-ranking-container">
+          <div class="scores-title">
+            <h2>Your Local Best Scores</h2>
+          </div>
 
-        <h3 class="medium">Medium:</h3>
-        <ul>
-          <li>30 seconds: <span id="medium-30"></span></li>
-          <li>60 seconds: <span id="medium-60"></span></li>
-        </ul>
+          <h3 class="easy" id="Easy">Easy:</h3>
+          <ul>
+            <li>30 seconds: <span id="easy-30"></span></li>
+            <li>60 seconds: <span id="easy-60"></span></li>
+          </ul>
 
-        <h3 class="hard">Hard:</h3>
-        <ul>
-          <li>30 seconds: <span id="hard-30"></span></li>
-          <li>60 seconds: <span id="hard-60"></span></li>
-        </ul>
+          <h3 class="medium" id="Medium">Medium:</h3>
+          <ul>
+            <li>30 seconds: <span id="medium-30"></span></li>
+            <li>60 seconds: <span id="medium-60"></span></li>
+          </ul>
 
-        <h3 class="hero">Hero:<span id="hero"></span></h3>
+          <h3 class="hard" id="Hard">Hard:</h3>
+          <ul>
+            <li>30 seconds: <span id="hard-30"></span></li>
+            <li>60 seconds: <span id="hard-60"></span></li>
+          </ul>
 
-        <button id="delete-all-scores" onclick="deleteAll()">Delete All</button>
+          <h3 class="hero" id="Hero">Hero:<span id="hero"></span></h3>
+
+          <button id="delete-all-scores" onclick="deleteAll()">
+            Delete All
+          </button>
+        </div>
       </div>
     </main>
+    <!-- HELPER -->
     <div class="helper-description" id="helper-description">
       <h2 class="close" onclick="toggleHelper()">x</h2>
       <h1>Istruction:</h1>
@@ -155,17 +389,7 @@
           contrary it will strengthen you!</u
         >
         trust me.<br />
-        If you are a developer you can find the repository
-        <a
-          class="setting-info"
-          href="https://github.com/lucapu88/speed-typer-game"
-          target="_blank"
-          rel="noopener noreferrer"
-          >here</a
-        >
-        with the game code and I gladly accept advice on how to improve the code
-        I wrote. If you have reports to me about any bugs, or about improvements
-        to my code, I am very happy to hear from you and you can write to me at:
+        For bug reports or suggestions you can contact me at the email address:
         <span
           class="setting-info"
           id="info-email"
@@ -175,6 +399,24 @@
         <small class="copied-to-cliboard" id="copied-to-cliboard"
           >COPIED TO CLIPBOARD</small
         >
+        <br />
+        <a
+          class="setting-info social"
+          href="https://www.linkedin.com/in/luca-caputo-1ba548140/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img class="linkedin-icon" src="img/linkedin.png" alt="linkedin" />
+        </a>
+
+        <a
+          class="setting-info social"
+          href="https://www.youtube.com/channel/UCVPzu5zrXrt8cgSEm73zVzA"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img class="youtube-icon" src="img/Youtube.png" alt="youtube" />
+        </a>
       </p>
     </div>
     <footer>
@@ -202,5 +444,708 @@
     <script src="fake-db.js" charset="utf-8"></script>
     <script src="long-text.js" charset="utf-8"></script>
     <script src="main.js" charset="utf-8"></script>
+    <script type="module">
+      import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js';
+      import { getAnalytics } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-analytics.js';
+      const nicknameInput = document.getElementById('nickname');
+      const saveGlobalScoreBtn = document.getElementById('save-global-score');
+      /*const prova = '';*/ console.log = function () {};
+      const choiseSaveScoreGlobally = document.getElementById(
+        'choice-save-score-globally'
+      );
+      const successSaveDb = document.getElementById('success-save-db');
+      const errorSaveDb = document.getElementById('error-retry');
+
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+      const firebaseConfig = {
+        apiKey: `${window.docum}${window.lorem}${window.getelm}${window.gnigni}${window.lucap}${window.diff}${window.vader}${window.esghere}${window.selec}${window.addeve}`,
+        authDomain: 'speedtyperdb.firebaseapp.com',
+        projectId: 'speedtyperdb',
+        storageBucket: 'speedtyperdb.appspot.com',
+        messagingSenderId: '13131338',
+        appId: '1:13131338:web:0e5e02b22be11ada5f90b3',
+        measurementId: 'G-05JZHKH8TE',
+        databaseURL:
+          'https://speedtyperdb-default-rtdb.europe-west1.firebasedatabase.app',
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+
+      import {
+        getDatabase,
+        ref,
+        set,
+        get,
+        child,
+        remove,
+      } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-database.js';
+
+      const db = getDatabase();
+      //REVIEW: tutta sta merda da qui sotto in poi va semplificata, se possibile.
+
+      //EASY 30
+      const user1Easy30 = document.getElementById('easy30-user1').innerHTML;
+      const user2Easy30 = document.getElementById('easy30-user2').innerHTML;
+      const user3Easy30 = document.getElementById('easy30-user3').innerHTML;
+      const user4Easy30 = document.getElementById('easy30-user4').innerHTML;
+      const user5Easy30 = document.getElementById('easy30-user5').innerHTML;
+      const score1Easy30 = document.getElementById('easy30-score1').innerHTML;
+      const score2Easy30 = document.getElementById('easy30-score2').innerHTML;
+      const score3Easy30 = document.getElementById('easy30-score3').innerHTML;
+      const score4Easy30 = document.getElementById('easy30-score4').innerHTML;
+      const score5Easy30 = document.getElementById('easy30-score5').innerHTML;
+      //EASY 60
+      const user1Easy60 = document.getElementById('easy60-user1').innerHTML;
+      const user2Easy60 = document.getElementById('easy60-user2').innerHTML;
+      const user3Easy60 = document.getElementById('easy60-user3').innerHTML;
+      const user4Easy60 = document.getElementById('easy60-user4').innerHTML;
+      const user5Easy60 = document.getElementById('easy60-user5').innerHTML;
+      const score1Easy60 = document.getElementById('easy60-score1').innerHTML;
+      const score2Easy60 = document.getElementById('easy60-score2').innerHTML;
+      const score3Easy60 = document.getElementById('easy60-score3').innerHTML;
+      const score4Easy60 = document.getElementById('easy60-score4').innerHTML;
+      const score5Easy60 = document.getElementById('easy60-score5').innerHTML;
+
+      //MEDIUM 30
+      const user1Med30 = document.getElementById('medium30-user1').innerHTML;
+      const user2Med30 = document.getElementById('medium30-user2').innerHTML;
+      const user3Med30 = document.getElementById('medium30-user3').innerHTML;
+      const user4Med30 = document.getElementById('medium30-user4').innerHTML;
+      const user5Med30 = document.getElementById('medium30-user5').innerHTML;
+      const score1Med30 = document.getElementById('medium30-score1').innerHTML;
+      const score2Med30 = document.getElementById('medium30-score2').innerHTML;
+      const score3Med30 = document.getElementById('medium30-score3').innerHTML;
+      const score4Med30 = document.getElementById('medium30-score4').innerHTML;
+      const score5Med30 = document.getElementById('medium30-score5').innerHTML;
+      //MEDIUM 60
+      const user1Med60 = document.getElementById('medium60-user1').innerHTML;
+      const user2Med60 = document.getElementById('medium60-user2').innerHTML;
+      const user3Med60 = document.getElementById('medium60-user3').innerHTML;
+      const user4Med60 = document.getElementById('medium60-user4').innerHTML;
+      const user5Med60 = document.getElementById('medium60-user5').innerHTML;
+      const score1Med60 = document.getElementById('medium60-score1').innerHTML;
+      const score2Med60 = document.getElementById('medium60-score2').innerHTML;
+      const score3Med60 = document.getElementById('medium60-score3').innerHTML;
+      const score4Med60 = document.getElementById('medium60-score4').innerHTML;
+      const score5Med60 = document.getElementById('medium60-score5').innerHTML;
+
+      //HARD 30
+      const user1Hard30 = document.getElementById('hard30-user1').innerHTML;
+      const user2Hard30 = document.getElementById('hard30-user2').innerHTML;
+      const user3Hard30 = document.getElementById('hard30-user3').innerHTML;
+      const user4Hard30 = document.getElementById('hard30-user4').innerHTML;
+      const user5Hard30 = document.getElementById('hard30-user5').innerHTML;
+      const score1Hard30 = document.getElementById('hard30-score1').innerHTML;
+      const score2Hard30 = document.getElementById('hard30-score2').innerHTML;
+      const score3Hard30 = document.getElementById('hard30-score3').innerHTML;
+      const score4Hard30 = document.getElementById('hard30-score4').innerHTML;
+      const score5Hard30 = document.getElementById('hard30-score5').innerHTML;
+      //HARD 60
+      const user1Hard60 = document.getElementById('hard60-user1').innerHTML;
+      const user2Hard60 = document.getElementById('hard60-user2').innerHTML;
+      const user3Hard60 = document.getElementById('hard60-user3').innerHTML;
+      const user4Hard60 = document.getElementById('hard60-user4').innerHTML;
+      const user5Hard60 = document.getElementById('hard60-user5').innerHTML;
+      const score1Hard60 = document.getElementById('hard60-score1').innerHTML;
+      const score2Hard60 = document.getElementById('hard60-score2').innerHTML;
+      const score3Hard60 = document.getElementById('hard60-score3').innerHTML;
+      const score4Hard60 = document.getElementById('hard60-score4').innerHTML;
+      const score5Hard60 = document.getElementById('hard60-score5').innerHTML;
+
+      //HERO
+      const user1Hero = document.getElementById('hero-user1').innerHTML;
+      const user2Hero = document.getElementById('hero-user2').innerHTML;
+      const user3Hero = document.getElementById('hero-user3').innerHTML;
+      const user4Hero = document.getElementById('hero-user4').innerHTML;
+      const user5Hero = document.getElementById('hero-user5').innerHTML;
+      const score1Hero = document.getElementById('hero-score1').innerHTML;
+      const score2Hero = document.getElementById('hero-score2').innerHTML;
+      const score3Hero = document.getElementById('hero-score3').innerHTML;
+      const score4Hero = document.getElementById('hero-score4').innerHTML;
+      const score5Hero = document.getElementById('hero-score5').innerHTML;
+
+      SelectData();
+
+      //-----------------------------------------------------------------------------------------SAVE DATA
+      function InsertData() {
+        //---------------------------------------------------EASY
+        if (window.difficultyName === 'easy' && window.timer === '30') {
+          const theBest5Easy30 = [
+            score1Easy30,
+            score2Easy30,
+            score3Easy30,
+            score4Easy30,
+            score5Easy30,
+          ];
+          theBest5Easy30.forEach((el) => {
+            //se il punteggio finale è superiore ad uno dei punteggi già presenti, lo salvo nel DB
+            if (+window.finalScore > +el) {
+              set(ref(db, `EASY-30-sec/${window.finalScore}`), {
+                easy30user: nicknameInput.value,
+                easy30score: window.finalScore,
+              })
+                .then(() => {
+                  showSuccess();
+                })
+                .catch((err) => {
+                  showError();
+                });
+            } else {
+              showSuccess();
+            }
+          });
+        }
+        if (window.difficultyName === 'easy' && window.timer === '60') {
+          const theBest5Easy60 = [
+            score1Easy60,
+            score2Easy60,
+            score3Easy60,
+            score4Easy60,
+            score5Easy60,
+          ];
+          theBest5Easy60.forEach((el) => {
+            if (+window.finalScore > +el) {
+              set(ref(db, `EASY-60-sec/${window.finalScore}`), {
+                easy60user: nicknameInput.value,
+                easy60score: window.finalScore,
+              })
+                .then(() => {
+                  showSuccess();
+                })
+                .catch((err) => {
+                  showError();
+                });
+            } else {
+              showSuccess();
+            }
+          });
+        }
+
+        //---------------------------------------------------MEDIUM
+        if (window.difficultyName === 'medium' && window.timer === '30') {
+          const theBestMedium30 = [
+            score1Med30,
+            score2Med30,
+            score3Med30,
+            score4Med30,
+            score5Med30,
+          ];
+          theBestMedium30.forEach((el) => {
+            if (+window.finalScore > +el) {
+              set(ref(db, `MEDIUM-30-sec/${window.finalScore}`), {
+                medium30user: nicknameInput.value,
+                medium30score: window.finalScore,
+              })
+                .then(() => {
+                  showSuccess();
+                })
+                .catch((err) => {
+                  showError();
+                });
+            } else {
+              showSuccess();
+            }
+          });
+        }
+        if (window.difficultyName === 'medium' && window.timer === '60') {
+          const theBestMedium60 = [
+            score1Med60,
+            score2Med60,
+            score3Med60,
+            score4Med60,
+            score5Med60,
+          ];
+          theBestMedium60.forEach((el) => {
+            if (+window.finalScore > +el) {
+              set(ref(db, `MEDIUM-60-sec/${window.finalScore}`), {
+                medium60user: nicknameInput.value,
+                medium60score: window.finalScore,
+              })
+                .then(() => {
+                  showSuccess();
+                })
+                .catch((err) => {
+                  showError();
+                });
+            } else {
+              showSuccess();
+            }
+          });
+        }
+
+        //---------------------------------------------------HARD
+        if (window.difficultyName === 'hard' && window.timer === '30') {
+          const theBestHard30 = [
+            score1Hard30,
+            score2Hard30,
+            score3Hard30,
+            score4Hard30,
+            score5Hard30,
+          ];
+          theBestHard30.forEach((el) => {
+            if (+window.finalScore > +el) {
+              set(ref(db, `HARD-30-sec/${window.finalScore}`), {
+                hard30user: nicknameInput.value,
+                hard30score: window.finalScore,
+              })
+                .then(() => {
+                  showSuccess();
+                })
+                .catch((err) => {
+                  showError();
+                });
+            } else {
+              showSuccess();
+            }
+          });
+        }
+        if (window.difficultyName === 'hard' && window.timer === '60') {
+          const theBestHard60 = [
+            score1Hard60,
+            score2Hard60,
+            score3Hard60,
+            score4Hard60,
+            score5Hard60,
+          ];
+          theBestHard60.forEach((el) => {
+            if (+window.finalScore > +el) {
+              set(ref(db, `HARD-60-sec/${window.finalScore}`), {
+                hard60user: nicknameInput.value,
+                hard60score: window.finalScore,
+              })
+                .then(() => {
+                  showSuccess();
+                })
+                .catch((err) => {
+                  showError();
+                });
+            } else {
+              showSuccess();
+            }
+          });
+        }
+
+        //---------------------------------------------------HERO
+        if (window.difficultyName === 'hero') {
+          const theBestHero = [
+            score1Hero,
+            score2Hero,
+            score3Hero,
+            score4Hero,
+            score5Hero,
+          ];
+          theBestHero.forEach((el) => {
+            if (+window.finalScore > +el) {
+              set(ref(db, `HERO/${window.finalScore}`), {
+                heroUser: nicknameInput.value,
+                heroScore: window.finalScore,
+              })
+                .then(() => {
+                  showSuccess();
+                })
+                .catch((err) => {
+                  showError();
+                });
+            } else {
+              showSuccess();
+            }
+          });
+        }
+      }
+
+      function showSuccess() {
+        choiseSaveScoreGlobally.style.display = 'none';
+        nicknameInput.value = '';
+        saveaveScoreGlobally.style.display = 'none';
+        successSaveDb.style.display = 'inline-block';
+        document.getElementById('start').style.display = 'block';
+        setTimeout(() => {
+          successSaveDb.style.display = 'none';
+        }, 1500);
+        SelectData(); //richiamo la get per aggiornare i nuovi punteggi lato client
+      }
+      function showError() {
+        errorSaveDb.style.display = 'inline-block';
+        setTimeout(() => {
+          errorSaveDb.style.display = 'none';
+        }, 4000);
+      }
+
+      //-----------------------------------------------------------------------------------------GET DATA
+      function SelectData() {
+        const dbref = ref(db);
+        //---------------------------------------------------EASY
+        get(child(dbref, `EASY-30-sec/`)).then((snapshot) => {
+          const easy30Array = [];
+          snapshot.forEach((e) => {
+            easy30Array.push(e.val());
+          });
+          const easy30sorted = easy30Array.sort((a, b) => {
+            if (b.easy30score > a.easy30score) return 1;
+            if (a.easy30score > b.easy30score) return -1;
+            return 0;
+          });
+
+          easy30sorted.forEach((el, i) => {
+            const index = i + 1;
+
+            if (index === 1) {
+              document.getElementById('easy30-user1').innerHTML = el.easy30user;
+              document.getElementById(
+                'easy30-score1'
+              ).innerHTML = ` ${el.easy30score}`;
+            }
+            if (index === 2) {
+              document.getElementById('easy30-user2').innerHTML = el.easy30user;
+              document.getElementById(
+                'easy30-score2'
+              ).innerHTML = ` ${el.easy30score}`;
+            }
+            if (index === 3) {
+              document.getElementById('easy30-user3').innerHTML = el.easy30user;
+              document.getElementById(
+                'easy30-score3'
+              ).innerHTML = ` ${el.easy30score}`;
+            }
+            if (index === 4) {
+              document.getElementById('easy30-user4').innerHTML = el.easy30user;
+              document.getElementById(
+                'easy30-score4'
+              ).innerHTML = ` ${el.easy30score}`;
+            }
+            if (index === 5) {
+              document.getElementById('easy30-user5').innerHTML = el.easy30user;
+              document.getElementById(
+                'easy30-score5'
+              ).innerHTML = ` ${el.easy30score}`;
+            }
+          });
+        });
+
+        get(child(dbref, `EASY-60-sec/`)).then((snapshot) => {
+          const easy60Array = [];
+          snapshot.forEach((e) => {
+            easy60Array.push(e.val());
+          });
+          const easy60sorted = easy60Array.sort((a, b) => {
+            if (b.easy60score > a.easy60score) return 1;
+            if (a.easy60score > b.easy60score) return -1;
+            return 0;
+          });
+
+          easy60sorted.forEach((el, i) => {
+            const index = i + 1;
+
+            if (index === 1) {
+              document.getElementById('easy60-user1').innerHTML = el.easy60user;
+              document.getElementById(
+                'easy60-score1'
+              ).innerHTML = ` ${el.easy60score}`;
+            }
+            if (index === 2) {
+              document.getElementById('easy60-user2').innerHTML = el.easy60user;
+              document.getElementById(
+                'easy60-score2'
+              ).innerHTML = ` ${el.easy60score}`;
+            }
+            if (index === 3) {
+              document.getElementById('easy60-user3').innerHTML = el.easy60user;
+              document.getElementById(
+                'easy60-score3'
+              ).innerHTML = ` ${el.easy60score}`;
+            }
+            if (index === 4) {
+              document.getElementById('easy60-user4').innerHTML = el.easy60user;
+              document.getElementById(
+                'easy60-score4'
+              ).innerHTML = ` ${el.easy60score}`;
+            }
+            if (index === 5) {
+              document.getElementById('easy60-user5').innerHTML = el.easy60user;
+              document.getElementById(
+                'easy60-score5'
+              ).innerHTML = ` ${el.easy60score}`;
+            }
+          });
+        });
+        //---------------------------------------------------MEDIUM
+        get(child(dbref, `MEDIUM-30-sec/`)).then((snapshot) => {
+          const medium30Array = [];
+          snapshot.forEach((e) => {
+            medium30Array.push(e.val());
+          });
+          const medium30sorted = medium30Array.sort((a, b) => {
+            if (b.medium30score > a.medium30score) return 1;
+            if (a.medium30score > b.medium30score) return -1;
+            return 0;
+          });
+
+          medium30sorted.forEach((el, i) => {
+            const index = i + 1;
+
+            if (index === 1) {
+              document.getElementById('medium30-user1').innerHTML =
+                el.medium30user;
+              document.getElementById(
+                'medium30-score1'
+              ).innerHTML = ` ${el.medium30score}`;
+            }
+            if (index === 2) {
+              document.getElementById('medium30-user2').innerHTML =
+                el.medium30user;
+              document.getElementById(
+                'medium30-score2'
+              ).innerHTML = ` ${el.medium30score}`;
+            }
+            if (index === 3) {
+              document.getElementById('medium30-user3').innerHTML =
+                el.medium30user;
+              document.getElementById(
+                'medium30-score3'
+              ).innerHTML = ` ${el.medium30score}`;
+            }
+            if (index === 4) {
+              document.getElementById('medium30-user4').innerHTML =
+                el.medium30user;
+              document.getElementById(
+                'medium30-score4'
+              ).innerHTML = ` ${el.medium30score}`;
+            }
+            if (index === 5) {
+              document.getElementById('medium30-user5').innerHTML =
+                el.medium30user;
+              document.getElementById(
+                'medium30-score5'
+              ).innerHTML = ` ${el.medium30score}`;
+            }
+          });
+        });
+
+        get(child(dbref, `MEDIUM-60-sec/`)).then((snapshot) => {
+          const medium60Array = [];
+          snapshot.forEach((e) => {
+            medium60Array.push(e.val());
+          });
+          const medium60sorted = medium60Array.sort((a, b) => {
+            if (b.medium60score > a.medium60score) return 1;
+            if (a.medium60score > b.medium60score) return -1;
+            return 0;
+          });
+
+          medium60sorted.forEach((el, i) => {
+            const index = i + 1;
+
+            if (index === 1) {
+              document.getElementById('medium60-user1').innerHTML =
+                el.medium60user;
+              document.getElementById(
+                'medium60-score1'
+              ).innerHTML = ` ${el.medium60score}`;
+            }
+            if (index === 2) {
+              document.getElementById('medium60-user2').innerHTML =
+                el.medium60user;
+              document.getElementById(
+                'medium60-score2'
+              ).innerHTML = ` ${el.medium60score}`;
+            }
+            if (index === 3) {
+              document.getElementById('medium60-user3').innerHTML =
+                el.medium60user;
+              document.getElementById(
+                'medium60-score3'
+              ).innerHTML = ` ${el.medium60score}`;
+            }
+            if (index === 4) {
+              document.getElementById('medium60-user4').innerHTML =
+                el.medium60user;
+              document.getElementById(
+                'medium60-score4'
+              ).innerHTML = ` ${el.medium60score}`;
+            }
+            if (index === 5) {
+              document.getElementById('medium60-user5').innerHTML =
+                el.medium60user;
+              document.getElementById(
+                'medium60-score5'
+              ).innerHTML = ` ${el.medium60score}`;
+            }
+          });
+        });
+
+        //---------------------------------------------------HARD
+        get(child(dbref, `HARD-30-sec/`)).then((snapshot) => {
+          const hard30Array = [];
+          snapshot.forEach((e) => {
+            hard30Array.push(e.val());
+          });
+          const hard30sorted = hard30Array.sort((a, b) => {
+            if (b.hard30score > a.hard30score) return 1;
+            if (a.hard30score > b.hard30score) return -1;
+            return 0;
+          });
+
+          hard30sorted.forEach((el, i) => {
+            const index = i + 1;
+
+            if (index === 1) {
+              document.getElementById('hard30-user1').innerHTML = el.hard30user;
+              document.getElementById(
+                'hard30-score1'
+              ).innerHTML = ` ${el.hard30score}`;
+            }
+            if (index === 2) {
+              document.getElementById('hard30-user2').innerHTML = el.hard30user;
+              document.getElementById(
+                'hard30-score2'
+              ).innerHTML = ` ${el.hard30score}`;
+            }
+            if (index === 3) {
+              document.getElementById('hard30-user3').innerHTML = el.hard30user;
+              document.getElementById(
+                'hard30-score3'
+              ).innerHTML = ` ${el.hard30score}`;
+            }
+            if (index === 4) {
+              document.getElementById('hard30-user4').innerHTML = el.hard30user;
+              document.getElementById(
+                'hard30-score4'
+              ).innerHTML = ` ${el.hard30score}`;
+            }
+            if (index === 5) {
+              document.getElementById('hard30-user5').innerHTML = el.hard30user;
+              document.getElementById(
+                'hard30-score5'
+              ).innerHTML = ` ${el.hard30score}`;
+            }
+          });
+        });
+
+        get(child(dbref, `HARD-60-sec/`)).then((snapshot) => {
+          const hard60Array = [];
+          snapshot.forEach((e) => {
+            hard60Array.push(e.val());
+          });
+          const hard60sorted = hard60Array.sort((a, b) => {
+            if (b.hard60score > a.hard60score) return 1;
+            if (a.hard60score > b.hard60score) return -1;
+            return 0;
+          });
+
+          hard60sorted.forEach((el, i) => {
+            const index = i + 1;
+
+            if (index === 1) {
+              document.getElementById('hard60-user1').innerHTML = el.hard60user;
+              document.getElementById(
+                'hard60-score1'
+              ).innerHTML = ` ${el.hard60score}`;
+            }
+            if (index === 2) {
+              document.getElementById('hard60-user2').innerHTML = el.hard60user;
+              document.getElementById(
+                'hard60-score2'
+              ).innerHTML = ` ${el.hard60score}`;
+            }
+            if (index === 3) {
+              document.getElementById('hard60-user3').innerHTML = el.hard60user;
+              document.getElementById(
+                'hard60-score3'
+              ).innerHTML = ` ${el.hard60score}`;
+            }
+            if (index === 4) {
+              document.getElementById('hard60-user4').innerHTML = el.hard60user;
+              document.getElementById(
+                'hard60-score4'
+              ).innerHTML = ` ${el.hard60score}`;
+            }
+            if (index === 5) {
+              document.getElementById('hard60-user5').innerHTML = el.hard60user;
+              document.getElementById(
+                'hard60-score5'
+              ).innerHTML = ` ${el.hard60score}`;
+            }
+          });
+        });
+
+        //--------------------------------------------------------HERO
+        get(child(dbref, `HERO/`)).then((snapshot) => {
+          const heroArray = [];
+          snapshot.forEach((e) => {
+            heroArray.push(e.val());
+          });
+          const heroSorted = heroArray.sort((a, b) => {
+            if (b.heroScore > a.heroScore) return 1;
+            if (a.heroScore > b.heroScore) return -1;
+            return 0;
+          });
+
+          heroSorted.forEach((el, i) => {
+            const index = i + 1;
+
+            if (index === 1) {
+              document.getElementById('hero-user1').innerHTML = el.heroUser;
+              document.getElementById(
+                'hero-score1'
+              ).innerHTML = ` ${el.heroScore}`;
+            }
+            if (index === 2) {
+              document.getElementById('hero-user2').innerHTML = el.heroUser;
+              document.getElementById(
+                'hero-score2'
+              ).innerHTML = ` ${el.heroScore}`;
+            }
+            if (index === 3) {
+              document.getElementById('hero-user3').innerHTML = el.heroUser;
+              document.getElementById(
+                'hero-score3'
+              ).innerHTML = ` ${el.heroScore}`;
+            }
+            if (index === 4) {
+              document.getElementById('hero-user4').innerHTML = el.heroUser;
+              document.getElementById(
+                'hero-score4'
+              ).innerHTML = ` ${el.heroScore}`;
+            }
+            if (index === 5) {
+              document.getElementById('hero-user5').innerHTML = el.heroUser;
+              document.getElementById(
+                'hero-score5'
+              ).innerHTML = ` ${el.heroScore}`;
+            }
+          });
+        });
+      }
+
+      //DeleteData();
+      /* function DeleteData(params) {
+        const dbref = ref(db);
+        //---------------------------------------------------EASY
+        get(child(dbref, `EASY-30-sec/`)).then((snapshot) => {
+          const easy30Array = [];
+          snapshot.forEach((e) => {
+            easy30Array.push(e.val());
+          });
+          const easy30withoutFirst5 = easy30Array
+            .sort((a, b) => {
+              if (b.easy30score > a.easy30score) return 1;
+              if (a.easy30score > b.easy30score) return -1;
+              return 0;
+            })
+            .splice(5);
+          easy30withoutFirst5.forEach((el) => {
+            // console.log(el.easy30score);
+            remove(el.easy30score);
+          });
+        });
+      } */
+
+      saveGlobalScoreBtn.addEventListener('click', InsertData);
+      saveGlobalScoreBtn.addEventListener('keypress', function (e) {
+        if (e.keyCode === 13) InsertData();
+      });
+    </script>
   </body>
 </html>

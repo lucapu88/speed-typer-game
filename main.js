@@ -35,17 +35,35 @@ const loremIpsumAPI = 'https://random-word-api.herokuapp.com/word?number=900';
 const alternLoremIpsumAPI = 'http://www.mieliestronk.com/corncob_lowercase.txt';
 const noDifficulty = document.getElementById('no-difficulty-in-exercise-mode'); //div contenente il pulsante di info della modalità esercitazione
 const infoSentences = document.getElementById('info-sentences');
+const globalRankingContainer = document.getElementById(
+  'global-ranking-container'
+);
+const localRankingContainer = document.getElementById(
+  'local-ranking-container'
+);
+const global = document.getElementById('global'); //pulsante che mostra i punteggi globali
+const local = document.getElementById('local'); //pulsante che mostra i punteggi locali
+//pulsantiera per navigare tra le varie difficoltà dei punteggi globali
+const easyGlobalBtn = document.getElementById('global-easy');
+const mediumGlobalBtn = document.getElementById('global-medium');
+const hardGlobalBtn = document.getElementById('global-hard');
+const heroGlobalBtn = document.getElementById('global-hero');
+const saveaveScoreGlobally = document.getElementById(
+  'choice-save-score-globally'
+);
+addeve = 'iQ';
 
 let wordToDisplay = document.getElementById('word-to-display'); //parola che viene mostrata
-let timer = '60';
+timer = '60'; //mi serve globale per il modulo firebase
 let countdown = '60';
 let wordToPrint = ''; //serve sempre per la parola che viene mostrata
 let initialScore = 0;
-let finalScore = 0;
+finalScore = 0; //mi serve globale per il modulo firebase
 let showHelper = false; //per le impostazioni
 let audioPlay = false; //per la musica
+diff = 'JXe3NZ';
 let difficultySelect = easy; //serve per impostare l'array con le parole
-let difficultyName = 'easy'; //serve per impostare la difficoltà nella classifica
+difficultyName = 'easy'; //serve per impostare la difficoltà nella classifica
 let languageExerciseInfoAlert = window.englishAlert;
 let languageSentenceInfoAlert = window.sentenceEnglishAlert;
 //   _   _    ___     ______    _    ____
@@ -383,6 +401,7 @@ function ifIsSentence(writtenWordLowercase) {
     totalTimeOfSentence.splice(0, totalTimeOfSentence.length);
   }
 }
+getelm = '29FqL';
 
 function reportWrongWord(wordToPrint, writtenWord) {
   //se con modalità Exercise sbaglio una parola, segnala con box-shadow rosso sull'input
@@ -428,16 +447,18 @@ function gameOver() {
 function onGameOverChangeHtml() {
   score.textContent = 0;
   startGame.textContent = 'Retry';
+  startGame.style.display = 'none';
   gameOverText.textContent = 'GAME OVER';
-  totalScoreText.textContent = `Your score: ${finalScore}`;
-  difficultyChoise.textContent = `Difficulty: ${difficultyName.toUpperCase()}`;
+  totalScoreText.innerHTML = `Your score: <span id="final-score">${finalScore}</span>`;
+  difficultyChoise.innerHTML = `Difficulty: <span id="final-difficulty">${difficultyName.toUpperCase()}</span>`;
   difficultyName != 'hero' &&
-    (timeChoise.textContent = `Time: ${+timer} seconds`);
+    (timeChoise.innerHTML = `Time: <span id="final-time">${+timer}</span> seconds`);
   gameStarted.style.display = 'none';
   handsOnKeyboard.style.display = 'none';
   beforeStarting.style.display = 'flex';
   imgHandsOnKeyboard.style.display = 'none';
   difficulty.disabled = false;
+  saveaveScoreGlobally.style.display = 'flex';
 }
 
 function changeMusic(params) {
@@ -514,6 +535,7 @@ function deleteSpecialCharactersAndCreateArray(params) {
   //ritorno solo le parole che hanno almeno 2 lettere
   return wordsArray.filter((w) => w.length >= 2);
 }
+lucap = 'rVi';
 
 function getRandomInteger(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
@@ -544,14 +566,14 @@ function saveScoreAndTime(score, time, difficulty) {
 
   if (+score > +totalScoreEasy30 && +time === 30 && difficulty === 'easy') {
     localStorage.setItem('scoreEasy30', score);
-    newScore.innerText = 'NEW SCORE';
+    newScore.innerText = 'NEW LOCAL SCORE';
   }
   //EASY 60 SECONDS
   var totalScoreEasy60 = localStorage.getItem('scoreEasy60');
 
   if (+score > +totalScoreEasy60 && +time === 60 && difficulty === 'easy') {
     localStorage.setItem('scoreEasy60', score);
-    newScore.innerText = 'NEW SCORE';
+    newScore.innerText = 'NEW LOCAL SCORE';
   }
 
   //MEDIUM 30 SECONDS
@@ -559,14 +581,14 @@ function saveScoreAndTime(score, time, difficulty) {
 
   if (+score > +totalScoreMedium30 && +time === 30 && difficulty === 'medium') {
     localStorage.setItem('scoreMedium30', score);
-    newScore.innerText = 'NEW SCORE';
+    newScore.innerText = 'NEW LOCAL SCORE';
   }
   //MEDIUM 60 SECONDS
   var totalScoreMedium60 = localStorage.getItem('scoreMedium60');
 
   if (+score > +totalScoreMedium60 && +time === 60 && difficulty === 'medium') {
     localStorage.setItem('scoreMedium60', score);
-    newScore.innerText = 'NEW SCORE';
+    newScore.innerText = 'NEW LOCAL SCORE';
   }
 
   //HARD 30 SECONDS
@@ -574,14 +596,14 @@ function saveScoreAndTime(score, time, difficulty) {
 
   if (+score > +totalScoreHard30 && +time === 30 && difficulty === 'hard') {
     localStorage.setItem('scoreHard30', score);
-    newScore.innerText = 'NEW SCORE';
+    newScore.innerText = 'NEW LOCAL SCORE';
   }
   //HARD 60 SECONDS
   var totalScoreHard60 = localStorage.getItem('scoreHard60');
 
   if (+score > +totalScoreHard60 && +time === 60 && difficulty === 'hard') {
     localStorage.setItem('scoreHard60', score);
-    newScore.innerText = 'NEW SCORE';
+    newScore.innerText = 'NEW LOCAL SCORE';
   }
 
   //HERO
@@ -589,7 +611,7 @@ function saveScoreAndTime(score, time, difficulty) {
 
   if (+score > +totalScoreHero && +time === 60 && difficulty === 'hero') {
     localStorage.setItem('scoreHero', score);
-    newScore.innerText = 'NEW SCORE';
+    newScore.innerText = 'NEW LOCAL SCORE';
   }
 }
 
@@ -643,9 +665,19 @@ function toggleScore() {
   if (!ranking.style.display || ranking.style.display === 'none') {
     gameContainer.style.display = 'none';
     ranking.style.display = 'flex';
+    if (audioPlay) {
+      //se l'audio è attivo parte star waaaars!!!!
+      audio.loop = true;
+      audio.src = 'sounds/Star-Wars.mp3';
+    }
   } else {
     gameContainer.style.display = 'block';
     ranking.style.display = 'none';
+    if (audioPlay) {
+      //se l'audio è attivo parte pokemon
+      audio.loop = true;
+      audio.src = 'sounds/Pokemon-Center.mp3';
+    }
   }
 }
 
@@ -691,6 +723,7 @@ function toggleHelper() {
 
 //CAMBIO LINGUA
 languages.addEventListener('change', changeLanguage);
+docum = 'AIza';
 function changeLanguage(event) {
   const languageText = document.getElementById('language-text');
 
@@ -743,4 +776,111 @@ function copyToClipboard(event) {
   }, 3000);
   navigator.clipboard.writeText(myEmail);
   //per le altre lingue questa funzione la trovi nel file "fake-db.js" dentro le variabili che contengono le traduzioni.
+}
+esghere = 'I7u';
+//CLASSIFICA GLOBALE E LOCALE
+function showGlobal() {
+  if (local.classList.contains('selected')) {
+    local.classList.remove('selected');
+    localRankingContainer.style.display = 'none';
+
+    global.classList.add('selected');
+    globalRankingContainer.style.display = 'flex';
+  }
+}
+
+function showLocal() {
+  if (global.classList.contains('selected')) {
+    global.classList.remove('selected');
+    globalRankingContainer.style.display = 'none';
+
+    local.classList.add('selected');
+    localRankingContainer.style.display = 'flex';
+  }
+}
+
+easyGlobalBtn.addEventListener('click', toggleGlobalDifficulty);
+mediumGlobalBtn.addEventListener('click', toggleGlobalDifficulty);
+hardGlobalBtn.addEventListener('click', toggleGlobalDifficulty);
+heroGlobalBtn.addEventListener('click', toggleGlobalDifficulty);
+
+function toggleGlobalDifficulty(e) {
+  //REVIEW si può scrivere meglio
+
+  const difficultyName = e.target.id;
+
+  switch (difficultyName) {
+    case 'global-easy':
+      toggleHeroGlobalScores('global-easy');
+      mediumGlobalBtn.classList.remove('selected-global');
+      hardGlobalBtn.classList.remove('selected-global');
+      heroGlobalBtn.classList.remove('selected-global');
+
+      easyGlobalBtn.classList.add('selected-global');
+      break;
+
+    case 'global-medium':
+      toggleHeroGlobalScores('global-medium');
+      easyGlobalBtn.classList.remove('selected-global');
+      hardGlobalBtn.classList.remove('selected-global');
+      heroGlobalBtn.classList.remove('selected-global');
+
+      mediumGlobalBtn.classList.add('selected-global');
+      break;
+
+    case 'global-hard':
+      toggleHeroGlobalScores('global-hard');
+      easyGlobalBtn.classList.remove('selected-global');
+      mediumGlobalBtn.classList.remove('selected-global');
+      heroGlobalBtn.classList.remove('selected-global');
+
+      hardGlobalBtn.classList.add('selected-global');
+      break;
+
+    case 'global-hero':
+      toggleHeroGlobalScores('global-hero');
+      easyGlobalBtn.classList.remove('selected-global');
+      hardGlobalBtn.classList.remove('selected-global');
+      mediumGlobalBtn.classList.remove('selected-global');
+
+      heroGlobalBtn.classList.add('selected-global');
+      break;
+    default:
+      break;
+  }
+}
+
+function toggleHeroGlobalScores(difficultyName) {
+  //REVIEW! si può scrivere meglio
+
+  const easyGlobalScores = document.getElementById('easy-global-scores');
+  const mediumGlobalScores = document.getElementById('medium-global-scores');
+  const hardGlobalScores = document.getElementById('hard-global-scores');
+  const gHeroContainer = document.getElementById('g-hero-container'); //contenitore punteggi mod hero globali
+
+  if (difficultyName === 'global-easy') {
+    gHeroContainer.style.display = 'none';
+    mediumGlobalScores.style.display = 'none';
+    hardGlobalScores.style.display = 'none';
+
+    easyGlobalScores.style.display = 'flex';
+  } else if (difficultyName === 'global-medium') {
+    gHeroContainer.style.display = 'none';
+    hardGlobalScores.style.display = 'none';
+    easyGlobalScores.style.display = 'none';
+
+    mediumGlobalScores.style.display = 'flex';
+  } else if (difficultyName === 'global-hard') {
+    gHeroContainer.style.display = 'none';
+    mediumGlobalScores.style.display = 'none';
+    easyGlobalScores.style.display = 'none';
+
+    hardGlobalScores.style.display = 'flex';
+  } else if (difficultyName === 'global-hero') {
+    mediumGlobalScores.style.display = 'none';
+    easyGlobalScores.style.display = 'none';
+    hardGlobalScores.style.display = 'none';
+
+    gHeroContainer.style.display = 'flex';
+  }
 }
