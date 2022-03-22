@@ -73,7 +73,7 @@
                 class="nickname"
                 placeholder="Insert a NickName and click save"
               />
-              <button id="save-global-score">Save</button>
+              <button id="save-global-score" disabled>Save</button>
             </div>
           </div>
           <h1 class="success-save-db" id="success-save-db">Saved</h1>
@@ -570,188 +570,190 @@
 
       //-----------------------------------------------------------------------------------------SAVE DATA
       function InsertData() {
-        //---------------------------------------------------EASY
-        if (window.difficultyName === 'easy' && window.timer === '30') {
-          const theBest5Easy30 = [
-            score1Easy30,
-            score2Easy30,
-            score3Easy30,
-            score4Easy30,
-            score5Easy30,
-          ];
-          theBest5Easy30.forEach((el) => {
-            //se il punteggio finale è superiore ad uno dei punteggi già presenti, lo salvo nel DB
-            if (+window.finalScore > +el) {
-              set(ref(db, `EASY-30-sec/${window.finalScore}`), {
-                easy30user: nicknameInput.value,
-                easy30score: window.finalScore,
-              })
-                .then(() => {
-                  showSuccess();
+        if (+window.finalScore < 500) {
+          //---------------------------------------------------EASY
+          if (window.difficultyName === 'easy' && window.timer === '30') {
+            const theBest5Easy30 = [
+              score1Easy30,
+              score2Easy30,
+              score3Easy30,
+              score4Easy30,
+              score5Easy30,
+            ];
+            theBest5Easy30.forEach((el) => {
+              //se il punteggio finale è superiore ad uno dei punteggi già presenti, lo salvo nel DB
+              if (+window.finalScore > +el) {
+                set(ref(db, `EASY-30-sec/${window.finalScore}`), {
+                  easy30user: nicknameInput.value,
+                  easy30score: window.finalScore,
                 })
-                .catch((err) => {
-                  showError();
-                });
-            } else {
-              showSuccess();
-            }
-          });
-        }
-        if (window.difficultyName === 'easy' && window.timer === '60') {
-          const theBest5Easy60 = [
-            score1Easy60,
-            score2Easy60,
-            score3Easy60,
-            score4Easy60,
-            score5Easy60,
-          ];
-          theBest5Easy60.forEach((el) => {
-            if (+window.finalScore > +el) {
-              set(ref(db, `EASY-60-sec/${window.finalScore}`), {
-                easy60user: nicknameInput.value,
-                easy60score: window.finalScore,
-              })
-                .then(() => {
-                  showSuccess();
+                  .then(() => {
+                    showSuccess();
+                  })
+                  .catch((err) => {
+                    showError();
+                  });
+              } else {
+                showSuccess();
+              }
+            });
+          }
+          if (window.difficultyName === 'easy' && window.timer === '60') {
+            const theBest5Easy60 = [
+              score1Easy60,
+              score2Easy60,
+              score3Easy60,
+              score4Easy60,
+              score5Easy60,
+            ];
+            theBest5Easy60.forEach((el) => {
+              if (+window.finalScore > +el) {
+                set(ref(db, `EASY-60-sec/${window.finalScore}`), {
+                  easy60user: nicknameInput.value,
+                  easy60score: window.finalScore,
                 })
-                .catch((err) => {
-                  showError();
-                });
-            } else {
-              showSuccess();
-            }
-          });
-        }
+                  .then(() => {
+                    showSuccess();
+                  })
+                  .catch((err) => {
+                    showError();
+                  });
+              } else {
+                showSuccess();
+              }
+            });
+          }
 
-        //---------------------------------------------------MEDIUM
-        if (window.difficultyName === 'medium' && window.timer === '30') {
-          const theBestMedium30 = [
-            score1Med30,
-            score2Med30,
-            score3Med30,
-            score4Med30,
-            score5Med30,
-          ];
-          theBestMedium30.forEach((el) => {
-            if (+window.finalScore > +el) {
-              set(ref(db, `MEDIUM-30-sec/${window.finalScore}`), {
-                medium30user: nicknameInput.value,
-                medium30score: window.finalScore,
-              })
-                .then(() => {
-                  showSuccess();
+          //---------------------------------------------------MEDIUM
+          if (window.difficultyName === 'medium' && window.timer === '30') {
+            const theBestMedium30 = [
+              score1Med30,
+              score2Med30,
+              score3Med30,
+              score4Med30,
+              score5Med30,
+            ];
+            theBestMedium30.forEach((el) => {
+              if (+window.finalScore > +el) {
+                set(ref(db, `MEDIUM-30-sec/${window.finalScore}`), {
+                  medium30user: nicknameInput.value,
+                  medium30score: window.finalScore,
                 })
-                .catch((err) => {
-                  showError();
-                });
-            } else {
-              showSuccess();
-            }
-          });
-        }
-        if (window.difficultyName === 'medium' && window.timer === '60') {
-          const theBestMedium60 = [
-            score1Med60,
-            score2Med60,
-            score3Med60,
-            score4Med60,
-            score5Med60,
-          ];
-          theBestMedium60.forEach((el) => {
-            if (+window.finalScore > +el) {
-              set(ref(db, `MEDIUM-60-sec/${window.finalScore}`), {
-                medium60user: nicknameInput.value,
-                medium60score: window.finalScore,
-              })
-                .then(() => {
-                  showSuccess();
+                  .then(() => {
+                    showSuccess();
+                  })
+                  .catch((err) => {
+                    showError();
+                  });
+              } else {
+                showSuccess();
+              }
+            });
+          }
+          if (window.difficultyName === 'medium' && window.timer === '60') {
+            const theBestMedium60 = [
+              score1Med60,
+              score2Med60,
+              score3Med60,
+              score4Med60,
+              score5Med60,
+            ];
+            theBestMedium60.forEach((el) => {
+              if (+window.finalScore > +el) {
+                set(ref(db, `MEDIUM-60-sec/${window.finalScore}`), {
+                  medium60user: nicknameInput.value,
+                  medium60score: window.finalScore,
                 })
-                .catch((err) => {
-                  showError();
-                });
-            } else {
-              showSuccess();
-            }
-          });
-        }
+                  .then(() => {
+                    showSuccess();
+                  })
+                  .catch((err) => {
+                    showError();
+                  });
+              } else {
+                showSuccess();
+              }
+            });
+          }
 
-        //---------------------------------------------------HARD
-        if (window.difficultyName === 'hard' && window.timer === '30') {
-          const theBestHard30 = [
-            score1Hard30,
-            score2Hard30,
-            score3Hard30,
-            score4Hard30,
-            score5Hard30,
-          ];
-          theBestHard30.forEach((el) => {
-            if (+window.finalScore > +el) {
-              set(ref(db, `HARD-30-sec/${window.finalScore}`), {
-                hard30user: nicknameInput.value,
-                hard30score: window.finalScore,
-              })
-                .then(() => {
-                  showSuccess();
+          //---------------------------------------------------HARD
+          if (window.difficultyName === 'hard' && window.timer === '30') {
+            const theBestHard30 = [
+              score1Hard30,
+              score2Hard30,
+              score3Hard30,
+              score4Hard30,
+              score5Hard30,
+            ];
+            theBestHard30.forEach((el) => {
+              if (+window.finalScore > +el) {
+                set(ref(db, `HARD-30-sec/${window.finalScore}`), {
+                  hard30user: nicknameInput.value,
+                  hard30score: window.finalScore,
                 })
-                .catch((err) => {
-                  showError();
-                });
-            } else {
-              showSuccess();
-            }
-          });
-        }
-        if (window.difficultyName === 'hard' && window.timer === '60') {
-          const theBestHard60 = [
-            score1Hard60,
-            score2Hard60,
-            score3Hard60,
-            score4Hard60,
-            score5Hard60,
-          ];
-          theBestHard60.forEach((el) => {
-            if (+window.finalScore > +el) {
-              set(ref(db, `HARD-60-sec/${window.finalScore}`), {
-                hard60user: nicknameInput.value,
-                hard60score: window.finalScore,
-              })
-                .then(() => {
-                  showSuccess();
+                  .then(() => {
+                    showSuccess();
+                  })
+                  .catch((err) => {
+                    showError();
+                  });
+              } else {
+                showSuccess();
+              }
+            });
+          }
+          if (window.difficultyName === 'hard' && window.timer === '60') {
+            const theBestHard60 = [
+              score1Hard60,
+              score2Hard60,
+              score3Hard60,
+              score4Hard60,
+              score5Hard60,
+            ];
+            theBestHard60.forEach((el) => {
+              if (+window.finalScore > +el) {
+                set(ref(db, `HARD-60-sec/${window.finalScore}`), {
+                  hard60user: nicknameInput.value,
+                  hard60score: window.finalScore,
                 })
-                .catch((err) => {
-                  showError();
-                });
-            } else {
-              showSuccess();
-            }
-          });
-        }
+                  .then(() => {
+                    showSuccess();
+                  })
+                  .catch((err) => {
+                    showError();
+                  });
+              } else {
+                showSuccess();
+              }
+            });
+          }
 
-        //---------------------------------------------------HERO
-        if (window.difficultyName === 'hero') {
-          const theBestHero = [
-            score1Hero,
-            score2Hero,
-            score3Hero,
-            score4Hero,
-            score5Hero,
-          ];
-          theBestHero.forEach((el) => {
-            if (+window.finalScore > +el) {
-              set(ref(db, `HERO/${window.finalScore}`), {
-                heroUser: nicknameInput.value,
-                heroScore: window.finalScore,
-              })
-                .then(() => {
-                  showSuccess();
+          //---------------------------------------------------HERO
+          if (window.difficultyName === 'hero') {
+            const theBestHero = [
+              score1Hero,
+              score2Hero,
+              score3Hero,
+              score4Hero,
+              score5Hero,
+            ];
+            theBestHero.forEach((el) => {
+              if (+window.finalScore > +el) {
+                set(ref(db, `HERO/${window.finalScore}`), {
+                  heroUser: nicknameInput.value,
+                  heroScore: window.finalScore,
                 })
-                .catch((err) => {
-                  showError();
-                });
-            } else {
-              showSuccess();
-            }
-          });
+                  .then(() => {
+                    showSuccess();
+                  })
+                  .catch((err) => {
+                    showError();
+                  });
+              } else {
+                showSuccess();
+              }
+            });
+          }
         }
       }
 
@@ -1145,6 +1147,16 @@
       saveGlobalScoreBtn.addEventListener('click', InsertData);
       saveGlobalScoreBtn.addEventListener('keypress', function (e) {
         if (e.keyCode === 13) InsertData();
+      }); //REVIEW: non funziona
+
+      nicknameInput.addEventListener('keyup', (event) => {
+        if (event.target.value.length) {
+          saveGlobalScoreBtn.disabled = false;
+          saveGlobalScoreBtn.style.backgroundColor = 'rgb(61, 214, 0)';
+        } else {
+          saveGlobalScoreBtn.disabled = true;
+          saveGlobalScoreBtn.style.backgroundColor = 'rgb(128, 128, 128)';
+        }
       });
     </script>
   </body>

@@ -116,6 +116,7 @@ button {
 }
 .insert-nickname > button {
   width: 85px;
+  background-color: rgb(128, 128, 128);
 }
 
 .game-started {
