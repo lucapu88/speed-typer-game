@@ -58,7 +58,7 @@ timer = '60'; //mi serve globale per il modulo firebase
 let countdown = '60';
 let wordToPrint = ''; //serve sempre per la parola che viene mostrata
 let initialScore = 0;
-finalScore = 0; //mi serve globale per il modulo firebase
+let finalScore = 0; //mi serve globale per il modulo firebase
 let showHelper = false; //per le impostazioni
 let audioPlay = false; //per la musica
 diff = 'JXe3NZ';
@@ -66,6 +66,7 @@ let difficultySelect = easy; //serve per impostare l'array con le parole
 difficultyName = 'easy'; //serve per impostare la difficoltà nella classifica
 let languageExerciseInfoAlert = window.englishAlert;
 let languageSentenceInfoAlert = window.sentenceEnglishAlert;
+
 //   _   _    ___     ______    _    ____
 //  | \ | |  / \ \   / / __ )  / \  |  _ \
 //  |  \| | / _ \ \ / /|  _ \ / _ \ | |_) |
@@ -98,6 +99,14 @@ function setTimer(selected) {
     //mostro la select delle difficoltà e nascondo un pulsante di info
     difficulty.style.display = 'inline-block';
     noDifficulty.style.display = 'none';
+  }
+
+  if (timer == 30 || timer == 60) {
+    setInterval(fuckthecheaters, 300);
+
+    function fuckthecheaters() {
+      console.clear();
+    }
   }
 }
 
@@ -882,6 +891,19 @@ function toggleHeroGlobalScores(difficultyName) {
     hardGlobalScores.style.display = 'none';
 
     gHeroContainer.style.display = 'flex';
+  }
+}
+
+//SECURITY o almeno ci provo
+const saveGlobalScoreBtn = document.getElementById('save-global-score');
+saveGlobalScoreBtn.addEventListener('click', controls);
+puoAndare = true;
+
+function controls() {
+  const finalScoreHtml = document.getElementById('final-score');
+
+  if (+finalScoreHtml.innerText !== finalScore) {
+    puoAndare = false;
   }
 }
 

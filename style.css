@@ -104,6 +104,10 @@ button {
   padding: 5px;
 }
 
+.save-your-score {
+  color: rgb(255, 255, 255);
+}
+
 .insert-nickname {
   display: flex;
   flex-direction: column;

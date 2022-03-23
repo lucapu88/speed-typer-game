@@ -64,7 +64,9 @@
             class="choice-save-score-globally"
             id="choice-save-score-globally"
           >
-            <p>Save your score in the global ranking.</p>
+            <p class="save-your-score">
+              Save your score in the global ranking.
+            </p>
             <div class="insert-nickname" id="insert-nickname">
               <p class="error-retry" id="error-retry">Error: retry!</p>
               <input
@@ -483,277 +485,282 @@
       } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-database.js';
 
       const db = getDatabase();
+      const limit = 250;
       //REVIEW: tutta sta merda da qui sotto in poi va semplificata, se possibile.
 
       //EASY 30
-      const user1Easy30 = document.getElementById('easy30-user1').innerHTML;
-      const user2Easy30 = document.getElementById('easy30-user2').innerHTML;
-      const user3Easy30 = document.getElementById('easy30-user3').innerHTML;
-      const user4Easy30 = document.getElementById('easy30-user4').innerHTML;
-      const user5Easy30 = document.getElementById('easy30-user5').innerHTML;
-      const score1Easy30 = document.getElementById('easy30-score1').innerHTML;
-      const score2Easy30 = document.getElementById('easy30-score2').innerHTML;
-      const score3Easy30 = document.getElementById('easy30-score3').innerHTML;
-      const score4Easy30 = document.getElementById('easy30-score4').innerHTML;
-      const score5Easy30 = document.getElementById('easy30-score5').innerHTML;
+      const user1Easy30 = document.getElementById('easy30-user1').innerText;
+      const user2Easy30 = document.getElementById('easy30-user2').innerText;
+      const user3Easy30 = document.getElementById('easy30-user3').innerText;
+      const user4Easy30 = document.getElementById('easy30-user4').innerText;
+      const user5Easy30 = document.getElementById('easy30-user5').innerText;
+      const score1Easy30 = document.getElementById('easy30-score1').innerText;
+      const score2Easy30 = document.getElementById('easy30-score2').innerText;
+      const score3Easy30 = document.getElementById('easy30-score3').innerText;
+      const score4Easy30 = document.getElementById('easy30-score4').innerText;
+      const score5Easy30 = document.getElementById('easy30-score5').innerText;
       //EASY 60
-      const user1Easy60 = document.getElementById('easy60-user1').innerHTML;
-      const user2Easy60 = document.getElementById('easy60-user2').innerHTML;
-      const user3Easy60 = document.getElementById('easy60-user3').innerHTML;
-      const user4Easy60 = document.getElementById('easy60-user4').innerHTML;
-      const user5Easy60 = document.getElementById('easy60-user5').innerHTML;
-      const score1Easy60 = document.getElementById('easy60-score1').innerHTML;
-      const score2Easy60 = document.getElementById('easy60-score2').innerHTML;
-      const score3Easy60 = document.getElementById('easy60-score3').innerHTML;
-      const score4Easy60 = document.getElementById('easy60-score4').innerHTML;
-      const score5Easy60 = document.getElementById('easy60-score5').innerHTML;
+      const user1Easy60 = document.getElementById('easy60-user1').innerText;
+      const user2Easy60 = document.getElementById('easy60-user2').innerText;
+      const user3Easy60 = document.getElementById('easy60-user3').innerText;
+      const user4Easy60 = document.getElementById('easy60-user4').innerText;
+      const user5Easy60 = document.getElementById('easy60-user5').innerText;
+      const score1Easy60 = document.getElementById('easy60-score1').innerText;
+      const score2Easy60 = document.getElementById('easy60-score2').innerText;
+      const score3Easy60 = document.getElementById('easy60-score3').innerText;
+      const score4Easy60 = document.getElementById('easy60-score4').innerText;
+      const score5Easy60 = document.getElementById('easy60-score5').innerText;
 
       //MEDIUM 30
-      const user1Med30 = document.getElementById('medium30-user1').innerHTML;
-      const user2Med30 = document.getElementById('medium30-user2').innerHTML;
-      const user3Med30 = document.getElementById('medium30-user3').innerHTML;
-      const user4Med30 = document.getElementById('medium30-user4').innerHTML;
-      const user5Med30 = document.getElementById('medium30-user5').innerHTML;
-      const score1Med30 = document.getElementById('medium30-score1').innerHTML;
-      const score2Med30 = document.getElementById('medium30-score2').innerHTML;
-      const score3Med30 = document.getElementById('medium30-score3').innerHTML;
-      const score4Med30 = document.getElementById('medium30-score4').innerHTML;
-      const score5Med30 = document.getElementById('medium30-score5').innerHTML;
+      const user1Med30 = document.getElementById('medium30-user1').innerText;
+      const user2Med30 = document.getElementById('medium30-user2').innerText;
+      const user3Med30 = document.getElementById('medium30-user3').innerText;
+      const user4Med30 = document.getElementById('medium30-user4').innerText;
+      const user5Med30 = document.getElementById('medium30-user5').innerText;
+      const score1Med30 = document.getElementById('medium30-score1').innerText;
+      const score2Med30 = document.getElementById('medium30-score2').innerText;
+      const score3Med30 = document.getElementById('medium30-score3').innerText;
+      const score4Med30 = document.getElementById('medium30-score4').innerText;
+      const score5Med30 = document.getElementById('medium30-score5').innerText;
       //MEDIUM 60
-      const user1Med60 = document.getElementById('medium60-user1').innerHTML;
-      const user2Med60 = document.getElementById('medium60-user2').innerHTML;
-      const user3Med60 = document.getElementById('medium60-user3').innerHTML;
-      const user4Med60 = document.getElementById('medium60-user4').innerHTML;
-      const user5Med60 = document.getElementById('medium60-user5').innerHTML;
-      const score1Med60 = document.getElementById('medium60-score1').innerHTML;
-      const score2Med60 = document.getElementById('medium60-score2').innerHTML;
-      const score3Med60 = document.getElementById('medium60-score3').innerHTML;
-      const score4Med60 = document.getElementById('medium60-score4').innerHTML;
-      const score5Med60 = document.getElementById('medium60-score5').innerHTML;
+      const user1Med60 = document.getElementById('medium60-user1').innerText;
+      const user2Med60 = document.getElementById('medium60-user2').innerText;
+      const user3Med60 = document.getElementById('medium60-user3').innerText;
+      const user4Med60 = document.getElementById('medium60-user4').innerText;
+      const user5Med60 = document.getElementById('medium60-user5').innerText;
+      const score1Med60 = document.getElementById('medium60-score1').innerText;
+      const score2Med60 = document.getElementById('medium60-score2').innerText;
+      const score3Med60 = document.getElementById('medium60-score3').innerText;
+      const score4Med60 = document.getElementById('medium60-score4').innerText;
+      const score5Med60 = document.getElementById('medium60-score5').innerText;
 
       //HARD 30
-      const user1Hard30 = document.getElementById('hard30-user1').innerHTML;
-      const user2Hard30 = document.getElementById('hard30-user2').innerHTML;
-      const user3Hard30 = document.getElementById('hard30-user3').innerHTML;
-      const user4Hard30 = document.getElementById('hard30-user4').innerHTML;
-      const user5Hard30 = document.getElementById('hard30-user5').innerHTML;
-      const score1Hard30 = document.getElementById('hard30-score1').innerHTML;
-      const score2Hard30 = document.getElementById('hard30-score2').innerHTML;
-      const score3Hard30 = document.getElementById('hard30-score3').innerHTML;
-      const score4Hard30 = document.getElementById('hard30-score4').innerHTML;
-      const score5Hard30 = document.getElementById('hard30-score5').innerHTML;
+      const user1Hard30 = document.getElementById('hard30-user1').innerText;
+      const user2Hard30 = document.getElementById('hard30-user2').innerText;
+      const user3Hard30 = document.getElementById('hard30-user3').innerText;
+      const user4Hard30 = document.getElementById('hard30-user4').innerText;
+      const user5Hard30 = document.getElementById('hard30-user5').innerText;
+      const score1Hard30 = document.getElementById('hard30-score1').innerText;
+      const score2Hard30 = document.getElementById('hard30-score2').innerText;
+      const score3Hard30 = document.getElementById('hard30-score3').innerText;
+      const score4Hard30 = document.getElementById('hard30-score4').innerText;
+      const score5Hard30 = document.getElementById('hard30-score5').innerText;
       //HARD 60
-      const user1Hard60 = document.getElementById('hard60-user1').innerHTML;
-      const user2Hard60 = document.getElementById('hard60-user2').innerHTML;
-      const user3Hard60 = document.getElementById('hard60-user3').innerHTML;
-      const user4Hard60 = document.getElementById('hard60-user4').innerHTML;
-      const user5Hard60 = document.getElementById('hard60-user5').innerHTML;
-      const score1Hard60 = document.getElementById('hard60-score1').innerHTML;
-      const score2Hard60 = document.getElementById('hard60-score2').innerHTML;
-      const score3Hard60 = document.getElementById('hard60-score3').innerHTML;
-      const score4Hard60 = document.getElementById('hard60-score4').innerHTML;
-      const score5Hard60 = document.getElementById('hard60-score5').innerHTML;
+      const user1Hard60 = document.getElementById('hard60-user1').innerText;
+      const user2Hard60 = document.getElementById('hard60-user2').innerText;
+      const user3Hard60 = document.getElementById('hard60-user3').innerText;
+      const user4Hard60 = document.getElementById('hard60-user4').innerText;
+      const user5Hard60 = document.getElementById('hard60-user5').innerText;
+      const score1Hard60 = document.getElementById('hard60-score1').innerText;
+      const score2Hard60 = document.getElementById('hard60-score2').innerText;
+      const score3Hard60 = document.getElementById('hard60-score3').innerText;
+      const score4Hard60 = document.getElementById('hard60-score4').innerText;
+      const score5Hard60 = document.getElementById('hard60-score5').innerText;
 
       //HERO
-      const user1Hero = document.getElementById('hero-user1').innerHTML;
-      const user2Hero = document.getElementById('hero-user2').innerHTML;
-      const user3Hero = document.getElementById('hero-user3').innerHTML;
-      const user4Hero = document.getElementById('hero-user4').innerHTML;
-      const user5Hero = document.getElementById('hero-user5').innerHTML;
-      const score1Hero = document.getElementById('hero-score1').innerHTML;
-      const score2Hero = document.getElementById('hero-score2').innerHTML;
-      const score3Hero = document.getElementById('hero-score3').innerHTML;
-      const score4Hero = document.getElementById('hero-score4').innerHTML;
-      const score5Hero = document.getElementById('hero-score5').innerHTML;
+      const user1Hero = document.getElementById('hero-user1').innerText;
+      const user2Hero = document.getElementById('hero-user2').innerText;
+      const user3Hero = document.getElementById('hero-user3').innerText;
+      const user4Hero = document.getElementById('hero-user4').innerText;
+      const user5Hero = document.getElementById('hero-user5').innerText;
+      const score1Hero = document.getElementById('hero-score1').innerText;
+      const score2Hero = document.getElementById('hero-score2').innerText;
+      const score3Hero = document.getElementById('hero-score3').innerText;
+      const score4Hero = document.getElementById('hero-score4').innerText;
+      const score5Hero = document.getElementById('hero-score5').innerText;
 
       SelectData();
-
       //-----------------------------------------------------------------------------------------SAVE DATA
       function InsertData() {
-        if (+window.finalScore < 500) {
-          //---------------------------------------------------EASY
-          if (window.difficultyName === 'easy' && window.timer === '30') {
-            const theBest5Easy30 = [
-              score1Easy30,
-              score2Easy30,
-              score3Easy30,
-              score4Easy30,
-              score5Easy30,
-            ];
-            theBest5Easy30.forEach((el) => {
-              //se il punteggio finale è superiore ad uno dei punteggi già presenti, lo salvo nel DB
-              if (+window.finalScore > +el) {
-                set(ref(db, `EASY-30-sec/${window.finalScore}`), {
-                  easy30user: nicknameInput.value,
-                  easy30score: window.finalScore,
-                })
-                  .then(() => {
-                    showSuccess();
+        if (window.puoAndare) {
+          let finalScore = document.getElementById('final-score').innerText;
+          if (+finalScore > 0 && +finalScore < limit) {
+            //---------------------------------------------------EASY
+            if (window.difficultyName === 'easy' && window.timer === '30') {
+              const theBest5Easy30 = [
+                score1Easy30,
+                score2Easy30,
+                score3Easy30,
+                score4Easy30,
+                score5Easy30,
+              ];
+              theBest5Easy30.forEach((el) => {
+                //se il punteggio finale è superiore ad uno dei punteggi già presenti, lo salvo nel DB
+                if (+finalScore > +el) {
+                  set(ref(db, `EASY-30-sec/${finalScore}`), {
+                    easy30user: nicknameInput.value,
+                    easy30score: finalScore,
                   })
-                  .catch((err) => {
-                    showError();
-                  });
-              } else {
-                showSuccess();
-              }
-            });
-          }
-          if (window.difficultyName === 'easy' && window.timer === '60') {
-            const theBest5Easy60 = [
-              score1Easy60,
-              score2Easy60,
-              score3Easy60,
-              score4Easy60,
-              score5Easy60,
-            ];
-            theBest5Easy60.forEach((el) => {
-              if (+window.finalScore > +el) {
-                set(ref(db, `EASY-60-sec/${window.finalScore}`), {
-                  easy60user: nicknameInput.value,
-                  easy60score: window.finalScore,
-                })
-                  .then(() => {
-                    showSuccess();
+                    .then(() => {
+                      showSuccess();
+                    })
+                    .catch((err) => {
+                      showError();
+                    });
+                } else {
+                  showSuccess();
+                }
+              });
+            }
+            if (window.difficultyName === 'easy' && window.timer === '60') {
+              const theBest5Easy60 = [
+                score1Easy60,
+                score2Easy60,
+                score3Easy60,
+                score4Easy60,
+                score5Easy60,
+              ];
+              theBest5Easy60.forEach((el) => {
+                if (+finalScore > +el) {
+                  set(ref(db, `EASY-60-sec/${finalScore}`), {
+                    easy60user: nicknameInput.value,
+                    easy60score: finalScore,
                   })
-                  .catch((err) => {
-                    showError();
-                  });
-              } else {
-                showSuccess();
-              }
-            });
-          }
+                    .then(() => {
+                      showSuccess();
+                    })
+                    .catch((err) => {
+                      showError();
+                    });
+                } else {
+                  showSuccess();
+                }
+              });
+            }
 
-          //---------------------------------------------------MEDIUM
-          if (window.difficultyName === 'medium' && window.timer === '30') {
-            const theBestMedium30 = [
-              score1Med30,
-              score2Med30,
-              score3Med30,
-              score4Med30,
-              score5Med30,
-            ];
-            theBestMedium30.forEach((el) => {
-              if (+window.finalScore > +el) {
-                set(ref(db, `MEDIUM-30-sec/${window.finalScore}`), {
-                  medium30user: nicknameInput.value,
-                  medium30score: window.finalScore,
-                })
-                  .then(() => {
-                    showSuccess();
+            //---------------------------------------------------MEDIUM
+            if (window.difficultyName === 'medium' && window.timer === '30') {
+              const theBestMedium30 = [
+                score1Med30,
+                score2Med30,
+                score3Med30,
+                score4Med30,
+                score5Med30,
+              ];
+              theBestMedium30.forEach((el) => {
+                if (+finalScore > +el) {
+                  set(ref(db, `MEDIUM-30-sec/${finalScore}`), {
+                    medium30user: nicknameInput.value,
+                    medium30score: finalScore,
                   })
-                  .catch((err) => {
-                    showError();
-                  });
-              } else {
-                showSuccess();
-              }
-            });
-          }
-          if (window.difficultyName === 'medium' && window.timer === '60') {
-            const theBestMedium60 = [
-              score1Med60,
-              score2Med60,
-              score3Med60,
-              score4Med60,
-              score5Med60,
-            ];
-            theBestMedium60.forEach((el) => {
-              if (+window.finalScore > +el) {
-                set(ref(db, `MEDIUM-60-sec/${window.finalScore}`), {
-                  medium60user: nicknameInput.value,
-                  medium60score: window.finalScore,
-                })
-                  .then(() => {
-                    showSuccess();
+                    .then(() => {
+                      showSuccess();
+                    })
+                    .catch((err) => {
+                      showError();
+                    });
+                } else {
+                  showSuccess();
+                }
+              });
+            }
+            if (window.difficultyName === 'medium' && window.timer === '60') {
+              const theBestMedium60 = [
+                score1Med60,
+                score2Med60,
+                score3Med60,
+                score4Med60,
+                score5Med60,
+              ];
+              theBestMedium60.forEach((el) => {
+                if (+finalScore > +el) {
+                  set(ref(db, `MEDIUM-60-sec/${finalScore}`), {
+                    medium60user: nicknameInput.value,
+                    medium60score: finalScore,
                   })
-                  .catch((err) => {
-                    showError();
-                  });
-              } else {
-                showSuccess();
-              }
-            });
-          }
+                    .then(() => {
+                      showSuccess();
+                    })
+                    .catch((err) => {
+                      showError();
+                    });
+                } else {
+                  showSuccess();
+                }
+              });
+            }
 
-          //---------------------------------------------------HARD
-          if (window.difficultyName === 'hard' && window.timer === '30') {
-            const theBestHard30 = [
-              score1Hard30,
-              score2Hard30,
-              score3Hard30,
-              score4Hard30,
-              score5Hard30,
-            ];
-            theBestHard30.forEach((el) => {
-              if (+window.finalScore > +el) {
-                set(ref(db, `HARD-30-sec/${window.finalScore}`), {
-                  hard30user: nicknameInput.value,
-                  hard30score: window.finalScore,
-                })
-                  .then(() => {
-                    showSuccess();
+            //---------------------------------------------------HARD
+            if (window.difficultyName === 'hard' && window.timer === '30') {
+              const theBestHard30 = [
+                score1Hard30,
+                score2Hard30,
+                score3Hard30,
+                score4Hard30,
+                score5Hard30,
+              ];
+              theBestHard30.forEach((el) => {
+                if (+finalScore > +el) {
+                  set(ref(db, `HARD-30-sec/${finalScore}`), {
+                    hard30user: nicknameInput.value,
+                    hard30score: finalScore,
                   })
-                  .catch((err) => {
-                    showError();
-                  });
-              } else {
-                showSuccess();
-              }
-            });
-          }
-          if (window.difficultyName === 'hard' && window.timer === '60') {
-            const theBestHard60 = [
-              score1Hard60,
-              score2Hard60,
-              score3Hard60,
-              score4Hard60,
-              score5Hard60,
-            ];
-            theBestHard60.forEach((el) => {
-              if (+window.finalScore > +el) {
-                set(ref(db, `HARD-60-sec/${window.finalScore}`), {
-                  hard60user: nicknameInput.value,
-                  hard60score: window.finalScore,
-                })
-                  .then(() => {
-                    showSuccess();
+                    .then(() => {
+                      showSuccess();
+                    })
+                    .catch((err) => {
+                      showError();
+                    });
+                } else {
+                  showSuccess();
+                }
+              });
+            }
+            if (window.difficultyName === 'hard' && window.timer === '60') {
+              const theBestHard60 = [
+                score1Hard60,
+                score2Hard60,
+                score3Hard60,
+                score4Hard60,
+                score5Hard60,
+              ];
+              theBestHard60.forEach((el) => {
+                if (+finalScore > +el) {
+                  set(ref(db, `HARD-60-sec/${finalScore}`), {
+                    hard60user: nicknameInput.value,
+                    hard60score: finalScore,
                   })
-                  .catch((err) => {
-                    showError();
-                  });
-              } else {
-                showSuccess();
-              }
-            });
-          }
+                    .then(() => {
+                      showSuccess();
+                    })
+                    .catch((err) => {
+                      showError();
+                    });
+                } else {
+                  showSuccess();
+                }
+              });
+            }
 
-          //---------------------------------------------------HERO
-          if (window.difficultyName === 'hero') {
-            const theBestHero = [
-              score1Hero,
-              score2Hero,
-              score3Hero,
-              score4Hero,
-              score5Hero,
-            ];
-            theBestHero.forEach((el) => {
-              if (+window.finalScore > +el) {
-                set(ref(db, `HERO/${window.finalScore}`), {
-                  heroUser: nicknameInput.value,
-                  heroScore: window.finalScore,
-                })
-                  .then(() => {
-                    showSuccess();
+            //---------------------------------------------------HERO
+            if (window.difficultyName === 'hero') {
+              const theBestHero = [
+                score1Hero,
+                score2Hero,
+                score3Hero,
+                score4Hero,
+                score5Hero,
+              ];
+              theBestHero.forEach((el) => {
+                if (+finalScore > +el) {
+                  set(ref(db, `HERO/${finalScore}`), {
+                    heroUser: nicknameInput.value,
+                    heroScore: finalScore,
                   })
-                  .catch((err) => {
-                    showError();
-                  });
-              } else {
-                showSuccess();
-              }
-            });
+                    .then(() => {
+                      showSuccess();
+                    })
+                    .catch((err) => {
+                      showError();
+                    });
+                } else {
+                  showSuccess();
+                }
+              });
+            }
           }
+        } else {
+          window.location.reload();
         }
       }
 
@@ -765,7 +772,7 @@
         document.getElementById('start').style.display = 'block';
         setTimeout(() => {
           successSaveDb.style.display = 'none';
-        }, 1500);
+        }, limit);
         SelectData(); //richiamo la get per aggiornare i nuovi punteggi lato client
       }
       function showError() {
@@ -782,7 +789,7 @@
         get(child(dbref, `EASY-30-sec/`)).then((snapshot) => {
           const easy30Array = [];
           snapshot.forEach((e) => {
-            easy30Array.push(e.val());
+            if (e.val().easy30score < limit) easy30Array.push(e.val());
           });
           const easy30sorted = easy30Array.sort((a, b) => {
             if (b.easy30score > a.easy30score) return 1;
@@ -794,34 +801,34 @@
             const index = i + 1;
 
             if (index === 1) {
-              document.getElementById('easy30-user1').innerHTML = el.easy30user;
+              document.getElementById('easy30-user1').innerText = el.easy30user;
               document.getElementById(
                 'easy30-score1'
-              ).innerHTML = ` ${el.easy30score}`;
+              ).innerText = ` ${el.easy30score}`;
             }
             if (index === 2) {
-              document.getElementById('easy30-user2').innerHTML = el.easy30user;
+              document.getElementById('easy30-user2').innerText = el.easy30user;
               document.getElementById(
                 'easy30-score2'
-              ).innerHTML = ` ${el.easy30score}`;
+              ).innerText = ` ${el.easy30score}`;
             }
             if (index === 3) {
-              document.getElementById('easy30-user3').innerHTML = el.easy30user;
+              document.getElementById('easy30-user3').innerText = el.easy30user;
               document.getElementById(
                 'easy30-score3'
-              ).innerHTML = ` ${el.easy30score}`;
+              ).innerText = ` ${el.easy30score}`;
             }
             if (index === 4) {
-              document.getElementById('easy30-user4').innerHTML = el.easy30user;
+              document.getElementById('easy30-user4').innerText = el.easy30user;
               document.getElementById(
                 'easy30-score4'
-              ).innerHTML = ` ${el.easy30score}`;
+              ).innerText = ` ${el.easy30score}`;
             }
             if (index === 5) {
-              document.getElementById('easy30-user5').innerHTML = el.easy30user;
+              document.getElementById('easy30-user5').innerText = el.easy30user;
               document.getElementById(
                 'easy30-score5'
-              ).innerHTML = ` ${el.easy30score}`;
+              ).innerText = ` ${el.easy30score}`;
             }
           });
         });
@@ -829,7 +836,7 @@
         get(child(dbref, `EASY-60-sec/`)).then((snapshot) => {
           const easy60Array = [];
           snapshot.forEach((e) => {
-            easy60Array.push(e.val());
+            if (e.val().easy60score < limit) easy60Array.push(e.val());
           });
           const easy60sorted = easy60Array.sort((a, b) => {
             if (b.easy60score > a.easy60score) return 1;
@@ -841,34 +848,34 @@
             const index = i + 1;
 
             if (index === 1) {
-              document.getElementById('easy60-user1').innerHTML = el.easy60user;
+              document.getElementById('easy60-user1').innerText = el.easy60user;
               document.getElementById(
                 'easy60-score1'
-              ).innerHTML = ` ${el.easy60score}`;
+              ).innerText = ` ${el.easy60score}`;
             }
             if (index === 2) {
-              document.getElementById('easy60-user2').innerHTML = el.easy60user;
+              document.getElementById('easy60-user2').innerText = el.easy60user;
               document.getElementById(
                 'easy60-score2'
-              ).innerHTML = ` ${el.easy60score}`;
+              ).innerText = ` ${el.easy60score}`;
             }
             if (index === 3) {
-              document.getElementById('easy60-user3').innerHTML = el.easy60user;
+              document.getElementById('easy60-user3').innerText = el.easy60user;
               document.getElementById(
                 'easy60-score3'
-              ).innerHTML = ` ${el.easy60score}`;
+              ).innerText = ` ${el.easy60score}`;
             }
             if (index === 4) {
-              document.getElementById('easy60-user4').innerHTML = el.easy60user;
+              document.getElementById('easy60-user4').innerText = el.easy60user;
               document.getElementById(
                 'easy60-score4'
-              ).innerHTML = ` ${el.easy60score}`;
+              ).innerText = ` ${el.easy60score}`;
             }
             if (index === 5) {
-              document.getElementById('easy60-user5').innerHTML = el.easy60user;
+              document.getElementById('easy60-user5').innerText = el.easy60user;
               document.getElementById(
                 'easy60-score5'
-              ).innerHTML = ` ${el.easy60score}`;
+              ).innerText = ` ${el.easy60score}`;
             }
           });
         });
@@ -876,7 +883,7 @@
         get(child(dbref, `MEDIUM-30-sec/`)).then((snapshot) => {
           const medium30Array = [];
           snapshot.forEach((e) => {
-            medium30Array.push(e.val());
+            if (e.val().medium30score < limit) medium30Array.push(e.val());
           });
           const medium30sorted = medium30Array.sort((a, b) => {
             if (b.medium30score > a.medium30score) return 1;
@@ -888,39 +895,39 @@
             const index = i + 1;
 
             if (index === 1) {
-              document.getElementById('medium30-user1').innerHTML =
+              document.getElementById('medium30-user1').innerText =
                 el.medium30user;
               document.getElementById(
                 'medium30-score1'
-              ).innerHTML = ` ${el.medium30score}`;
+              ).innerText = ` ${el.medium30score}`;
             }
             if (index === 2) {
-              document.getElementById('medium30-user2').innerHTML =
+              document.getElementById('medium30-user2').innerText =
                 el.medium30user;
               document.getElementById(
                 'medium30-score2'
-              ).innerHTML = ` ${el.medium30score}`;
+              ).innerText = ` ${el.medium30score}`;
             }
             if (index === 3) {
-              document.getElementById('medium30-user3').innerHTML =
+              document.getElementById('medium30-user3').innerText =
                 el.medium30user;
               document.getElementById(
                 'medium30-score3'
-              ).innerHTML = ` ${el.medium30score}`;
+              ).innerText = ` ${el.medium30score}`;
             }
             if (index === 4) {
-              document.getElementById('medium30-user4').innerHTML =
+              document.getElementById('medium30-user4').innerText =
                 el.medium30user;
               document.getElementById(
                 'medium30-score4'
-              ).innerHTML = ` ${el.medium30score}`;
+              ).innerText = ` ${el.medium30score}`;
             }
             if (index === 5) {
-              document.getElementById('medium30-user5').innerHTML =
+              document.getElementById('medium30-user5').innerText =
                 el.medium30user;
               document.getElementById(
                 'medium30-score5'
-              ).innerHTML = ` ${el.medium30score}`;
+              ).innerText = ` ${el.medium30score}`;
             }
           });
         });
@@ -928,7 +935,7 @@
         get(child(dbref, `MEDIUM-60-sec/`)).then((snapshot) => {
           const medium60Array = [];
           snapshot.forEach((e) => {
-            medium60Array.push(e.val());
+            if (e.val().medium60score < limit) medium60Array.push(e.val());
           });
           const medium60sorted = medium60Array.sort((a, b) => {
             if (b.medium60score > a.medium60score) return 1;
@@ -940,39 +947,39 @@
             const index = i + 1;
 
             if (index === 1) {
-              document.getElementById('medium60-user1').innerHTML =
+              document.getElementById('medium60-user1').innerText =
                 el.medium60user;
               document.getElementById(
                 'medium60-score1'
-              ).innerHTML = ` ${el.medium60score}`;
+              ).innerText = ` ${el.medium60score}`;
             }
             if (index === 2) {
-              document.getElementById('medium60-user2').innerHTML =
+              document.getElementById('medium60-user2').innerText =
                 el.medium60user;
               document.getElementById(
                 'medium60-score2'
-              ).innerHTML = ` ${el.medium60score}`;
+              ).innerText = ` ${el.medium60score}`;
             }
             if (index === 3) {
-              document.getElementById('medium60-user3').innerHTML =
+              document.getElementById('medium60-user3').innerText =
                 el.medium60user;
               document.getElementById(
                 'medium60-score3'
-              ).innerHTML = ` ${el.medium60score}`;
+              ).innerText = ` ${el.medium60score}`;
             }
             if (index === 4) {
-              document.getElementById('medium60-user4').innerHTML =
+              document.getElementById('medium60-user4').innerText =
                 el.medium60user;
               document.getElementById(
                 'medium60-score4'
-              ).innerHTML = ` ${el.medium60score}`;
+              ).innerText = ` ${el.medium60score}`;
             }
             if (index === 5) {
-              document.getElementById('medium60-user5').innerHTML =
+              document.getElementById('medium60-user5').innerText =
                 el.medium60user;
               document.getElementById(
                 'medium60-score5'
-              ).innerHTML = ` ${el.medium60score}`;
+              ).innerText = ` ${el.medium60score}`;
             }
           });
         });
@@ -981,7 +988,7 @@
         get(child(dbref, `HARD-30-sec/`)).then((snapshot) => {
           const hard30Array = [];
           snapshot.forEach((e) => {
-            hard30Array.push(e.val());
+            if (e.val().hard30score < limit) hard30Array.push(e.val());
           });
           const hard30sorted = hard30Array.sort((a, b) => {
             if (b.hard30score > a.hard30score) return 1;
@@ -993,34 +1000,34 @@
             const index = i + 1;
 
             if (index === 1) {
-              document.getElementById('hard30-user1').innerHTML = el.hard30user;
+              document.getElementById('hard30-user1').innerText = el.hard30user;
               document.getElementById(
                 'hard30-score1'
-              ).innerHTML = ` ${el.hard30score}`;
+              ).innerText = ` ${el.hard30score}`;
             }
             if (index === 2) {
-              document.getElementById('hard30-user2').innerHTML = el.hard30user;
+              document.getElementById('hard30-user2').innerText = el.hard30user;
               document.getElementById(
                 'hard30-score2'
-              ).innerHTML = ` ${el.hard30score}`;
+              ).innerText = ` ${el.hard30score}`;
             }
             if (index === 3) {
-              document.getElementById('hard30-user3').innerHTML = el.hard30user;
+              document.getElementById('hard30-user3').innerText = el.hard30user;
               document.getElementById(
                 'hard30-score3'
-              ).innerHTML = ` ${el.hard30score}`;
+              ).innerText = ` ${el.hard30score}`;
             }
             if (index === 4) {
-              document.getElementById('hard30-user4').innerHTML = el.hard30user;
+              document.getElementById('hard30-user4').innerText = el.hard30user;
               document.getElementById(
                 'hard30-score4'
-              ).innerHTML = ` ${el.hard30score}`;
+              ).innerText = ` ${el.hard30score}`;
             }
             if (index === 5) {
-              document.getElementById('hard30-user5').innerHTML = el.hard30user;
+              document.getElementById('hard30-user5').innerText = el.hard30user;
               document.getElementById(
                 'hard30-score5'
-              ).innerHTML = ` ${el.hard30score}`;
+              ).innerText = ` ${el.hard30score}`;
             }
           });
         });
@@ -1028,7 +1035,7 @@
         get(child(dbref, `HARD-60-sec/`)).then((snapshot) => {
           const hard60Array = [];
           snapshot.forEach((e) => {
-            hard60Array.push(e.val());
+            if (e.val().hard60score < limit) hard60Array.push(e.val());
           });
           const hard60sorted = hard60Array.sort((a, b) => {
             if (b.hard60score > a.hard60score) return 1;
@@ -1040,34 +1047,34 @@
             const index = i + 1;
 
             if (index === 1) {
-              document.getElementById('hard60-user1').innerHTML = el.hard60user;
+              document.getElementById('hard60-user1').innerText = el.hard60user;
               document.getElementById(
                 'hard60-score1'
-              ).innerHTML = ` ${el.hard60score}`;
+              ).innerText = ` ${el.hard60score}`;
             }
             if (index === 2) {
-              document.getElementById('hard60-user2').innerHTML = el.hard60user;
+              document.getElementById('hard60-user2').innerText = el.hard60user;
               document.getElementById(
                 'hard60-score2'
-              ).innerHTML = ` ${el.hard60score}`;
+              ).innerText = ` ${el.hard60score}`;
             }
             if (index === 3) {
-              document.getElementById('hard60-user3').innerHTML = el.hard60user;
+              document.getElementById('hard60-user3').innerText = el.hard60user;
               document.getElementById(
                 'hard60-score3'
-              ).innerHTML = ` ${el.hard60score}`;
+              ).innerText = ` ${el.hard60score}`;
             }
             if (index === 4) {
-              document.getElementById('hard60-user4').innerHTML = el.hard60user;
+              document.getElementById('hard60-user4').innerText = el.hard60user;
               document.getElementById(
                 'hard60-score4'
-              ).innerHTML = ` ${el.hard60score}`;
+              ).innerText = ` ${el.hard60score}`;
             }
             if (index === 5) {
-              document.getElementById('hard60-user5').innerHTML = el.hard60user;
+              document.getElementById('hard60-user5').innerText = el.hard60user;
               document.getElementById(
                 'hard60-score5'
-              ).innerHTML = ` ${el.hard60score}`;
+              ).innerText = ` ${el.hard60score}`;
             }
           });
         });
@@ -1076,7 +1083,7 @@
         get(child(dbref, `HERO/`)).then((snapshot) => {
           const heroArray = [];
           snapshot.forEach((e) => {
-            heroArray.push(e.val());
+            if (e.val().heroScore < limit) heroArray.push(e.val());
           });
           const heroSorted = heroArray.sort((a, b) => {
             if (b.heroScore > a.heroScore) return 1;
@@ -1088,34 +1095,34 @@
             const index = i + 1;
 
             if (index === 1) {
-              document.getElementById('hero-user1').innerHTML = el.heroUser;
+              document.getElementById('hero-user1').innerText = el.heroUser;
               document.getElementById(
                 'hero-score1'
-              ).innerHTML = ` ${el.heroScore}`;
+              ).innerText = ` ${el.heroScore}`;
             }
             if (index === 2) {
-              document.getElementById('hero-user2').innerHTML = el.heroUser;
+              document.getElementById('hero-user2').innerText = el.heroUser;
               document.getElementById(
                 'hero-score2'
-              ).innerHTML = ` ${el.heroScore}`;
+              ).innerText = ` ${el.heroScore}`;
             }
             if (index === 3) {
-              document.getElementById('hero-user3').innerHTML = el.heroUser;
+              document.getElementById('hero-user3').innerText = el.heroUser;
               document.getElementById(
                 'hero-score3'
-              ).innerHTML = ` ${el.heroScore}`;
+              ).innerText = ` ${el.heroScore}`;
             }
             if (index === 4) {
-              document.getElementById('hero-user4').innerHTML = el.heroUser;
+              document.getElementById('hero-user4').innerText = el.heroUser;
               document.getElementById(
                 'hero-score4'
-              ).innerHTML = ` ${el.heroScore}`;
+              ).innerText = ` ${el.heroScore}`;
             }
             if (index === 5) {
-              document.getElementById('hero-user5').innerHTML = el.heroUser;
+              document.getElementById('hero-user5').innerText = el.heroUser;
               document.getElementById(
                 'hero-score5'
-              ).innerHTML = ` ${el.heroScore}`;
+              ).innerText = ` ${el.heroScore}`;
             }
           });
         });
@@ -1158,6 +1165,30 @@
           saveGlobalScoreBtn.style.backgroundColor = 'rgb(128, 128, 128)';
         }
       });
+
+      window.oncontextmenu = function () {
+        return false;
+      };
+
+      document.addEventListener(
+        'keydown',
+        function (event) {
+          var key = event.key || event.keyCode;
+
+          if (key === 123) {
+            return false;
+          } else if (
+            //REVIEW: non funziona
+            (event.ctrlKey && event.shiftKey && key === 73) ||
+            (event.ctrlKey && event.shiftKey && key === 74) ||
+            (event.ctrlKey && event.shiftKey && key === 105) ||
+            (event.ctrlKey && event.shiftKey && key === 106)
+          ) {
+            return false;
+          }
+        },
+        false
+      );
     </script>
   </body>
 </html>
