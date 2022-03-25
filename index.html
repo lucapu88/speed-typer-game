@@ -449,6 +449,32 @@
     <script type="module">
       import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js';
       import { getAnalytics } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-analytics.js';
+      const nicknameInput = document.getElementById('nickname');
+      const saveGlobalScoreBtn = document.getElementById('save-global-score');
+      /*const prova = '';*/ console.log = function () {};
+      const choiseSaveScoreGlobally = document.getElementById(
+        'choice-save-score-globally'
+      );
+      const successSaveDb = document.getElementById('success-save-db');
+      const errorSaveDb = document.getElementById('error-retry');
+
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+      const firebaseConfig = {
+        apiKey: `${window.docum}${window.lorem}${window.getelm}${window.gnigni}${window.lucap}${window.diff}${window.vader}${window.esghere}${window.selec}${window.addeve}`,
+        authDomain: 'speedtyperdb.firebaseapp.com',
+        projectId: 'speedtyperdb',
+        storageBucket: 'speedtyperdb.appspot.com',
+        messagingSenderId: '13131338',
+        appId: '1:13131338:web:0e5e02b22be11ada5f90b3',
+        measurementId: 'G-05JZHKH8TE',
+        databaseURL:
+          'https://speedtyperdb-default-rtdb.europe-west1.firebasedatabase.app',
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+
       import {
         getDatabase,
         ref,
@@ -458,44 +484,711 @@
         remove,
       } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-database.js';
 
-      eval(
-        (function (p, a, c, k, e, d) {
-          e = function (c) {
-            return (
-              (c < a ? '' : e(parseInt(c / a))) +
-              ((c = c % a) > 35 ? String.fromCharCode(c + 29) : c.toString(36))
-            );
-          };
-          if (!''.replace(/^/, String)) {
-            while (c--) {
-              d[e(c)] = k[c] || e(c);
+      const db = getDatabase();
+      const limit = 250;
+      //REVIEW: tutta sta merda da qui sotto in poi va semplificata, se possibile.
+
+      //EASY 30
+      const user1Easy30 = document.getElementById('easy30-user1').innerText;
+      const user2Easy30 = document.getElementById('easy30-user2').innerText;
+      const user3Easy30 = document.getElementById('easy30-user3').innerText;
+      const user4Easy30 = document.getElementById('easy30-user4').innerText;
+      const user5Easy30 = document.getElementById('easy30-user5').innerText;
+      const score1Easy30 = document.getElementById('easy30-score1').innerText;
+      const score2Easy30 = document.getElementById('easy30-score2').innerText;
+      const score3Easy30 = document.getElementById('easy30-score3').innerText;
+      const score4Easy30 = document.getElementById('easy30-score4').innerText;
+      const score5Easy30 = document.getElementById('easy30-score5').innerText;
+      //EASY 60
+      const user1Easy60 = document.getElementById('easy60-user1').innerText;
+      const user2Easy60 = document.getElementById('easy60-user2').innerText;
+      const user3Easy60 = document.getElementById('easy60-user3').innerText;
+      const user4Easy60 = document.getElementById('easy60-user4').innerText;
+      const user5Easy60 = document.getElementById('easy60-user5').innerText;
+      const score1Easy60 = document.getElementById('easy60-score1').innerText;
+      const score2Easy60 = document.getElementById('easy60-score2').innerText;
+      const score3Easy60 = document.getElementById('easy60-score3').innerText;
+      const score4Easy60 = document.getElementById('easy60-score4').innerText;
+      const score5Easy60 = document.getElementById('easy60-score5').innerText;
+
+      //MEDIUM 30
+      const user1Med30 = document.getElementById('medium30-user1').innerText;
+      const user2Med30 = document.getElementById('medium30-user2').innerText;
+      const user3Med30 = document.getElementById('medium30-user3').innerText;
+      const user4Med30 = document.getElementById('medium30-user4').innerText;
+      const user5Med30 = document.getElementById('medium30-user5').innerText;
+      const score1Med30 = document.getElementById('medium30-score1').innerText;
+      const score2Med30 = document.getElementById('medium30-score2').innerText;
+      const score3Med30 = document.getElementById('medium30-score3').innerText;
+      const score4Med30 = document.getElementById('medium30-score4').innerText;
+      const score5Med30 = document.getElementById('medium30-score5').innerText;
+      //MEDIUM 60
+      const user1Med60 = document.getElementById('medium60-user1').innerText;
+      const user2Med60 = document.getElementById('medium60-user2').innerText;
+      const user3Med60 = document.getElementById('medium60-user3').innerText;
+      const user4Med60 = document.getElementById('medium60-user4').innerText;
+      const user5Med60 = document.getElementById('medium60-user5').innerText;
+      const score1Med60 = document.getElementById('medium60-score1').innerText;
+      const score2Med60 = document.getElementById('medium60-score2').innerText;
+      const score3Med60 = document.getElementById('medium60-score3').innerText;
+      const score4Med60 = document.getElementById('medium60-score4').innerText;
+      const score5Med60 = document.getElementById('medium60-score5').innerText;
+
+      //HARD 30
+      const user1Hard30 = document.getElementById('hard30-user1').innerText;
+      const user2Hard30 = document.getElementById('hard30-user2').innerText;
+      const user3Hard30 = document.getElementById('hard30-user3').innerText;
+      const user4Hard30 = document.getElementById('hard30-user4').innerText;
+      const user5Hard30 = document.getElementById('hard30-user5').innerText;
+      const score1Hard30 = document.getElementById('hard30-score1').innerText;
+      const score2Hard30 = document.getElementById('hard30-score2').innerText;
+      const score3Hard30 = document.getElementById('hard30-score3').innerText;
+      const score4Hard30 = document.getElementById('hard30-score4').innerText;
+      const score5Hard30 = document.getElementById('hard30-score5').innerText;
+      //HARD 60
+      const user1Hard60 = document.getElementById('hard60-user1').innerText;
+      const user2Hard60 = document.getElementById('hard60-user2').innerText;
+      const user3Hard60 = document.getElementById('hard60-user3').innerText;
+      const user4Hard60 = document.getElementById('hard60-user4').innerText;
+      const user5Hard60 = document.getElementById('hard60-user5').innerText;
+      const score1Hard60 = document.getElementById('hard60-score1').innerText;
+      const score2Hard60 = document.getElementById('hard60-score2').innerText;
+      const score3Hard60 = document.getElementById('hard60-score3').innerText;
+      const score4Hard60 = document.getElementById('hard60-score4').innerText;
+      const score5Hard60 = document.getElementById('hard60-score5').innerText;
+
+      //HERO
+      const user1Hero = document.getElementById('hero-user1').innerText;
+      const user2Hero = document.getElementById('hero-user2').innerText;
+      const user3Hero = document.getElementById('hero-user3').innerText;
+      const user4Hero = document.getElementById('hero-user4').innerText;
+      const user5Hero = document.getElementById('hero-user5').innerText;
+      const score1Hero = document.getElementById('hero-score1').innerText;
+      const score2Hero = document.getElementById('hero-score2').innerText;
+      const score3Hero = document.getElementById('hero-score3').innerText;
+      const score4Hero = document.getElementById('hero-score4').innerText;
+      const score5Hero = document.getElementById('hero-score5').innerText;
+
+      getDataDB();
+      //-----------------------------------------------------------------------------------------SAVE DATA
+      function saveDataDB() {
+        if (window.vaBene) {
+          let totalScore = document.getElementById('final-score').innerText;
+          if (+totalScore > 0 && +totalScore < limit) {
+            //---------------------------------------------------EASY
+            if (window.difficultyName === 'easy' && window.timer === '30') {
+              const theBest5Easy30 = [
+                score1Easy30,
+                score2Easy30,
+                score3Easy30,
+                score4Easy30,
+                score5Easy30,
+              ];
+              theBest5Easy30.forEach((el) => {
+                //se il punteggio finale è superiore ad uno dei punteggi già presenti, lo salvo nel DB
+                if (+totalScore > +el) {
+                  set(ref(db, `EASY-30-sec/${totalScore}`), {
+                    easy30user: nicknameInput.value,
+                    easy30score: totalScore,
+                  })
+                    .then(() => {
+                      showSuccess();
+                    })
+                    .catch((err) => {
+                      showError();
+                    });
+                } else {
+                  showSuccess();
+                }
+              });
             }
-            k = [
-              function (e) {
-                return d[e];
-              },
-            ];
-            e = function () {
-              return '\\w+';
-            };
-            c = 1;
-          }
-          while (c--) {
-            if (k[c]) {
-              p = p.replace(new RegExp('\\b' + e(c) + '\\b', 'g'), k[c]);
+            if (window.difficultyName === 'easy' && window.timer === '60') {
+              const theBest5Easy60 = [
+                score1Easy60,
+                score2Easy60,
+                score3Easy60,
+                score4Easy60,
+                score5Easy60,
+              ];
+              theBest5Easy60.forEach((el) => {
+                if (+totalScore > +el) {
+                  set(ref(db, `EASY-60-sec/${totalScore}`), {
+                    easy60user: nicknameInput.value,
+                    easy60score: totalScore,
+                  })
+                    .then(() => {
+                      showSuccess();
+                    })
+                    .catch((err) => {
+                      showError();
+                    });
+                } else {
+                  showSuccess();
+                }
+              });
+            }
+
+            //---------------------------------------------------MEDIUM
+            if (window.difficultyName === 'medium' && window.timer === '30') {
+              const theBestMedium30 = [
+                score1Med30,
+                score2Med30,
+                score3Med30,
+                score4Med30,
+                score5Med30,
+              ];
+              theBestMedium30.forEach((el) => {
+                if (+totalScore > +el) {
+                  set(ref(db, `MEDIUM-30-sec/${totalScore}`), {
+                    medium30user: nicknameInput.value,
+                    medium30score: totalScore,
+                  })
+                    .then(() => {
+                      showSuccess();
+                    })
+                    .catch((err) => {
+                      showError();
+                    });
+                } else {
+                  showSuccess();
+                }
+              });
+            }
+            if (window.difficultyName === 'medium' && window.timer === '60') {
+              const theBestMedium60 = [
+                score1Med60,
+                score2Med60,
+                score3Med60,
+                score4Med60,
+                score5Med60,
+              ];
+              theBestMedium60.forEach((el) => {
+                if (+totalScore > +el) {
+                  set(ref(db, `MEDIUM-60-sec/${totalScore}`), {
+                    medium60user: nicknameInput.value,
+                    medium60score: totalScore,
+                  })
+                    .then(() => {
+                      showSuccess();
+                    })
+                    .catch((err) => {
+                      showError();
+                    });
+                } else {
+                  showSuccess();
+                }
+              });
+            }
+
+            //---------------------------------------------------HARD
+            if (window.difficultyName === 'hard' && window.timer === '30') {
+              const theBestHard30 = [
+                score1Hard30,
+                score2Hard30,
+                score3Hard30,
+                score4Hard30,
+                score5Hard30,
+              ];
+              theBestHard30.forEach((el) => {
+                if (+totalScore > +el) {
+                  set(ref(db, `HARD-30-sec/${totalScore}`), {
+                    hard30user: nicknameInput.value,
+                    hard30score: totalScore,
+                  })
+                    .then(() => {
+                      showSuccess();
+                    })
+                    .catch((err) => {
+                      showError();
+                    });
+                } else {
+                  showSuccess();
+                }
+              });
+            }
+            if (window.difficultyName === 'hard' && window.timer === '60') {
+              const theBestHard60 = [
+                score1Hard60,
+                score2Hard60,
+                score3Hard60,
+                score4Hard60,
+                score5Hard60,
+              ];
+              theBestHard60.forEach((el) => {
+                if (+totalScore > +el) {
+                  set(ref(db, `HARD-60-sec/${totalScore}`), {
+                    hard60user: nicknameInput.value,
+                    hard60score: totalScore,
+                  })
+                    .then(() => {
+                      showSuccess();
+                    })
+                    .catch((err) => {
+                      showError();
+                    });
+                } else {
+                  showSuccess();
+                }
+              });
+            }
+
+            //---------------------------------------------------HERO
+            if (window.difficultyName === 'hero') {
+              const theBestHero = [
+                score1Hero,
+                score2Hero,
+                score3Hero,
+                score4Hero,
+                score5Hero,
+              ];
+              theBestHero.forEach((el) => {
+                if (+totalScore > +el) {
+                  set(ref(db, `HERO/${totalScore}`), {
+                    heroUser: nicknameInput.value,
+                    heroScore: totalScore,
+                  })
+                    .then(() => {
+                      showSuccess();
+                    })
+                    .catch((err) => {
+                      showError();
+                    });
+                } else {
+                  showSuccess();
+                }
+              });
             }
           }
-          return p;
-        })(
-          "9 T=6.7('43');9 17=6.7('1F-3e-1H');3f.3g=Y(){};9 2J=6.7('3h-1F-1H-3i');9 1D=6.7('3j-1F-S');9 1y=6.7('3k-3l');9 25={3m:`${g.3n}${g.3o}${g.3d}${g.3p}${g.3r}${g.3s}${g.3t}${g.3u}${g.3v}${g.3w}`,3x:'1p.3y.23',3b:'1p',3A:'1p.3B.23',3q:'24',3c:'1:24:3a:2M',2O:'G-2P',2R:'2S://1p-2T-2U.2V-2X.2W.1G',};9 1G=2Z(25);9 32=35(1G);9 S=37();9 Q=38;9 39=6.7('r-u').8;9 2Y=6.7('r-F').8;9 36=6.7('r-t').8;9 34=6.7('r-E').8;9 33=6.7('r-A').8;9 26=6.7('r-w').8;9 27=6.7('r-z').8;9 28=6.7('r-x').8;9 29=6.7('r-B').8;9 2a=6.7('r-y').8;9 31=6.7('o-u').8;9 2L=6.7('o-F').8;9 2Q=6.7('o-t').8;9 2N=6.7('o-E').8;9 3C=6.7('o-A').8;9 2d=6.7('o-w').8;9 22=6.7('o-z').8;9 2e=6.7('o-x').8;9 2g=6.7('o-B').8;9 2s=6.7('o-y').8;9 3z=6.7('m-u').8;9 3E=6.7('m-F').8;9 3G=6.7('m-t').8;9 4m=6.7('m-E').8;9 4l=6.7('m-A').8;9 2i=6.7('m-w').8;9 2j=6.7('m-z').8;9 2k=6.7('m-x').8;9 2l=6.7('m-B').8;9 2m=6.7('m-y').8;9 4k=6.7('n-u').8;9 3D=6.7('n-F').8;9 4h=6.7('n-t').8;9 4g=6.7('n-E').8;9 4e=6.7('n-A').8;9 2p=6.7('n-w').8;9 2q=6.7('n-z').8;9 2f=6.7('n-x').8;9 21=6.7('n-B').8;9 1Z=6.7('n-y').8;9 4a=6.7('p-u').8;9 49=6.7('p-F').8;9 46=6.7('p-t').8;9 4f=6.7('p-E').8;9 4p=6.7('p-A').8;9 1L=6.7('p-w').8;9 1Q=6.7('p-z').8;9 1U=6.7('p-x').8;9 1W=6.7('p-B').8;9 1X=6.7('p-y').8;9 47=6.7('q-u').8;9 48=6.7('q-F').8;9 4b=6.7('q-t').8;9 4c=6.7('q-E').8;9 4d=6.7('q-A').8;9 1V=6.7('q-w').8;9 1T=6.7('q-z').8;9 1S=6.7('q-x').8;9 1R=6.7('q-B').8;9 1P=6.7('q-y').8;9 45=6.7('k-u').8;9 4i=6.7('k-F').8;9 4j=6.7('k-t').8;9 4n=6.7('k-E').8;9 4o=6.7('k-A').8;9 1M=6.7('k-w').8;9 2r=6.7('k-z').8;9 2o=6.7('k-x').8;9 2t=6.7('k-B').8;9 2K=6.7('k-y').8;1x();Y 1J(){d(g.44){3R j=6.7('42-1H').8;d(+j>0&&+j<Q){d(g.1a==='2c'&&g.1k==='30'){9 2b=[26,27,28,29,2a,];2b.l((c)=>{d(+j>+c){15(X(S,`1n-30-I/${j}`),{1j:T.W,O:j,}).C(()=>{s()}).19((18)=>{Z()})}R{s()}})}d(g.1a==='2c'&&g.1k==='U'){9 2h=[2d,22,2e,2g,2s,];2h.l((c)=>{d(+j>+c){15(X(S,`1n-U-I/${j}`),{1i:T.W,M:j,}).C(()=>{s()}).19((18)=>{Z()})}R{s()}})}d(g.1a==='20'&&g.1k==='30'){9 2n=[2i,2j,2k,2l,2m,];2n.l((c)=>{d(+j>+c){15(X(S,`1t-30-I/${j}`),{1h:T.W,P:j,}).C(()=>{s()}).19((18)=>{Z()})}R{s()}})}d(g.1a==='20'&&g.1k==='U'){9 1N=[2p,2q,2f,21,1Z,];1N.l((c)=>{d(+j>+c){15(X(S,`1t-U-I/${j}`),{1g:T.W,N:j,}).C(()=>{s()}).19((18)=>{Z()})}R{s()}})}d(g.1a==='1Y'&&g.1k==='30'){9 1K=[1L,1Q,1U,1W,1X,];1K.l((c)=>{d(+j>+c){15(X(S,`1r-30-I/${j}`),{1f:T.W,L:j,}).C(()=>{s()}).19((18)=>{Z()})}R{s()}})}d(g.1a==='1Y'&&g.1k==='U'){9 1O=[1V,1T,1S,1R,1P,];1O.l((c)=>{d(+j>+c){15(X(S,`1r-U-I/${j}`),{1d:T.W,J:j,}).C(()=>{s()}).19((18)=>{Z()})}R{s()}})}d(g.1a==='k'){9 2I=[1M,2r,2o,2t,2K,];2I.l((c)=>{d(+j>+c){15(X(S,`2D/${j}`),{1e:T.W,K:j,}).C(()=>{s()}).19((18)=>{Z()})}R{s()}})}}}R{g.3Y.3X()}}Y s(){2J.V.16='1m';T.W='';3U.V.16='1m';1D.V.16='2u-1v';6.7('3T').V.16='1v';2F(()=>{1D.V.16='1m'},Q);1x()}Y Z(){1y.V.16='2u-1v';2F(()=>{1y.V.16='1m'},3Q)}Y 1x(){9 10=X(S);12(11(10,`1n-30-I/`)).C((D)=>{9 1B=[];D.l((e)=>{d(e.v().O<Q)1B.1c(e.v())});9 2E=1B.14((a,b)=>{d(b.O>a.O)h 1;d(a.O>b.O)h-1;h 0});2E.l((c,i)=>{9 f=i+1;d(f===1){6.7('r-u').8=c.1j;6.7('r-w').8=`${c.O}`}d(f===2){6.7('r-F').8=c.1j;6.7('r-z').8=`${c.O}`}d(f===3){6.7('r-t').8=c.1j;6.7('r-x').8=`${c.O}`}d(f===4){6.7('r-E').8=c.1j;6.7('r-B').8=`${c.O}`}d(f===5){6.7('r-A').8=c.1j;6.7('r-y').8=`${c.O}`}})});12(11(10,`1n-U-I/`)).C((D)=>{9 1C=[];D.l((e)=>{d(e.v().M<Q)1C.1c(e.v())});9 2C=1C.14((a,b)=>{d(b.M>a.M)h 1;d(a.M>b.M)h-1;h 0});2C.l((c,i)=>{9 f=i+1;d(f===1){6.7('o-u').8=c.1i;6.7('o-w').8=`${c.M}`}d(f===2){6.7('o-F').8=c.1i;6.7('o-z').8=`${c.M}`}d(f===3){6.7('o-t').8=c.1i;6.7('o-x').8=`${c.M}`}d(f===4){6.7('o-E').8=c.1i;6.7('o-B').8=`${c.M}`}d(f===5){6.7('o-A').8=c.1i;6.7('o-y').8=`${c.M}`}})});12(11(10,`1t-30-I/`)).C((D)=>{9 1z=[];D.l((e)=>{d(e.v().P<Q)1z.1c(e.v())});9 2z=1z.14((a,b)=>{d(b.P>a.P)h 1;d(a.P>b.P)h-1;h 0});2z.l((c,i)=>{9 f=i+1;d(f===1){6.7('m-u').8=c.1h;6.7('m-w').8=`${c.P}`}d(f===2){6.7('m-F').8=c.1h;6.7('m-z').8=`${c.P}`}d(f===3){6.7('m-t').8=c.1h;6.7('m-x').8=`${c.P}`}d(f===4){6.7('m-E').8=c.1h;6.7('m-B').8=`${c.P}`}d(f===5){6.7('m-A').8=c.1h;6.7('m-y').8=`${c.P}`}})});12(11(10,`1t-U-I/`)).C((D)=>{9 1w=[];D.l((e)=>{d(e.v().N<Q)1w.1c(e.v())});9 2y=1w.14((a,b)=>{d(b.N>a.N)h 1;d(a.N>b.N)h-1;h 0});2y.l((c,i)=>{9 f=i+1;d(f===1){6.7('n-u').8=c.1g;6.7('n-w').8=`${c.N}`}d(f===2){6.7('n-F').8=c.1g;6.7('n-z').8=`${c.N}`}d(f===3){6.7('n-t').8=c.1g;6.7('n-x').8=`${c.N}`}d(f===4){6.7('n-E').8=c.1g;6.7('n-B').8=`${c.N}`}d(f===5){6.7('n-A').8=c.1g;6.7('n-y').8=`${c.N}`}})});12(11(10,`1r-30-I/`)).C((D)=>{9 1E=[];D.l((e)=>{d(e.v().L<Q)1E.1c(e.v())});9 2x=1E.14((a,b)=>{d(b.L>a.L)h 1;d(a.L>b.L)h-1;h 0});2x.l((c,i)=>{9 f=i+1;d(f===1){6.7('p-u').8=c.1f;6.7('p-w').8=`${c.L}`}d(f===2){6.7('p-F').8=c.1f;6.7('p-z').8=`${c.L}`}d(f===3){6.7('p-t').8=c.1f;6.7('p-x').8=`${c.L}`}d(f===4){6.7('p-E').8=c.1f;6.7('p-B').8=`${c.L}`}d(f===5){6.7('p-A').8=c.1f;6.7('p-y').8=`${c.L}`}})});12(11(10,`1r-U-I/`)).C((D)=>{9 1I=[];D.l((e)=>{d(e.v().J<Q)1I.1c(e.v())});9 2v=1I.14((a,b)=>{d(b.J>a.J)h 1;d(a.J>b.J)h-1;h 0});2v.l((c,i)=>{9 f=i+1;d(f===1){6.7('q-u').8=c.1d;6.7('q-w').8=`${c.J}`}d(f===2){6.7('q-F').8=c.1d;6.7('q-z').8=`${c.J}`}d(f===3){6.7('q-t').8=c.1d;6.7('q-x').8=`${c.J}`}d(f===4){6.7('q-E').8=c.1d;6.7('q-B').8=`${c.J}`}d(f===5){6.7('q-A').8=c.1d;6.7('q-y').8=`${c.J}`}})});12(11(10,`2D/`)).C((D)=>{9 1u=[];D.l((e)=>{d(e.v().K<Q)1u.1c(e.v())});9 2w=1u.14((a,b)=>{d(b.K>a.K)h 1;d(a.K>b.K)h-1;h 0});2w.l((c,i)=>{9 f=i+1;d(f===1){6.7('k-u').8=c.1e;6.7('k-w').8=`${c.K}`}d(f===2){6.7('k-F').8=c.1e;6.7('k-z').8=`${c.K}`}d(f===3){6.7('k-t').8=c.1e;6.7('k-x').8=`${c.K}`}d(f===4){6.7('k-E').8=c.1e;6.7('k-B').8=`${c.K}`}d(f===5){6.7('k-A').8=c.1e;6.7('k-y').8=`${c.K}`}})})}17.1s('3H',1J);17.1s('3I',Y(e){d(e.2H===13)1J()});T.1s('3J',(H)=>{d(H.3K.W.3L){17.2A=1l;17.V.2B='2G(3M, 3N, 0)'}R{17.2A=3O;17.V.2B='2G(1A, 1A, 1A)'}});g.3P=Y(){h 1l};6.1s('3F',Y(H){3S 1b=H.1b||H.2H;d(1b===3W){h 1l}R d((H.1o&&H.1q&&1b===3Z)||(H.1o&&H.1q&&1b===40)||(H.1o&&H.1q&&1b===41)||(H.1o&&H.1q&&1b===3V)){h 1l}},1l);",
-          62,
-          274,
-          '||||||document|getElementById|innerText|const|||el|if||index|window|return||totalScore|hero|forEach|medium30|medium60|easy60|hard30|hard60|easy30|showSuccess|user3|user1|val|score1|score3|score5|score2|user5|score4|then|snapshot|user4|user2||event|sec|hard60score|heroScore|hard30score|easy60score|medium60score|easy30score|medium30score|limit|else|db|nicknameInput|60|style|value|ref|function|showError|dbref|child|get||sort|set|display|saveGlobalScoreBtn|err|catch|difficultyName|key|push|hard60user|heroUser|hard30user|medium60user|medium30user|easy60user|easy30user|timer|false|none|EASY|ctrlKey|speedtyperdb|shiftKey|HARD|addEventListener|MEDIUM|heroArray|block|medium60Array|getDataDB|errorSaveDb|medium30Array|128|easy30Array|easy60Array|successSaveDb|hard30Array|save|app|score|hard60Array|saveDataDB|theBestHard30|score1Hard30|score1Hero|theBestMedium60|theBestHard60|score5Hard60|score2Hard30|score4Hard60|score3Hard60|score2Hard60|score3Hard30|score1Hard60|score4Hard30|score5Hard30|hard|score5Med60|medium|score4Med60|score2Easy60|com|13131338|firebaseConfig|score1Easy30|score2Easy30|score3Easy30|score4Easy30|score5Easy30|theBest5Easy30|easy|score1Easy60|score3Easy60|score3Med60|score4Easy60|theBest5Easy60|score1Med30|score2Med30|score3Med30|score4Med30|score5Med30|theBestMedium30|score3Hero|score1Med60|score2Med60|score2Hero|score5Easy60|score4Hero|inline|hard60sorted|heroSorted|hard30sorted|medium60sorted|medium30sorted|disabled|backgroundColor|easy60sorted|HERO|easy30sorted|setTimeout|rgb|keyCode|theBestHero|choiseSaveScoreGlobally|score5Hero|user2Easy60|0e5e02b22be11ada5f90b3|user4Easy60|measurementId|05JZHKH8TE|user3Easy60|databaseURL|https|default|rtdb|europe|firebasedatabase|west1|user2Easy30|initializeApp||user1Easy60|analytics|user5Easy30|user4Easy30|getAnalytics|user3Easy30|getDatabase|250|user1Easy30|web|projectId|appId|getelm|global|console|log|choice|globally|success|error|retry|apiKey|docum|lorem|gnigni|messagingSenderId|lucap|diff|vader|esghere|selec|addeve|authDomain|firebaseapp|user1Med30|storageBucket|appspot|user5Easy60|user2Med60|user2Med30|keydown|user3Med30|click|keypress|keyup|target|length|61|214|true|oncontextmenu|4000|let|var|start|saveaveScoreGlobally|106|123|reload|location|73|74|105|final|nickname|vaBene|user1Hero|user3Hard30|user1Hard60|user2Hard60|user2Hard30|user1Hard30|user3Hard60|user4Hard60|user5Hard60|user5Med60|user4Hard30|user4Med60|user3Med60|user2Hero|user3Hero|user1Med60|user5Med30|user4Med30|user4Hero|user5Hero|user5Hard30'.split(
-            '|'
-          ),
-          0,
-          {}
-        )
+        } else {
+          window.location.reload();
+        }
+      }
+
+      function showSuccess() {
+        choiseSaveScoreGlobally.style.display = 'none';
+        nicknameInput.value = '';
+        saveaveScoreGlobally.style.display = 'none';
+        successSaveDb.style.display = 'inline-block';
+        document.getElementById('start').style.display = 'block';
+        setTimeout(() => {
+          successSaveDb.style.display = 'none';
+        }, limit);
+        getDataDB(); //richiamo la get per aggiornare i nuovi punteggi lato client
+      }
+      function showError() {
+        errorSaveDb.style.display = 'inline-block';
+        setTimeout(() => {
+          errorSaveDb.style.display = 'none';
+        }, 4000);
+      }
+
+      //-----------------------------------------------------------------------------------------GET DATA
+      function getDataDB() {
+        const dbref = ref(db);
+        //---------------------------------------------------EASY
+        get(child(dbref, `EASY-30-sec/`)).then((snapshot) => {
+          const easy30Array = [];
+          snapshot.forEach((e) => {
+            if (e.val().easy30score < limit) easy30Array.push(e.val());
+          });
+          const easy30sorted = easy30Array.sort((a, b) => {
+            if (b.easy30score > a.easy30score) return 1;
+            if (a.easy30score > b.easy30score) return -1;
+            return 0;
+          });
+
+          easy30sorted.forEach((el, i) => {
+            const index = i + 1;
+
+            if (index === 1) {
+              document.getElementById('easy30-user1').innerText = el.easy30user;
+              document.getElementById(
+                'easy30-score1'
+              ).innerText = ` ${el.easy30score}`;
+            }
+            if (index === 2) {
+              document.getElementById('easy30-user2').innerText = el.easy30user;
+              document.getElementById(
+                'easy30-score2'
+              ).innerText = ` ${el.easy30score}`;
+            }
+            if (index === 3) {
+              document.getElementById('easy30-user3').innerText = el.easy30user;
+              document.getElementById(
+                'easy30-score3'
+              ).innerText = ` ${el.easy30score}`;
+            }
+            if (index === 4) {
+              document.getElementById('easy30-user4').innerText = el.easy30user;
+              document.getElementById(
+                'easy30-score4'
+              ).innerText = ` ${el.easy30score}`;
+            }
+            if (index === 5) {
+              document.getElementById('easy30-user5').innerText = el.easy30user;
+              document.getElementById(
+                'easy30-score5'
+              ).innerText = ` ${el.easy30score}`;
+            }
+          });
+        });
+
+        get(child(dbref, `EASY-60-sec/`)).then((snapshot) => {
+          const easy60Array = [];
+          snapshot.forEach((e) => {
+            if (e.val().easy60score < limit) easy60Array.push(e.val());
+          });
+          const easy60sorted = easy60Array.sort((a, b) => {
+            if (b.easy60score > a.easy60score) return 1;
+            if (a.easy60score > b.easy60score) return -1;
+            return 0;
+          });
+
+          easy60sorted.forEach((el, i) => {
+            const index = i + 1;
+
+            if (index === 1) {
+              document.getElementById('easy60-user1').innerText = el.easy60user;
+              document.getElementById(
+                'easy60-score1'
+              ).innerText = ` ${el.easy60score}`;
+            }
+            if (index === 2) {
+              document.getElementById('easy60-user2').innerText = el.easy60user;
+              document.getElementById(
+                'easy60-score2'
+              ).innerText = ` ${el.easy60score}`;
+            }
+            if (index === 3) {
+              document.getElementById('easy60-user3').innerText = el.easy60user;
+              document.getElementById(
+                'easy60-score3'
+              ).innerText = ` ${el.easy60score}`;
+            }
+            if (index === 4) {
+              document.getElementById('easy60-user4').innerText = el.easy60user;
+              document.getElementById(
+                'easy60-score4'
+              ).innerText = ` ${el.easy60score}`;
+            }
+            if (index === 5) {
+              document.getElementById('easy60-user5').innerText = el.easy60user;
+              document.getElementById(
+                'easy60-score5'
+              ).innerText = ` ${el.easy60score}`;
+            }
+          });
+        });
+        //---------------------------------------------------MEDIUM
+        get(child(dbref, `MEDIUM-30-sec/`)).then((snapshot) => {
+          const medium30Array = [];
+          snapshot.forEach((e) => {
+            if (e.val().medium30score < limit) medium30Array.push(e.val());
+          });
+          const medium30sorted = medium30Array.sort((a, b) => {
+            if (b.medium30score > a.medium30score) return 1;
+            if (a.medium30score > b.medium30score) return -1;
+            return 0;
+          });
+
+          medium30sorted.forEach((el, i) => {
+            const index = i + 1;
+
+            if (index === 1) {
+              document.getElementById('medium30-user1').innerText =
+                el.medium30user;
+              document.getElementById(
+                'medium30-score1'
+              ).innerText = ` ${el.medium30score}`;
+            }
+            if (index === 2) {
+              document.getElementById('medium30-user2').innerText =
+                el.medium30user;
+              document.getElementById(
+                'medium30-score2'
+              ).innerText = ` ${el.medium30score}`;
+            }
+            if (index === 3) {
+              document.getElementById('medium30-user3').innerText =
+                el.medium30user;
+              document.getElementById(
+                'medium30-score3'
+              ).innerText = ` ${el.medium30score}`;
+            }
+            if (index === 4) {
+              document.getElementById('medium30-user4').innerText =
+                el.medium30user;
+              document.getElementById(
+                'medium30-score4'
+              ).innerText = ` ${el.medium30score}`;
+            }
+            if (index === 5) {
+              document.getElementById('medium30-user5').innerText =
+                el.medium30user;
+              document.getElementById(
+                'medium30-score5'
+              ).innerText = ` ${el.medium30score}`;
+            }
+          });
+        });
+
+        get(child(dbref, `MEDIUM-60-sec/`)).then((snapshot) => {
+          const medium60Array = [];
+          snapshot.forEach((e) => {
+            if (e.val().medium60score < limit) medium60Array.push(e.val());
+          });
+          const medium60sorted = medium60Array.sort((a, b) => {
+            if (b.medium60score > a.medium60score) return 1;
+            if (a.medium60score > b.medium60score) return -1;
+            return 0;
+          });
+
+          medium60sorted.forEach((el, i) => {
+            const index = i + 1;
+
+            if (index === 1) {
+              document.getElementById('medium60-user1').innerText =
+                el.medium60user;
+              document.getElementById(
+                'medium60-score1'
+              ).innerText = ` ${el.medium60score}`;
+            }
+            if (index === 2) {
+              document.getElementById('medium60-user2').innerText =
+                el.medium60user;
+              document.getElementById(
+                'medium60-score2'
+              ).innerText = ` ${el.medium60score}`;
+            }
+            if (index === 3) {
+              document.getElementById('medium60-user3').innerText =
+                el.medium60user;
+              document.getElementById(
+                'medium60-score3'
+              ).innerText = ` ${el.medium60score}`;
+            }
+            if (index === 4) {
+              document.getElementById('medium60-user4').innerText =
+                el.medium60user;
+              document.getElementById(
+                'medium60-score4'
+              ).innerText = ` ${el.medium60score}`;
+            }
+            if (index === 5) {
+              document.getElementById('medium60-user5').innerText =
+                el.medium60user;
+              document.getElementById(
+                'medium60-score5'
+              ).innerText = ` ${el.medium60score}`;
+            }
+          });
+        });
+
+        //---------------------------------------------------HARD
+        get(child(dbref, `HARD-30-sec/`)).then((snapshot) => {
+          const hard30Array = [];
+          snapshot.forEach((e) => {
+            if (e.val().hard30score < limit) hard30Array.push(e.val());
+          });
+          const hard30sorted = hard30Array.sort((a, b) => {
+            if (b.hard30score > a.hard30score) return 1;
+            if (a.hard30score > b.hard30score) return -1;
+            return 0;
+          });
+
+          hard30sorted.forEach((el, i) => {
+            const index = i + 1;
+
+            if (index === 1) {
+              document.getElementById('hard30-user1').innerText = el.hard30user;
+              document.getElementById(
+                'hard30-score1'
+              ).innerText = ` ${el.hard30score}`;
+            }
+            if (index === 2) {
+              document.getElementById('hard30-user2').innerText = el.hard30user;
+              document.getElementById(
+                'hard30-score2'
+              ).innerText = ` ${el.hard30score}`;
+            }
+            if (index === 3) {
+              document.getElementById('hard30-user3').innerText = el.hard30user;
+              document.getElementById(
+                'hard30-score3'
+              ).innerText = ` ${el.hard30score}`;
+            }
+            if (index === 4) {
+              document.getElementById('hard30-user4').innerText = el.hard30user;
+              document.getElementById(
+                'hard30-score4'
+              ).innerText = ` ${el.hard30score}`;
+            }
+            if (index === 5) {
+              document.getElementById('hard30-user5').innerText = el.hard30user;
+              document.getElementById(
+                'hard30-score5'
+              ).innerText = ` ${el.hard30score}`;
+            }
+          });
+        });
+
+        get(child(dbref, `HARD-60-sec/`)).then((snapshot) => {
+          const hard60Array = [];
+          snapshot.forEach((e) => {
+            if (e.val().hard60score < limit) hard60Array.push(e.val());
+          });
+          const hard60sorted = hard60Array.sort((a, b) => {
+            if (b.hard60score > a.hard60score) return 1;
+            if (a.hard60score > b.hard60score) return -1;
+            return 0;
+          });
+
+          hard60sorted.forEach((el, i) => {
+            const index = i + 1;
+
+            if (index === 1) {
+              document.getElementById('hard60-user1').innerText = el.hard60user;
+              document.getElementById(
+                'hard60-score1'
+              ).innerText = ` ${el.hard60score}`;
+            }
+            if (index === 2) {
+              document.getElementById('hard60-user2').innerText = el.hard60user;
+              document.getElementById(
+                'hard60-score2'
+              ).innerText = ` ${el.hard60score}`;
+            }
+            if (index === 3) {
+              document.getElementById('hard60-user3').innerText = el.hard60user;
+              document.getElementById(
+                'hard60-score3'
+              ).innerText = ` ${el.hard60score}`;
+            }
+            if (index === 4) {
+              document.getElementById('hard60-user4').innerText = el.hard60user;
+              document.getElementById(
+                'hard60-score4'
+              ).innerText = ` ${el.hard60score}`;
+            }
+            if (index === 5) {
+              document.getElementById('hard60-user5').innerText = el.hard60user;
+              document.getElementById(
+                'hard60-score5'
+              ).innerText = ` ${el.hard60score}`;
+            }
+          });
+        });
+
+        //--------------------------------------------------------HERO
+        get(child(dbref, `HERO/`)).then((snapshot) => {
+          const heroArray = [];
+          snapshot.forEach((e) => {
+            if (e.val().heroScore < limit) heroArray.push(e.val());
+          });
+          const heroSorted = heroArray.sort((a, b) => {
+            if (b.heroScore > a.heroScore) return 1;
+            if (a.heroScore > b.heroScore) return -1;
+            return 0;
+          });
+
+          heroSorted.forEach((el, i) => {
+            const index = i + 1;
+
+            if (index === 1) {
+              document.getElementById('hero-user1').innerText = el.heroUser;
+              document.getElementById(
+                'hero-score1'
+              ).innerText = ` ${el.heroScore}`;
+            }
+            if (index === 2) {
+              document.getElementById('hero-user2').innerText = el.heroUser;
+              document.getElementById(
+                'hero-score2'
+              ).innerText = ` ${el.heroScore}`;
+            }
+            if (index === 3) {
+              document.getElementById('hero-user3').innerText = el.heroUser;
+              document.getElementById(
+                'hero-score3'
+              ).innerText = ` ${el.heroScore}`;
+            }
+            if (index === 4) {
+              document.getElementById('hero-user4').innerText = el.heroUser;
+              document.getElementById(
+                'hero-score4'
+              ).innerText = ` ${el.heroScore}`;
+            }
+            if (index === 5) {
+              document.getElementById('hero-user5').innerText = el.heroUser;
+              document.getElementById(
+                'hero-score5'
+              ).innerText = ` ${el.heroScore}`;
+            }
+          });
+        });
+        console.warn = () => {};
+      }
+
+      //DeleteData();
+      /* function DeleteData(params) {
+        const dbref = ref(db);
+        //---------------------------------------------------EASY
+        get(child(dbref, `EASY-30-sec/`)).then((snapshot) => {
+          const easy30Array = [];
+          snapshot.forEach((e) => {
+            easy30Array.push(e.val());
+          });
+          const easy30withoutFirst5 = easy30Array
+            .sort((a, b) => {
+              if (b.easy30score > a.easy30score) return 1;
+              if (a.easy30score > b.easy30score) return -1;
+              return 0;
+            })
+            .splice(5);
+          easy30withoutFirst5.forEach((el) => {
+            // console.log(el.easy30score);
+            remove(el.easy30score);
+          });
+        });
+      } */
+
+      saveGlobalScoreBtn.addEventListener('click', saveDataDB);
+      saveGlobalScoreBtn.addEventListener('keypress', function (e) {
+        if (e.keyCode === 13) saveDataDB();
+      }); //REVIEW: non funziona
+
+      nicknameInput.addEventListener('keyup', (event) => {
+        if (event.target.value.length) {
+          saveGlobalScoreBtn.disabled = false;
+          saveGlobalScoreBtn.style.backgroundColor = 'rgb(61, 214, 0)';
+        } else {
+          saveGlobalScoreBtn.disabled = true;
+          saveGlobalScoreBtn.style.backgroundColor = 'rgb(128, 128, 128)';
+        }
+      });
+
+      window.oncontextmenu = function () {
+        return false;
+      };
+
+      document.addEventListener(
+        'keydown',
+        function (event) {
+          var key = event.key || event.keyCode;
+
+          if (key === 123) {
+            return false;
+          } else if (
+            //REVIEW: non funziona
+            (event.ctrlKey && event.shiftKey && key === 73) ||
+            (event.ctrlKey && event.shiftKey && key === 74) ||
+            (event.ctrlKey && event.shiftKey && key === 105) ||
+            (event.ctrlKey && event.shiftKey && key === 106)
+          ) {
+            return false;
+          }
+        },
+        false
       );
     </script>
   </body>
