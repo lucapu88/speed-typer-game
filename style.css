@@ -571,3 +571,11 @@ footer {
 .user > span:first-child {
   text-transform: uppercase;
 }
+
+.info-scores {
+  border-radius: 50%;
+  width: 10px;
+  display: flex;
+  justify-content: center;
+  margin-right: 5px;
+}

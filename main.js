@@ -933,3 +933,8 @@ nicknameInput.addEventListener('keydown', (event) => {
     ''
   );
 });
+
+document.getElementById('info-scores').addEventListener('click', () => {
+  alert(`These rankings are periodic, they will be reset every time the level of all users becomes very high.
+By doing this, everyone can compete regardless of your level. ;-)`);
+});
