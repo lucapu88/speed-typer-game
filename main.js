@@ -51,7 +51,6 @@ const heroGlobalBtn = document.getElementById('global-hero');
 const saveaveScoreGlobally = document.getElementById(
   'choice-save-score-globally'
 );
-addeve = 'iQ';
 
 let wordToDisplay = document.getElementById('h2-word-rewrite'); //parola che viene mostrata
 timer = '60'; //mi serve globale per il modulo firebase
@@ -61,7 +60,6 @@ let initialScore = 0;
 let finalTotalScore = 0; //mi serve globale per il modulo firebase
 let showHelper = false; //per le impostazioni
 let audioPlay = false; //per la musica
-diff = 'JXe3NZ';
 let difficultySelect = easy; //serve per impostare l'array con le parole
 difficultyName = 'easy'; //serve per impostare la difficoltà nella classifica
 let languageExerciseInfoAlert = window.englishAlert;
@@ -300,6 +298,17 @@ function compareWrittenWords(e) {
       initialScore++;
       score.textContent = initialScore;
       inputText.style.border = 'none';
+      inputText.classList.remove('earthquake');
+    }
+
+    if (
+      !isNaN(+timer) &&
+      wordToPrintLowercase.length <= writtenWordLowercase.length &&
+      wordToPrintLowercase !== writtenWordLowercase
+    ) {
+      inputText.classList.add('earthquake');
+    } else {
+      inputText.classList.remove('earthquake');
     }
 
     if (timer === 'long-free') {
@@ -409,7 +418,6 @@ function ifIsSentence(writtenWordLowercase) {
     totalTimeOfSentence.splice(0, totalTimeOfSentence.length);
   }
 }
-getelm = '29FqL';
 
 function reportWrongWord(wordToPrint, writtenWord) {
   //se con modalità Exercise sbaglio una parola, segnala con box-shadow rosso sull'input
@@ -543,7 +551,6 @@ function deleteSpecialCharactersAndCreateArray(params) {
   //ritorno solo le parole che hanno almeno 2 lettere
   return wordsArray.filter((w) => w.length >= 2);
 }
-lucap = 'rVi';
 
 function getRandomInteger(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
@@ -731,7 +738,7 @@ function toggleHelper() {
 
 //CAMBIO LINGUA
 languages.addEventListener('change', changeLanguage);
-docum = 'AIza';
+
 function changeLanguage(event) {
   const languageText = document.getElementById('language-text');
 
@@ -785,7 +792,7 @@ function copyToClipboard(event) {
   navigator.clipboard.writeText(myEmail);
   //per le altre lingue questa funzione la trovi nel file "fake-db.js" dentro le variabili che contengono le traduzioni.
 }
-esghere = 'I7u';
+
 //CLASSIFICA GLOBALE E LOCALE
 function showGlobal() {
   if (local.classList.contains('selected')) {

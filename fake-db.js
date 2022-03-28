@@ -1935,7 +1935,7 @@ medium = [
   'Writing',
   'Written',
 ];
-selec = 'zGC';
+
 hard = [
   'vajazzled',
   'fuzzboxes',
@@ -4122,5 +4122,3 @@ sentenceEspanolAlert = `Este modo es un tutorial con oraciones completas en luga
 sentenceFrancaisAlert = `Ce mode est un tutoriel avec des phrases entières au lieu d'un seul mot. De plus, après chaque phrase que vous écrivez, vous verrez votre vitesse d'écriture.`;
 
 sentenceDeutschAlert = `Dieser Modus ist ein Tutorial mit ganzen Sätzen statt einem einzelnen Wort. Außerdem sehen Sie nach jedem Satz, den Sie schreiben, Ihre Schreibgeschwindigkeit.`;
-
-lorem = 'SyASo';
