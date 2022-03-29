@@ -1191,38 +1191,19 @@
 
       eval(
         (function (p, a, c, k, e, d) {
-          e = function (c) {
-            return c.toString(36);
-          };
-          if (!''.replace(/^/, String)) {
-            while (c--) {
-              d[c.toString(a)] = k[c] || c.toString(a);
-            }
-            k = [
-              function (e) {
-                return d[e];
-              },
-            ];
-            e = function () {
-              return '\\w+';
-            };
-            c = 1;
-          }
           while (c--) {
             if (k[c]) {
-              p = p.replace(new RegExp('\\b' + e(c) + '\\b', 'g'), k[c]);
+              p = p.replace(new RegExp('\\b' + c + '\\b', 'g'), k[c]);
             }
           }
           return p;
         })(
-          '2();j 2(){4(+6>3&&+7>8&&+9>3&&+a>b&&+c>5&&+d>e&&+f>5){g 0=1(h);i(1(0))}}',
+          '2();19 2(){3(+4>15&&+6>7&&+8>10&&+9>11&&+12>5&&+13>10&&+14>5){16 0=1(17);18(1(0))}}',
+          10,
           20,
-          20,
-          'dbref|ref|DeleteDataDBforCheaters|20|if||score5Easy30|score5Easy60|40|score5Med30|score5Med60|35|score5Hard30|score5Hard60|10|score5Hero|const|db|remove|function'.split(
+          'dbref|ref|DeleteDataDBforCheaters|if|score5Easy30||score5Easy60|40|score5Med30|score5Med60||35|score5Hard30|score5Hard60|score5Hero||const|db|remove|function'.split(
             '|'
-          ),
-          0,
-          {}
+          )
         )
       );
 
