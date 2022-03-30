@@ -2259,7 +2259,6 @@ hard = [
   'Bedjackets',
   'Bhikkhunis',
   'Blackbucks',
-  'Blackcocks',
   'Blackjacks',
   'Blitzkrieg',
   'Blizzarded',

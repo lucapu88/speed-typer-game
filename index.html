@@ -448,6 +448,9 @@
     <script src="long-text.js" charset="utf-8"></script>
     <script src="main.js" charset="utf-8"></script>
     <script type="module">
+      /*tutta questa parte è un pò incasinata per scoraggiare la gente a barare e a rompere le scatole. 
+        Andrebbe rivista, ma andrebbe anche fatto tutto con un server e un db a modo.
+        Per quel che mi serve per il momento mi sono fermato alle basi, e dovrò sistemare un pò tutto.*/
       import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js';
       import { getAnalytics } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-analytics.js';
       const nicknameInput = document.getElementById('nickname');
@@ -1213,7 +1216,7 @@
       }); //REVIEW: non funziona
 
       nicknameInput.addEventListener('keyup', (event) => {
-        if (event.target.value.length) {
+        if (event.target.value.trim().length) {
           saveGlobalScoreBtn.disabled = false;
           saveGlobalScoreBtn.style.backgroundColor = 'rgb(61, 214, 0)';
         } else {
