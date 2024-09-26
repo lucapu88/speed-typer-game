@@ -307,6 +307,7 @@ function compareWrittenWords(e) {
       wordToPrintLowercase !== writtenWordLowercase
     ) {
       inputText.classList.add('earthquake');
+      inputText.value = '';
     } else {
       inputText.classList.remove('earthquake');
     }
